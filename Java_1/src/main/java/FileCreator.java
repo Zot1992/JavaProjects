@@ -4,7 +4,7 @@ import java.io.IOException;
 public class FileCreator {
     public static void main(String args[])throws IOException
     {
-        File file = new File("C:/Users/ROMA/IdeaProjects/Project16/products.txt");//создает текстовый файл
+        File file = new File("C:/Users/ROMA/IdeaProjects/JavaProjects/products.txt");//создает текстовый файл
         if (file.createNewFile()) //Проверка на существование файла
             System.out.println("Файл создан");
         else
