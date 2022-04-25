@@ -23,16 +23,20 @@ public class Main {
             System.out.println("Хотите добавить продукт?");
             while (sc2.next().equals("yes")){ //цикл будет идти пока мы будем писать нужное слово которое задали
                 Scanner sc3 = new Scanner(System.in);
+                Product prod=new Product();
                 System.out.print("Введите наименование продукта: ");
-                String name = sc3.nextLine();//Задает данные в строку который мы вводим в консоли
+                String name=prod.getProduct();// переменной присваиваем раздел из объекта
+                name = sc3.nextLine();//Задает данные в строку который мы вводим в консоли
                 writer.write(name+'\t'); //добавляет введеную строку в текстовый файл и делает табуляцию
                 System.out.print("Введите цену продукта: ");
-                String price = sc3.nextLine();
+                String price=prod.getPrice();
+                price = sc3.nextLine();
                 priceint = Integer.parseInt(price);//метод parseInt преобразует строку в число
                 product.add(priceint);//добавляем преобразованное число в список
                 writer.write(price+'\t');
                 System.out.print("Введите категорию продукта: ");
-                String category = sc3.nextLine();
+                String category=prod.getCategory();
+                category = sc3.nextLine();
                 writer.write(category);
                 writer.write('\n');
                 System.out.println("Хотите добавить продукт?");
