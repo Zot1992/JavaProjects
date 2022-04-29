@@ -66,10 +66,15 @@ public class Main {
             String Product=arr[0];
             Float Price=Float.parseFloat(arr[1]);
             String Category=arr[2];
+
             if (Category.equals(сategory_ap)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
                 product.add(Price);//добавляем преобразованное число в список
                 count++;
             }
+
+            line=reader.readLine();
+        }
+        for (Product product2:arrayProduct){
 
         }
         for (int i = 0; i < product.size(); i++) { //цикл для подсчета суммы по выбранной категории
