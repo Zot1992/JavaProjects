@@ -16,9 +16,10 @@ public class Main {
         float average_price = 0;// средняя цена
         ArrayList<Float> product = new ArrayList<>();//записывать преобразованные в int числа
         float pricefloat = 0f;// цена в виде float
+        String str="Да"; //строка которая должна быть введена при создании файла и добавлении нового продукта
         System.out.println("Хотите создать файл?");
         if (file.isFile()) {System.out.println("Файл уже создан");}
-        else if (sc.next().equals("да")) { //# если введу ДА - не сработает, нужно привести строки к КАПСУ или нижнему регистру, str.toLowerCase()/str.toUpperCase()
+        else if (sc.next().equals(str.toLowerCase()) || sc.next().equals(str.toUpperCase())) { //# если введу ДА - не сработает, нужно привести строки к КАПСУ или нижнему регистру, str.toLowerCase()/str.toUpperCase()
             System.out.println("Файл создан");
         }
         else {
@@ -30,9 +31,9 @@ public class Main {
         Scanner sc3 = new Scanner(System.in);
         System.out.println("По какой категории хотите узнать среднюю цену?");
         String сategory_ap = sc3.nextLine();
+        Scanner sc4 = new Scanner(System.in);
         System.out.println("Хотите добавить продукт?");
-        while (sc2.next().equals("да")) { //цикл будет идти пока мы будем писать нужное слово которое задали
-            Scanner sc4 = new Scanner(System.in);
+        while (sc2.next().equals(str.toLowerCase()) || sc2.next().equals(str.toUpperCase())) { //цикл будет идти пока мы будем писать нужное слово которое задали
             writer.write(" ");
             System.out.print("Введите наименование продукта: ");
             String name;
@@ -60,12 +61,12 @@ public class Main {
 
         FileReader fr=new FileReader(file);//считывает файл
         BufferedReader reader=new BufferedReader(fr);
-        String line=reader.readLine();
+        String line;
         ArrayList<Product>arrayProduct=new ArrayList<>();
-        while (line!=null){
+        while ((line=reader.readLine())!=null){ //цикл будет идти пока не кончатся строки
             String[] arr=line.split(" ");
             String Product=arr[0];
-            Float Price=Float.parseFloat(arr[1]);
+            float Price=Float.parseFloat(arr[1]);
             String Category=arr[2];
             Product prod = new Product(Product,Price,Category);
             arrayProduct.add(prod);
@@ -73,7 +74,6 @@ public class Main {
                 sum2 += Price;
                 count++;
             }
-            line=reader.readLine();
         }
         for (Product product2:arrayProduct){
 
@@ -86,6 +86,10 @@ public class Main {
         System.out.println("среднее арифметическое цена по заданной категории: " + average_price_str);
         writer.write(average_price_str);
         writer.close();//Закрывает поток ввода данных
+        sc.close();
+        sc2.close();
+        sc3.close();
+        sc4.close();
     }
 }
 
