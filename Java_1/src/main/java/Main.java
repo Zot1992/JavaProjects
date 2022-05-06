@@ -14,8 +14,8 @@ public class Main {
         float sum = 0f;// сумма цен всех товаров которые мы хотим добавить в файл
         float sum2=0f;//сумма цен товаров которые уже были добавлены в файл
         float average_price = 0;// средняя цена
-        ArrayList<Float> product = new ArrayList<>();//записывать преобразованные в int числа
-        float pricefloat = 0f;// цена в виде float
+        //ArrayList<Float> product = new ArrayList<>();//записывать преобразованные в int числа
+        //float pricefloat = 0f;// цена в виде float
         String str="Да"; //строка которая должна быть введена при создании файла и добавлении нового продукта
         System.out.println("Хотите создать файл?");
         if (file.isFile()) {System.out.println("Файл уже создан");}
@@ -40,16 +40,20 @@ public class Main {
             name = sc4.nextLine();//Задает данные в строку который мы вводим в консоли
             writer.write(name + " "); //добавляет введеную строку в текстовый файл и делает табуляцию
             System.out.print("Введите цену продукта: ");
-            String price;
-            price = sc4.nextLine(); //#разберись с nextFloat и подобным. Float val = sc4.nextFloat();
+            /*String price;
+            price = sc4.nextLine();
+            writer.write(price + " "); */
+            float val = sc4.nextFloat();
+            String price=Float.toString(val);
             writer.write(price + " ");
             System.out.print("Введите категорию продукта: ");
             String category;
             category = sc4.nextLine();
             writer.write(category);
             if (category.equals(сategory_ap)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
-                pricefloat = Float.parseFloat(price);
-                product.add(pricefloat);//добавляем преобразованное число в список
+                /*pricefloat = Float.parseFloat(price);
+                product.add(pricefloat);//добавляем преобразованное число в список */
+                sum+=val;
                 count++;
             }
             writer.write('\n');
@@ -78,9 +82,9 @@ public class Main {
         for (Product product2:arrayProduct){
 
         }
-        for (int i = 0; i < product.size(); i++) { //цикл для подсчета суммы по выбранной категории
+        /*for (int i = 0; i < product.size(); i++) { //цикл для подсчета суммы по выбранной категории
             sum += product.get(i);
-        }
+        } */
         average_price = (sum+sum2) / count;
         String average_price_str = Float.toString(average_price);
         System.out.println("среднее арифметическое цена по заданной категории: " + average_price_str);
