@@ -51,7 +51,7 @@ public class Main {
             category = sc4.nextLine();
             writer.write(category);
             if (category.equals(сategory_ap)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
-                /*pricefloat = Float.parseFloat(price);
+                /* pricefloat = Float.parseFloat(price);
                 product.add(pricefloat);//добавляем преобразованное число в список */
                 sum+=val;
                 count++;
@@ -65,23 +65,25 @@ public class Main {
 
         FileReader fr=new FileReader(file);//считывает файл
         BufferedReader reader=new BufferedReader(fr);
+        float val2=0;
         String line;
         ArrayList<Product>arrayProduct=new ArrayList<>();
         while ((line=reader.readLine())!=null){ //цикл будет идти пока не кончатся строки
             String[] arr=line.split(" ");
             String Product=arr[0];
-            float Price=Float.parseFloat(arr[1]);
+            String Price=arr[1];
+            val2=Float.parseFloat(Price);
             String Category=arr[2];
             Product prod = new Product(Product,Price,Category);
             arrayProduct.add(prod);
             if (Category.equals(сategory_ap)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
-                sum2 += Price;
+                sum2 += val2;
                 count++;
             }
         }
-        for (Product product2:arrayProduct){
+        /*for (Product product2:arrayProduct){
 
-        }
+        } */
         /*for (int i = 0; i < product.size(); i++) { //цикл для подсчета суммы по выбранной категории
             sum += product.get(i);
         } */
