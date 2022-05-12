@@ -11,7 +11,7 @@ public class Main {
             File file = new File("products.txt");//создает текстовый файл в корневой папке или использует существующий
 
             System.out.println("Хотите создать файл?");
-            if (file.isFile()) {
+            if (file.exists()) {
                 System.out.println("Файл уже создан");
             } else if (sc.next().equalsIgnoreCase(yes.toLowerCase())) { //# если введу ДА - не сработает, нужно привести строки к КАПСУ или нижнему регистру, str.toLowerCase()/str.toUpperCase()
                 System.out.println("Файл создан");
@@ -24,8 +24,7 @@ public class Main {
 
             System.out.println("По какой категории хотите узнать среднюю цену?");
             sc.nextLine();
-            String categoryParam = sc.nextLine();
-            calculation(file, categoryParam);
+            calculation(file, sc.nextLine());
         }
     }
 
@@ -57,26 +56,23 @@ public class Main {
     private static void calculation(File file, String categoryParam) throws IOException {
         float count = 0f; // считает количество товаров
         float sum = 0f;// сумма цен всех товаров которые мы хотим добавить в файл
-        float sum2 = 0f;//сумма цен товаров которые уже были добавлены в файл
         float average_price = 0f;// средняя цена
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) { /*try(...=new ...()) {} это для AutoCloseable классов, то есть для потоков,
              файлов и прочее, что нужно закрыть, закроется автоматом в конце инструкции {}*/
-            float val2 = 0;
             String line;
 
             while ((line = reader.readLine()) != null) { //цикл будет идти пока не кончатся строки
                 String[] arr = line.split(separator);
-                String Product = arr[0];
-                String Price = arr[1];
-                val2 = Float.parseFloat(Price);
-                String Category = arr[2];
-                if (Category.equals(categoryParam)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
-                    sum2 += val2;
+                String price = arr[1];
+                float val2 = Float.parseFloat(price);
+                String category = arr[2];
+                if (category.equals(categoryParam)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
+                    sum += val2;
                     count++;
                 }
             }
-            average_price = (sum + sum2) / count;
+            average_price = sum / count;
             String average_price_str = Float.toString(average_price);
             System.out.println("среднее арифметическое цена по заданной категории: " + average_price_str);
         }
