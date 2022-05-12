@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     public final static String yes = "Да";
-    public final static String separator = " ";
+    public final static String separator = "\t";
 
     public static void main(String[] args) throws IOException {//IOException - Исключение ввода-вывода {
         try (Scanner sc = new Scanner(System.in)) {
@@ -23,6 +23,7 @@ public class Main {
             writing(sc, file);
 
             System.out.println("По какой категории хотите узнать среднюю цену?");
+            sc.nextLine();
             String categoryParam = sc.nextLine();
             calculation(file, categoryParam);
         }
@@ -32,6 +33,7 @@ public class Main {
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true))) {//если дописываешь true, то дописывает файл, а не перезаписывает
             boolean res = isAdd(sc);
             while (res) { //цикл будет идти пока мы будем писать нужное слово которое задали
+
                 System.out.println("Введите наименование продукта: ");
                 sc.nextLine();//После println и перед =sc.nextLine() нужно счесть символ новой строки, чтобы второй вызов nextLine был корректным
                 String name = sc.nextLine();//Задает данные в строку который мы вводим в консоли
@@ -56,20 +58,19 @@ public class Main {
         float count = 0f; // считает количество товаров
         float sum = 0f;// сумма цен всех товаров которые мы хотим добавить в файл
         float sum2 = 0f;//сумма цен товаров которые уже были добавлены в файл
-        float average_price = 0;// средняя цена
+        float average_price = 0f;// средняя цена
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) { /*try(...=new ...()) {} это для AutoCloseable классов, то есть для потоков,
+             файлов и прочее, что нужно закрыть, закроется автоматом в конце инструкции {}*/
             float val2 = 0;
             String line;
-            ArrayList<Product> arrayProduct = new ArrayList<>();
+
             while ((line = reader.readLine()) != null) { //цикл будет идти пока не кончатся строки
                 String[] arr = line.split(separator);
                 String Product = arr[0];
                 String Price = arr[1];
                 val2 = Float.parseFloat(Price);
                 String Category = arr[2];
-                Product prod = new Product(Product, Price, Category);
-                arrayProduct.add(prod);
                 if (Category.equals(categoryParam)) { //Если мы вводим нужную категорию, то строка преобразуется в число и добавляется в список
                     sum2 += val2;
                     count++;
@@ -81,9 +82,9 @@ public class Main {
         }
     }
 
-    private static boolean isAdd(Scanner sc) {
+    private static boolean isAdd(Scanner sc) { //создаем свой метод
         System.out.println("Хотите добавить товар?");
-        return sc.next().equalsIgnoreCase(yes);
+        return sc.next().equalsIgnoreCase(yes); //пока будем вводить нужное слово, то будет снова и снова заходить в этот метод
     }
 }
 
