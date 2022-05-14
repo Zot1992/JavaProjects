@@ -1,5 +1,5 @@
 /**
- * @author Baltser Artem tfkfan
+ * @author Baltser Artem com.tfkfan
  */
 import java.io.*;
 import java.util.Scanner;
