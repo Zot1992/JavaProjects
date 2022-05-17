@@ -4,24 +4,36 @@ import java.util.Collection;
 
 public class ArrayList<E> {
     private static final int DEFAULT_CAPACITY = 10;//Поле, отвечающее за объем динамического массива по умолчанию
-    private int size;//Поле-счетчик, которое хранит в себе количество действительно находящихся в массиве элементов
-    transient E[] elementData; /*Поле, в котором хранятся все элементы коллекции
+    private int size;//Текущий размер списка
+    transient Object[] elementData; /*Поле, в котором хранятся все элементы коллекции
     Помечено ключевым словом transient – поле не записывается в поток байт при применении стандартного алгоритма сериализации.
-    стоит отметить, что поле не отмечено ключевым словом private, а сделано это для того,
+    Стоит отметить, что поле не отмечено ключевым словом private, а сделано это для того,
     чтобы облегчить доступ к этому полю из вложенных классов (например, SubList). */
+    private final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA =new Object[DEFAULT_CAPACITY];//Пустой массив по умолчанию
+    private final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
+
 
     public int getSize() {return size;}
-    public E[] getElementData() {return elementData;}
+    public Object[] getElementData() {return elementData;}
 
-    public ArrayList() {}
+    public ArrayList() {this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;}//по умолчанию список будет пустой
 
     public ArrayList(Collection< ? extends E > c){} /*создает списочный массив, инициализируемый элементами из переданной коллекции
     (если хотим создать новый ArrayList на базе какой-то коллекции)*/
 
-    public ArrayList(int initialCapacity){}/*создает списочный массив, имеющий начальную емкость. Если переданный параметр initialCapacity больше 0,
+    public ArrayList(int initialCapacity){/* Создает списочный массив, имеющий начальную емкость. Если переданный параметр initialCapacity больше 0,
     то создается массив указанного размера (внутреннему полю elementData присваивается ссылка на новый массив типа Object размером initialCapacity).
     Если параметр равен 0, то в таком случае создается пустой массив.
     Если же заданный параметр меньше 0, то генерируется исключение IllegalArgumentException.*/
+        if (initialCapacity > 0) { // если начальный размер больше 0, то создается массив такого размера которого укажем
+            this.elementData = new Object[initialCapacity];
+        } else if (initialCapacity == 0) { //если начальный размер 0, то список будет равен пустому.
+            this.elementData = EMPTY_ELEMENTDATA;
+        } else {
+            throw new IllegalArgumentException("Illegal Capacity: "+
+                    initialCapacity);
+        }
+    }
 
 
 
