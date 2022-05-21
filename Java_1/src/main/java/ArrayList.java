@@ -9,19 +9,27 @@ public class ArrayList<E> {
     Помечено ключевым словом transient – поле не записывается в поток байт при применении стандартного алгоритма сериализации.
     Стоит отметить, что поле не отмечено ключевым словом private, а сделано это для того,
     чтобы облегчить доступ к этому полю из вложенных классов (например, SubList). */
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA =new Object[DEFAULT_CAPACITY];//Пустой массив по умолчанию
+    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];//Пустой массив по умолчанию
     private static final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
 
 
-    public int getSize() {return size;}
-    public Object[] getElementData() {return elementData;}
+    public int getSize() {
+        return size;
+    }
 
-    public ArrayList() {this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;}//по умолчанию список будет пустой
+    public Object[] getElementData() {
+        return elementData;
+    }
 
-    public ArrayList(Collection< ? extends E > c){} /*создает списочный массив, инициализируемый элементами из переданной коллекции
+    public ArrayList() {
+        this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+    }//по умолчанию список будет пустой
+
+    public ArrayList(Collection<? extends E> c) {
+    } /*создает списочный массив, инициализируемый элементами из переданной коллекции
     (если хотим создать новый ArrayList на базе какой-то коллекции)*/
 
-    public ArrayList(int initialCapacity){/* Создает списочный массив, имеющий начальную емкость. Если переданный параметр initialCapacity больше 0,
+    public ArrayList(int initialCapacity) {/* Создает списочный массив, имеющий начальную емкость. Если переданный параметр initialCapacity больше 0,
     то создается массив указанного размера (внутреннему полю elementData присваивается ссылка на новый массив типа Object размером initialCapacity).
     Если параметр равен 0, то в таком случае создается пустой массив.
     Если же заданный параметр меньше 0, то генерируется исключение IllegalArgumentException.*/
@@ -30,7 +38,7 @@ public class ArrayList<E> {
         } else if (initialCapacity == 0) { //если начальный размер 0, то список будет равен пустому.
             this.elementData = EMPTY_ELEMENTDATA;
         } else {
-            throw new IllegalArgumentException("Illegal Capacity: "+
+            throw new IllegalArgumentException("Illegal Capacity: " +
                     initialCapacity);
         }
     }
@@ -62,26 +70,32 @@ public class ArrayList<E> {
     } */
 
 
-
-    public boolean add(E element){ //Классическое добавление элементов в списочный массив осуществляется с помощью перегруженных вариантов метода add().
-       try{ Object[] temp=elementData;
-        elementData = new Object[temp.length+1];//создаем массив размером на 1 больше
-        System.arraycopy(temp,0,elementData,0,temp.length); /*Метод для копирования из массива в массив.1.это то откуда будем копировать(temp).
-  2.это с какого элемента будем копировать(0).3.в каком будем копировать(elementData).4.с какого элемента(0).5. Сколько всего будем копировать(temp.length).*/
-        elementData[elementData.length-1]=element;//В конце массива присваиваем тот элемент, который хотим добавить.
-        return true;
-       } catch (ClassCastException e){ e.printStackTrace(); } //если у нас к коде выше что-то пошло не так тогда мы вернем false.
+    public boolean add(E element) { //Классическое добавление элементов в списочный массив осуществляется с помощью перегруженных вариантов метода add().
+        try {
+            if (elementData.length>size){elementData[elementData.length - 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.}
+            else if (elementData.length<size){
+            Object[] newData = elementData;
+            elementData = new Object[newData.length + 1];//создаем массив размером на 1 больше
+            for (int i = 0; i < elementData.length; i++) {newData[i] = elementData[i];}
+            elementData[elementData.length - 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.
+            size++;
+            return true;
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        } //если у нас к коде выше что-то пошло не так тогда мы вернем false.
         return false;
     }
 
-    void remove(int index){ //удаляет указанный по индексу элемент из списка
+    void remove(int index) { //удаляет указанный по индексу элемент из списка
 
-    for (int i=0;i<size-1;i++){
-        if (i==index){
-            elementData[i]=null;
-            size--;
+        Object[] newData = new Object[elementData.length - 1];
+        for (int i = 0; i < index; i++) {
+            newData[i] = elementData[i];
         }
+        for (int i = index + 1; i < elementData.length; i++) {
+            newData[i - 1] = elementData[i];
+        }
+        elementData = newData;
+        size--;
     }
-    }
-
 }
