@@ -18,7 +18,7 @@ public class ArrayList<E> {
         return (E) elementData[index];
     }
 
-    static <E> E elementAt(Object[] es, int index) {return (E) es[index];}
+    //static <E> E elementAt(Object[] es, int index) {return (E) es[index];}
 
     public E get(int index){
         Objects.checkIndex(index, size); //проверяем индекс
