@@ -1,6 +1,7 @@
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 public class ArrayList<E> {
     private static final int DEFAULT_CAPACITY = 10;//Поле, отвечающее за объем динамического массива по умолчанию
@@ -13,13 +14,20 @@ public class ArrayList<E> {
     private static final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
 
 
-    public int getSize() {
-        return size;
+    E elementData(int index) {
+        return (E) elementData[index];
     }
 
-    public Object[] getElementData() {
-        return elementData;
+    static <E> E elementAt(Object[] es, int index) {return (E) es[index];}
+
+    public E get(int index){
+        Objects.checkIndex(index, size); //проверяем индекс
+        return elementData(index);
     }
+
+    public int getSize() {return size;}
+    public Object[] getElementData() {return elementData;}
+
 
     public ArrayList() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
@@ -43,41 +51,14 @@ public class ArrayList<E> {
         }
     }
 
-
-
-   /* public Arrays.copyOf(elementData, newCapacity(minCapacity)){}
-
-    private E[] grow() {return grow(size + 1);}
-
-    private int newCapacity(int minCapacity) {
-        int oldCapacity = elementData.length;//записываем в переменную текущий массив
-        int newCapacity = oldCapacity + (oldCapacity >> 1); /*осуществляется вычисление нового размера массива. Он вычисляется по следующей формуле.
-        >> 1 – побитовый сдвиг вправо на единицу (оператор, который уменьшает число до его половины). По сути, означает деление на 2 в степени 1.
-        Получается, что мы делим 10 на 2 и прибавляем 10. Итого, новая емкость массива равна 15, но так как мы добавляем 11 элемент, то 15+1 = 16.
-
-
-
-
-        return;
-    }
-
-    private void add(E e, E[] elementData, int s){ /*Внутри (public boolean add) метода происходит вызов перегруженного варианта метода add(),
-    помеченный как private, который в свою очередь на вход принимает три параметра: добавляемый элемент, внутренний массив и его размер (size).
-        if (size == elementData.length){elementData = grow();} /*В закрытом методе происходит проверка: если переданный параметр размера равен длине
-    внутреннего массива (то есть массив заполнен)
-        elementData[s] = e;
-        size = s + 1;
-    } */
-
-
     public boolean add(E element) { //Классическое добавление элементов в списочный массив осуществляется с помощью перегруженных вариантов метода add().
         try {
-            if (elementData.length>size){elementData[elementData.length - 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.}
+            if (elementData.length>size){elementData[size] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.}
             else if (elementData.length<size){
             Object[] newData = elementData;
-            elementData = new Object[newData.length + 1];//создаем массив размером на 1 больше
+            elementData = new Object[newData.length * 2];//создаем массив размером в 2 раза больше
             for (int i = 0; i < elementData.length; i++) {newData[i] = elementData[i];}
-            elementData[elementData.length - 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.
+            elementData[size + 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.
             size++;
             return true;
         } catch (ClassCastException e) {

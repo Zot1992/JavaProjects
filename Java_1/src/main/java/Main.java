@@ -12,10 +12,10 @@ public class Main {
             val = sc.nextInt();
             list.add(val);
         }
+        for (int i=0;i<list.getSize();i++){System.out.print(list.get(i)+" ");}
+        System.out.println();
         list.add(3);
         list.remove(2);
-
-        for (int i=0;i<list.getSize();i++){System.out.println(list[i]);}
-
+        for (int i=0;i<list.getSize();i++){System.out.print(list.get(i)+" ");}
     }
 }
