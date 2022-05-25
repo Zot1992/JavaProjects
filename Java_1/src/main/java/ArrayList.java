@@ -1,5 +1,5 @@
 
-import java.util.Arrays;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -10,27 +10,19 @@ public class ArrayList<E> {
     Помечено ключевым словом transient – поле не записывается в поток байт при применении стандартного алгоритма сериализации.
     Стоит отметить, что поле не отмечено ключевым словом private, а сделано это для того,
     чтобы облегчить доступ к этому полю из вложенных классов (например, SubList). */
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];//Пустой массив по умолчанию
-    private static final Object[] EMPTY_ELEMENTDATA = new Object[DEFAULT_CAPACITY];
-
 
     E elementData(int index) {
         return (E) elementData[index];
     }
 
-    //static <E> E elementAt(Object[] es, int index) {return (E) es[index];}
 
-    public E get(int index){
-        Objects.checkIndex(index, size); //проверяем индекс
-        return elementData(index);
+    public int getSize() {
+        return size;
     }
-
-    public int getSize() {return size;}
-    public Object[] getElementData() {return elementData;}
 
 
     public ArrayList() {
-        this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+        this.elementData = new Object[DEFAULT_CAPACITY];
     }//по умолчанию список будет пустой
 
     public ArrayList(Collection<? extends E> c) {
@@ -44,27 +36,34 @@ public class ArrayList<E> {
         if (initialCapacity > 0) { // если начальный размер больше 0, то создается массив такого размера которого укажем
             this.elementData = new Object[initialCapacity];
         } else if (initialCapacity == 0) { //если начальный размер 0, то список будет равен пустому.
-            this.elementData = EMPTY_ELEMENTDATA;
+            this.elementData = new Object[DEFAULT_CAPACITY];
         } else {
             throw new IllegalArgumentException("Illegal Capacity: " +
                     initialCapacity);
         }
     }
 
+
+    public E get(int index) {
+        Objects.checkIndex(index, size); //проверяем индекс
+        return elementData(index);
+    }
+
     public boolean add(E element) { //Классическое добавление элементов в списочный массив осуществляется с помощью перегруженных вариантов метода add().
-        try {
-            if (elementData.length>size){elementData[size] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.}
-            else if (elementData.length<size){
+
+        if (elementData.length > size) {
+            elementData[size] = element;
+        }//В конце массива присваиваем тот элемент, который хотим добавить.}
+        else if (elementData.length <= size) {
             Object[] newData = elementData;
             elementData = new Object[newData.length * 2];//создаем массив размером в 2 раза больше
-            for (int i = 0; i < elementData.length; i++) {newData[i] = elementData[i];}
-            elementData[size + 1] = element;}//В конце массива присваиваем тот элемент, который хотим добавить.
-            size++;
-            return true;
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-        } //если у нас к коде выше что-то пошло не так тогда мы вернем false.
-        return false;
+            for (int i = 0; i < elementData.length; i++) {
+                newData[i] = elementData[i];
+            }
+            elementData[size + 1] = element;
+        }//В конце массива присваиваем тот элемент, который хотим добавить.
+        size++;
+        return true;
     }
 
     void remove(int index) { //удаляет указанный по индексу элемент из списка
