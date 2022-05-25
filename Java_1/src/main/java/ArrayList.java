@@ -11,16 +11,6 @@ public class ArrayList<E> {
     Стоит отметить, что поле не отмечено ключевым словом private, а сделано это для того,
     чтобы облегчить доступ к этому полю из вложенных классов (например, SubList). */
 
-    E elementData(int index) {
-        return (E) elementData[index];
-    }
-
-
-    public int getSize() {
-        return size;
-    }
-
-
     public ArrayList() {
         this.elementData = new Object[DEFAULT_CAPACITY];
     }//по умолчанию список будет пустой
@@ -43,6 +33,13 @@ public class ArrayList<E> {
         }
     }
 
+    private E elementData(int index) {
+        return (E) elementData[index];
+    }
+
+    public int getSize() {
+        return size;
+    }
 
     public E get(int index) {
         Objects.checkIndex(index, size); //проверяем индекс
@@ -50,7 +47,6 @@ public class ArrayList<E> {
     }
 
     public boolean add(E element) { //Классическое добавление элементов в списочный массив осуществляется с помощью перегруженных вариантов метода add().
-
         if (elementData.length > size) {
             elementData[size] = element;
         }//В конце массива присваиваем тот элемент, который хотим добавить.}
@@ -67,7 +63,6 @@ public class ArrayList<E> {
     }
 
     void remove(int index) { //удаляет указанный по индексу элемент из списка
-
         Object[] newData = new Object[elementData.length - 1];
         for (int i = 0; i < index; i++) {
             newData[i] = elementData[i];
