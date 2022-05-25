@@ -50,7 +50,7 @@ public class ArrayList<E> {
         if (elementData.length > size) {
             elementData[size] = element;
         }//В конце массива присваиваем тот элемент, который хотим добавить.}
-        else if (elementData.length <= size) {
+        else {
             Object[] newData = elementData;
             elementData = new Object[newData.length * 2];//создаем массив размером в 2 раза больше
             for (int i = 0; i < elementData.length; i++) {
