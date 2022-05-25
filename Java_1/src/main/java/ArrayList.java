@@ -17,17 +17,9 @@ public class ArrayList<E> {
     }//по умолчанию список будет пустой
 
     public ArrayList(Collection<? extends E> c) {
-        Object[] a = c.toArray();//c – коллекция, элементы которой должны быть помещены в этот список.
-        if ((size = a.length) != 0) { //если есть что копировать, то копируем.
-            if (c.getClass() == java.util.ArrayList.class) { //если коллекция является ArrayList то просто переписываются данные
-                elementData = a;
-            } else { // если не является ArrayList то происходит копирование через метод Arrays.copyOf
-                elementData = Arrays.copyOf(a, size, Object[].class);
-            }
-        }
-        else{ // если нет, то созданный массив остается пустым
-            elementData = new Object[DEFAULT_CAPACITY];
-        }
+        elementData = new Object[c.size()];
+        for(E e : c)
+            add(e);
     } /*создает списочный массив, инициализируемый элементами из переданной коллекции
     (если хотим создать новый ArrayList на базе какой-то коллекции)*/
 
