@@ -1,6 +1,6 @@
 
 
-import java.util.Arrays;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ public class ArrayList<E> {
     }//по умолчанию список будет пустой
 
     public ArrayList(Collection<? extends E> c) {
-        elementData = new Object[c.size()];
+        elementData = new Object[c.size()]; //создаем массив размером с коллекцию и копируем через цикл в него по элементу
         for(E e : c)
             add(e);
     } /*создает списочный массив, инициализируемый элементами из переданной коллекции
