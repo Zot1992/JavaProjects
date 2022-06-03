@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Stack;
+import java.lang.String;
 
 
 public class Main2 {
@@ -14,6 +15,7 @@ public class Main2 {
         Stack <String> st = new Stack<>();
         //st.push(mainfolder.getName());//добавляю название коренной папки в стек
         //st.push(dir.getName());
+
 
 
         for (File file : mainfolder.listFiles()) {
