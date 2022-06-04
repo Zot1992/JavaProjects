@@ -1,22 +1,22 @@
 import java.util.Stack;
-import java.lang.String;
+
 
 public class Control {
 
-public String ID="0";
-
-
-    public Control FindControlSansRecursion(Control root, String id)
+    public Control FindControlSansRecursion(Control root)
     {
-
+        int indent=1; // отступ
         Stack<Control> stack = new Stack<Control>();
         stack.push(root);
 
         while(!stack.empty())
         {
+            for(int i = 0; i<indent; i++) {
+                System.out.print("  ");
+            }
             Control current = stack.pop();
-            if (current.ID == id)
-                return current;
+            System.out.println(current);
+            indent++; // увеличивает отступ
 
             for (Control control_in: current.Controls);
             {
