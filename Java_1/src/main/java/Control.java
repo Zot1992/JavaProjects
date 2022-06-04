@@ -12,19 +12,17 @@ public String ID="0";
         Stack<Control> stack = new Stack<Control>();
         stack.push(root);
 
-        while(stack.size() > 0)
+        while(!stack.empty())
         {
             Control current = stack.pop();
             if (current.ID == id)
                 return current;
 
-            foreach (Control control in current.Controls);
+            for (Control control_in: current.Controls);
             {
                 stack.push(control);
             }
         }
         return null;
     }
-
-
 }
