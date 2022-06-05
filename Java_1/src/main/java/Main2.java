@@ -2,8 +2,29 @@ import java.io.File;
 import java.util.Stack;
 import java.lang.String;
 
-
 public class Main2 {
+    public static String FindControlSansRecursion(File root) {
+        int indent = 1; // отступ
+        Stack<String> stack = new Stack<String>();
+        stack.push(root.getName());
+
+        while (!stack.empty()) {
+            for (int i = 0; i < indent; i++) {
+                System.out.print("  ");
+            }
+            String current = stack.pop();
+            System.out.println(current);
+            indent++; // увеличивает отступ
+
+            for (File file : root.listFiles());
+            {
+                if (file.isDirectory()) {// проверка файла на директорию
+                    stack.push(file.getName());
+                }
+            }
+        }
+        return null;
+    }
     public static void main(String[] args) {
 
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
@@ -11,7 +32,7 @@ public class Main2 {
         File dir2 = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория1//директория 1.1");
         File dir3 = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория1//директория 1.1.1");
 
-        int indent=1; // отступ
+        /*int indent=1; // отступ
         Stack <String> st = new Stack<>();
         //st.push(mainfolder.getName());//добавляю название коренной папки в стек
         //st.push(dir.getName());
@@ -32,6 +53,10 @@ public class Main2 {
                 System.out.println(st.pop()); // выводит название директории и удаляет ее из стека
                 indent++; // увеличивает отступ
             }
-        }
+        } */
+
+        String Print=FindControlSansRecursion(mainfolder);
+        System.out.println(Print);
     }
+
 }
