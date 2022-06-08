@@ -3,7 +3,7 @@ import java.util.Stack;
 import java.lang.String;
 
 public class Main2 {
-    public static String DFS(File root) {
+    public static void DFS(File root) {
         int indent = 1; // отступ
         Stack<File> stack = new Stack<>();
         stack.push(root);
@@ -22,14 +22,13 @@ public class Main2 {
                 }
             }
         }
-        return null;
     }
 
     public static void main(String[] args) {
 
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
 
-        String Print=DFS(mainfolder);
-        System.out.println(Print);
+        DFS(mainfolder);
+
     }
 }
