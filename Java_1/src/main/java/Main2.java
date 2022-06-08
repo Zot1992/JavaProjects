@@ -3,55 +3,34 @@ import java.util.Stack;
 import java.lang.String;
 
 public class Main2 {
-   /* public static String DFS(File root) {
+    public static String DFS(File root) {
         int indent = 1; // отступ
-        Stack<String> stack = new Stack<String>();
-        stack.push(root.getName());
+        Stack<File> stack = new Stack<>();
+        stack.push(root);
+
 
         while (!stack.empty()) {
             for (int i = 0; i < indent; i++) {
                 System.out.print("  ");
             }
-            String current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
-            System.out.println(current);
-            indent++; // увеличивает отступ
+            File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
+            System.out.println("-"+current);
 
-            for (File file : root.listFiles()) {
+
+            for (File file : current.listFiles()) {
                 if (file.isDirectory()) {// проверка файла на директорию
-                    stack.push(file.getName()); // если файл является директорией, то он добавляется в стек
+                    stack.push(file); // если файл является директорией, то он добавляется в стек
                 }
             }
         }
         return null;
-    } */
+    }
 
     public static void main(String[] args) {
 
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
-        File dir = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория 1");
-        File dir2 = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория1//директория 1.1");
-        File dir3 = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория1//директория 1.1.1");
 
-        int indent = 1; // отступ
-        Stack<String> stack = new Stack<>();
-        stack.push(mainfolder.getName());
-
-
-        while (!stack.empty()) {
-            for (int i = 0; i < indent; i++) {
-                System.out.print(" ");
-            }
-            String current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
-            System.out.println("-"+current);
-            indent++; // увеличивает отступ
-
-            for (File file : mainfolder.listFiles()) {
-                if (file.isDirectory()) {// проверка файла на директорию
-                    stack.push(file.getName()); // если файл является директорией, то он добавляется в стек
-                }
-            }
-        }
-        //String Print=DFS(mainfolder);
-        //System.out.println(Print);
+        String Print=DFS(mainfolder);
+        System.out.println(Print);
     }
 }
