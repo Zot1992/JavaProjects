@@ -8,14 +8,13 @@ public class Main2 {
         Stack<File> stack = new Stack<>();
         stack.push(root);
 
-
         while (!stack.empty()) {
             for (int i = 0; i < indent; i++) {
-                System.out.print("  ");
+                System.out.print(" ");
             }
             File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
-            System.out.println("-"+current);
-
+            System.out.println(current);
+            indent++;
 
             for (File file : current.listFiles()) {
                 if (file.isDirectory()) {// проверка файла на директорию
