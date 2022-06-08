@@ -39,10 +39,10 @@ public class Main2 {
 
         while (!stack.empty()) {
             for (int i = 0; i < indent; i++) {
-                System.out.print("  ");
+                System.out.print(" ");
             }
             String current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
-            System.out.println(current);
+            System.out.println("-"+current);
             indent++; // увеличивает отступ
 
             for (File file : mainfolder.listFiles()) {
