@@ -3,18 +3,22 @@ import java.util.Stack;
 import java.lang.String;
 
 public class Main2 {
-    public static void DFS(File root) {
-        int indent = 1; // отступ
+    public static void printDirTree(File root) {
+
+        //int indent = 0; // отступ
+        int level=0;
+        String indent="  ";
         Stack<File> stack = new Stack<>();
         stack.push(root);
 
         while (!stack.empty()) {
-            for (int i = 0; i < indent; i++) {
+            /*for (int i = 0; i < indent; i++) {
                 System.out.print(" ");
-            }
+            }*/
+
             File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
             System.out.println(current);
-            indent++;
+            //indent++;
 
             for (File file : current.listFiles()) {
                 if (file.isDirectory()) {// проверка файла на директорию
@@ -28,7 +32,7 @@ public class Main2 {
 
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
 
-        DFS(mainfolder);
+        printDirTree(mainfolder);
 
     }
 }
