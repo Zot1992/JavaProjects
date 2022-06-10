@@ -3,22 +3,19 @@ import java.util.Stack;
 import java.lang.String;
 
 public class Main2 {
-    public static void printDirTree(File root) {
+    public static void printDirTree(File root,int level) {
 
-        //int indent = 0; // отступ
-        int level=0;
-        String indent="  ";
         Stack<File> stack = new Stack<>();
         stack.push(root);
 
         while (!stack.empty()) {
-            /*for (int i = 0; i < indent; i++) {
-                System.out.print(" ");
-            }*/
-
+            if (level==0) {System.out.print("-");}
+            else if (level==1) {System.out.print("---");}
+            else if (level==2) {System.out.print("-----");}
+            else if (level==3) {System.out.print("-------");}
             File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
             System.out.println(current);
-            //indent++;
+
 
             for (File file : current.listFiles()) {
                 if (file.isDirectory()) {// проверка файла на директорию
@@ -29,10 +26,12 @@ public class Main2 {
     }
 
     public static void main(String[] args) {
-
+        int level = 0;
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
+        //File dir_level1=new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория 1");
 
-        printDirTree(mainfolder);
+        printDirTree(mainfolder,level);
+
 
     }
 }
