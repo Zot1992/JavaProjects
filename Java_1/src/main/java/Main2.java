@@ -7,9 +7,10 @@ public class Main2 {
 
         Stack<File> stack = new Stack<>();
         stack.push(root);
+        String shift="-";
 
         while (!stack.empty()) {
-            if (level==0) {System.out.print("-");}
+            if (level==0) {System.out.print(shift);}
             else if (level==1) {System.out.print("---");}
             else if (level==2) {System.out.print("-----");}
             else if (level==3) {System.out.print("-------");}
@@ -21,7 +22,8 @@ public class Main2 {
                 if (file.isDirectory()) {// проверка файла на директорию
                     Directory lev=new Directory();
                     stack.push(file); // если файл является директорией, то он добавляется в стек
-                    stack.push(lev);
+
+                    //stack.push(lev);
 
                 }
             }
