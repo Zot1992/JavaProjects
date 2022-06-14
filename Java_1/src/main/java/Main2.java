@@ -19,7 +19,9 @@ public class Main2 {
 
             for (File file : current.listFiles()) {
                 if (file.isDirectory()) {// проверка файла на директорию
+                    Directory lev=new Directory();
                     stack.push(file); // если файл является директорией, то он добавляется в стек
+                    stack.push(lev);
                 }
             }
         }
