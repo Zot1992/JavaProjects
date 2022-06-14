@@ -22,6 +22,7 @@ public class Main2 {
                     Directory lev=new Directory();
                     stack.push(file); // если файл является директорией, то он добавляется в стек
                     stack.push(lev);
+
                 }
             }
         }
