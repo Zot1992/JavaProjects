@@ -1,20 +1,21 @@
 import java.io.File;
 import java.util.Stack;
 import java.lang.String;
+import java.util.Objects;
 
 public class Main2 {
     public static void printDirTree(File root,int level) {
 
-        Stack<File> stack = new Stack<>();
+        Stack<Object> stack = new Stack<>();
         stack.push(root);
         String shift="-";
 
         while (!stack.empty()) {
-            if (level==0) {System.out.print(shift);}
+            if (level==0) {System.out.print("-");}
             else if (level==1) {System.out.print("---");}
             else if (level==2) {System.out.print("-----");}
             else if (level==3) {System.out.print("-------");}
-            File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
+            Object current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
             System.out.println(current);
 
 
@@ -34,7 +35,7 @@ public class Main2 {
         int level = 0;
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
         //File dir_level1=new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория//директория 1");
-
+        Directory lev=new Directory();
         printDirTree(mainfolder,level);
 
 
