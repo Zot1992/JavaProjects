@@ -1,13 +1,14 @@
 public class Directory {
-   public int level=0;
    public Object File="define";
+   public int level=0;
 
-   public int getLevel(){return level;}
    public Object getFile(){return File;}
+   public int getLevel(){return level;}
 
    public Directory(){};
-   public Directory( int level,Object File){
-      this.level=level;
+   public Directory(Object File, int level){
       this.File=File;
+      this.level=level;
+
    }
 }
