@@ -1,14 +1,15 @@
+import java.io.File;
+
 public class Directory {
-   public Object File="define";
+   public File file=new File("define");
    public int level=0;
 
-   public Object getFile(){return File;}
+   public Object getFile(){return file;}
    public int getLevel(){return level;}
 
    public Directory(){};
-   public Directory(Object File, int level){
-      this.File=File;
+   public Directory(File file, int level){
+      this.file=file;
       this.level=level;
-
    }
 }

@@ -3,8 +3,9 @@ import java.util.Stack;
 import java.lang.String;
 
 public class Main2 {
-    public static void printDirTree(File root,int level) {
+    public static void printDirTree(File root) {
 
+        int level=0;
         Stack<Directory> stack = new Stack<>();
         Directory dir_root=new Directory(root,level);
         stack.push(dir_root);
@@ -14,7 +15,7 @@ public class Main2 {
             else if (level==1) {System.out.print("---");}
             else if (level==2) {System.out.print("-----");}
             else if (level==3) {System.out.print("-------");}
-            Directory current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
+            File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
             System.out.println(current);
 
             for (File file : current.listFiles()){
@@ -27,9 +28,8 @@ public class Main2 {
     }
 
     public static void main(String[] args) {
-        int level = 0;
         File mainfolder = new File("C://Users//ROMA//IdeaProjects//JavaProjects//Java_1//Директория");
 
-        printDirTree(mainfolder,level);
+        printDirTree(mainfolder);
     }
 }
