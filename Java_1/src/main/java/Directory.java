@@ -1,8 +1,8 @@
 import java.io.File;
 
 public class Directory {
-   public File file=new File("define");
-   public int level=0;
+   private File file=new File("define");
+   private int level=0;
 
    public Object getFile(){return file;}
    public int getLevel(){return level;}

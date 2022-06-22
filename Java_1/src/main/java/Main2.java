@@ -15,10 +15,10 @@ public class Main2 {
             else if (level==1) {System.out.print("---");}
             else if (level==2) {System.out.print("-----");}
             else if (level==3) {System.out.print("-------");}
-            File current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
+            Directory current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
             System.out.println(current);
 
-            for (File file : current.listFiles()){
+            for (File file : current.getFile().listFiles){
                 if(file.exists()){level++;}//Проверяем на наличие директории в директории. Если есть, то увеличиваем уровень и присваиваем текущей директории
                 else if(!file.exists()){level--;}//если директория пуста, то уменьшаем уровень
                 Directory lev=new Directory(file,level);
