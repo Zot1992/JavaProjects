@@ -6,7 +6,7 @@ public class Main2 {
     public static void printDirTree(File root) {
 
         Stack<Directory> stack = new Stack<>();
-        Directory dir_root = new Directory(root, 0);
+        Directory dir_root = new Directory(root, 1);
         stack.push(dir_root);
 
         while (!stack.empty()) {
@@ -18,7 +18,7 @@ public class Main2 {
 
             for (File file : current.getFile().listFiles()) {
 
-                Directory lev = new Directory(file, current.getLevel());
+                Directory lev = new Directory(file, current.getLevel()+1);
                 stack.push(lev); // если файл является директорией, то он добавляется в стек
             }
         }
