@@ -4,7 +4,7 @@ public class Directory {
    private File file=new File("define");
    private int level=0;
 
-   public Object getFile(){return file;}
+   public File getFile(){return file;}
    public int getLevel(){return level;}
 
    public Directory(){};

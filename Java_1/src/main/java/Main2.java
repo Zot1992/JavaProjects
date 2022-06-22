@@ -5,23 +5,20 @@ import java.lang.String;
 public class Main2 {
     public static void printDirTree(File root) {
 
-        int level=0;
         Stack<Directory> stack = new Stack<>();
-        Directory dir_root=new Directory(root,level);
+        Directory dir_root = new Directory(root, 0);
         stack.push(dir_root);
 
         while (!stack.empty()) {
-            if (level==0) {System.out.print("-");}
-            else if (level==1) {System.out.print("---");}
-            else if (level==2) {System.out.print("-----");}
-            else if (level==3) {System.out.print("-------");}
             Directory current = stack.pop(); //Выкидывает из стека название директории чтобы она была первой при выводе
-            System.out.println(current);
+            for (int i=0;i<current.getLevel();i++) {
+                System.out.print("-");
+            }
+            System.out.println(current.getFile());
 
-            for (File file : current.getFile().listFiles){
-                if(file.exists()){level++;}//Проверяем на наличие директории в директории. Если есть, то увеличиваем уровень и присваиваем текущей директории
-                else if(!file.exists()){level--;}//если директория пуста, то уменьшаем уровень
-                Directory lev=new Directory(file,level);
+            for (File file : current.getFile().listFiles()) {
+
+                Directory lev = new Directory(file, current.getLevel());
                 stack.push(lev); // если файл является директорией, то он добавляется в стек
             }
         }
