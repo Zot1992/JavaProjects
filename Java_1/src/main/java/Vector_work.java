@@ -17,17 +17,27 @@ public class Vector_work {
         this.setZ(z);
     }
 
+    public Vector_work(Vector_work v) {
+        this.setX(v.getX());
+        this.setY(v.getY());
+        this.setZ(v.getZ());
+    }
+
     public Vector_work addVector(Vector_work v) { // сумма векторов
         return new Vector_work(getX() + v.getX(), getY() + v.getY(), getZ() + v.getZ());
+    }
+
+    public Vector_work minusVector(Vector_work v) {// разность векторов
+        return new Vector_work(getX() - v.getX(), getY() - v.getY(), getZ() - v.getZ());
     }
 
     public double getX() {return x;}
     public void setX(double x) {this.x = x;}//set изменяет значения поля
 
     public double getY() {return y;}
-    public void setY(double x) {this.y = y;}
+    public void setY(double y) {this.y = y;}
 
     public double getZ() {return z;}
-    public void setZ(double x) {this.z = z;}
+    public void setZ(double z) {this.z = z;}
 }
 
