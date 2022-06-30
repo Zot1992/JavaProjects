@@ -31,14 +31,16 @@ public class Vector_work {
         return new Vector_work(getX() - v.getX(), getY() - v.getY(), getZ() - v.getZ());
     }
 
-    public double lengthModuleVector(Vector_work v) { // длина (модуль) двух векторов
+    /*public double lengthModuleVector(Vector_work v) { // длина вектора
         return Math.sqrt((y * v.getZ() - z * v.getY()) * (y * v.getZ() - z * v.getY()) + (x * v.getZ() - z * v.getY())
                 * (x * v.getZ() - z * v.getY()) + (x * v.getY() - y * v.getX()));
-    }
+    } */
 
-    public double scalarProductVector(Vector_work v){ //скалярное произведение
+    public double lengthModuleVector(Vector_work v){ // длина вектора
         return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));
     }
+
+
 
 
     public double getX() {return x;}
