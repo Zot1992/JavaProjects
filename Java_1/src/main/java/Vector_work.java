@@ -36,8 +36,18 @@ public class Vector_work {
                 * (x * v.getZ() - z * v.getY()) + (x * v.getY() - y * v.getX()));
     } */
 
-    public double lengthModuleVector(Vector_work v){ // длина вектора
-        return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));
+    public double lengthVector(Vector_work v){ // длина вектора
+        return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));// Math.sqrt - квадратный корень
+    }
+
+    public Vector_work normalization(Vector_work v) // нормализация вектора
+    {
+        double locLength = lengthVector(v);
+        double inv_length = (1 / locLength);
+        x = inv_length;
+        y = inv_length;
+        z = inv_length;
+        return new Vector_work(x * v.getX(), y * v.getY(), z * v.getZ());
     }
 
 
