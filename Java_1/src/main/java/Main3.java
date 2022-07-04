@@ -21,8 +21,9 @@ public class Main3 {
         System.out.println(v1.addVector(v2));// сумма векторов
         System.out.println(v1.minusVector(v2));// разность векторов
         System.out.println(v1.lengthVector(v2));// длина вектора
-        //System.out.println(v1.scalarProductVector(v2));//скалярное произведение
+        System.out.println(v1.scalarProductVector(v2));//скалярное произведение
         System.out.println(v1.normalization(v2));// нормализация вектора
+
 
     }
 }

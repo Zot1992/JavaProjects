@@ -40,6 +40,13 @@ public class Vector_work {
         return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));// Math.sqrt - квадратный корень
     }
 
+    public double scalarProductVector(Vector_work v){ //скалярное произведение
+        return  ((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));
+    }
+
+
+
+
     public Vector_work normalization(Vector_work v) // нормализация вектора
     {
         double locLength = lengthVector(v);
