@@ -1,6 +1,5 @@
 import java.lang.Math;
 
-
 public class Vector_work {
 
     private double x, y, z;
@@ -23,30 +22,10 @@ public class Vector_work {
         this.setZ(v.getZ());
     }
 
-    public Vector_work addVector(Vector_work v) { // сумма векторов
-        return new Vector_work(getX() + v.getX(), getY() + v.getY(), getZ() + v.getZ());
-    }
-
-    public Vector_work minusVector(Vector_work v) {// разность векторов
-        return new Vector_work(getX() - v.getX(), getY() - v.getY(), getZ() - v.getZ());
-    }
-
-    /*public double lengthModuleVector(Vector_work v) { // длина вектора
-        return Math.sqrt((y * v.getZ() - z * v.getY()) * (y * v.getZ() - z * v.getY()) + (x * v.getZ() - z * v.getY())
-                * (x * v.getZ() - z * v.getY()) + (x * v.getY() - y * v.getX()));
-    } */
-
-    public double lengthVector(Vector_work v){ // длина вектора
-        return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));// Math.sqrt - квадратный корень
-    }
-
-    public double scalarProductVector(Vector_work v){ //скалярное произведение
-        return  ((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));
-    }
-
-
-
-
+    public Vector_work addVector(Vector_work v) {return new Vector_work(getX() + v.getX(), getY() + v.getY(), getZ() + v.getZ());}//сумма векторов
+    public Vector_work minusVector(Vector_work v) {return new Vector_work(getX() - v.getX(), getY() - v.getY(), getZ() - v.getZ());}//разность векторов
+    public double lengthVector(Vector_work v){return  Math.sqrt((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));}//Длина вектора. Math.sqrt-квадратный корень
+    public double scalarProductVector(Vector_work v){return  ((x * v.getX()) + (y * v.getY()) + (z * v.getZ()));}//скалярное произведение
     public Vector_work normalization(Vector_work v) // нормализация вектора
     {
         double locLength = lengthVector(v);
@@ -56,8 +35,6 @@ public class Vector_work {
         z = inv_length;
         return new Vector_work(x * v.getX(), y * v.getY(), z * v.getZ());
     }
-
-
 
 
     public double getX() {return x;}
