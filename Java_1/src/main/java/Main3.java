@@ -7,10 +7,6 @@
 //-нормализация
 //-получение угла с осью OX
 
-
-import java.lang.Math;
-
-
 public class Main3 {
     public static void main(String[] args) {
         Vector_work v1 = new Vector_work(1, 2, 3);//создание вектора и его координат
@@ -23,7 +19,6 @@ public class Main3 {
         System.out.println(v1.lengthVector(v2));// длина вектора
         System.out.println(v1.scalarProductVector(v2));//скалярное произведение
         System.out.println(v1.normalization(v2));// нормализация вектора
-
-
+        System.out.println(v1.getting_an_angle(v2));//получение угла с осью OX. Cos A.
     }
 }

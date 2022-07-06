@@ -35,7 +35,7 @@ public class Vector_work {
         z = inv_length;
         return new Vector_work(x * v.getX(), y * v.getY(), z * v.getZ());
     }
-
+    public double getting_an_angle(Vector_work v){return (v.getX()/Math.sqrt(v.getX()*v.getX()+v.getY()*v.getY()+v.getZ()*v.getZ()));}//Получение угла с-осью OX. Cos A.
 
     public double getX() {return x;}
     public void setX(double x) {this.x = x;}//set изменяет значения поля
