@@ -1,3 +1,5 @@
+package com.schmegmacht.vector;
+
 import java.lang.Math;
 
 public class Vector {

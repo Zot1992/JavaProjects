@@ -10,7 +10,7 @@
     <modules>
         <module>Java_1</module>
         <module>Graphics_1</module>
-        <module>Vector</module>
+        <module>com.schmegmacht.vector.Vector</module>
     </modules>
     <packaging>pom</packaging>
 
