@@ -8,11 +8,13 @@
 //-получение угла с осью OX
 
 public class main {
+
+
     public static void main(String[] args) {
 
 
-        Vector_work v1 = new Vector_work(1, 2, 3);//создание вектора и его координат
-        Vector_work v2 = new Vector_work(1, 2, 3);
+        Vector v1 = new Vector(1, 2, 3);//создание вектора и его координат
+        Vector v2 = new Vector(1, 2, 3);
 
         System.out.println("x1 = " + v1.getX() + " y1 = " + v1.getY() + " z1 = " + v1.getZ());
         System.out.println("x2 = " + v2.getX() + " y2 = " + v2.getY() + " z2 = " + v2.getZ());
