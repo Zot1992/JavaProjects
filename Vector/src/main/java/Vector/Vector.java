@@ -1,4 +1,4 @@
-package com.schmegmacht.vector;
+package Vector;
 
 import java.lang.Math;
 

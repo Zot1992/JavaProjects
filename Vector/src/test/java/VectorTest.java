@@ -1,4 +1,4 @@
-import com.schmegmacht.vector.Vector;
+import Vector.Vector;
 import org.junit.Assert;
 
 public class VectorTest {
