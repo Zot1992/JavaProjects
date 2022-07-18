@@ -9,7 +9,7 @@ public class VectorTest {
         Vector v2 = new Vector(1, 0);
         Vector result = v1.addVector(v2);
         Assert.assertEquals(2, result.getX(),0.001 );
-        Assert.assertEquals(2, result.getY(),0.001 );
+        Assert.assertEquals(0, result.getY(),0.001 );
     }
 
     @org.junit.Test
@@ -43,7 +43,7 @@ public class VectorTest {
         Vector v2 = new Vector(1, 0);
         Vector result = v1.normalization(v2);
         Assert.assertEquals(1, result.getX(),0.001);
-        Assert.assertEquals(1, result.getY(),0.001);
+        Assert.assertEquals(0, result.getY(),0.001);
     }
 
     @org.junit.Test
