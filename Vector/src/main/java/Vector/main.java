@@ -12,7 +12,7 @@ public class main {
 
     public static void main(String[] args) {
         Vector v1 = new Vector(1, 2);//создание вектора и его координат
-        Vector v2 = new Vector(1, 2);
+        Vector v2 = new Vector(10, 5);
         Vector v3;
 
         System.out.println("x1 = " + v1.getX() + " y1 = " + v1.getY());
@@ -21,9 +21,9 @@ public class main {
         System.out.println(v1.minusVector(v2));// разность векторов
         System.out.println(v1.lengthVector());// длина вектора
         System.out.println(v1.scalarProductVector(v2));//скалярное произведение
-        v3=v1.normalization(v2);
+        v3=v1.normalization();
         System.out.println(v3);// нормализация вектора
-        System.out.println(v1.getting_an_angle(v2));//получение угла с осью OX. Cos A.
+        System.out.println(v3.getting_an_angle(v1,v2));//получение угла с осью OX. Cos A.
     }
 }
 

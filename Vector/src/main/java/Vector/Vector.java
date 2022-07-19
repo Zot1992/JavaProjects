@@ -24,15 +24,19 @@ public class Vector {
     public Vector minusVector(Vector v) {return new Vector(getX() - v.getX(), getY() - v.getY());}//разность векторов
     public double lengthVector() {return Math.sqrt((x * x) + (y * y));}//Длина вектора. Math.sqrt-квадратный корень
     public double scalarProductVector(Vector v) {return ((x * v.getX()) + (y * v.getY()));}//скалярное произведение
-    public Vector normalization(Vector v) // нормализация вектора
+    public Vector normalization() // нормализация вектора
     {
         double locLength = lengthVector();
         double inv_length = (1 / locLength);
-        x = inv_length;
-        y = inv_length;
-        return new Vector(x * v.getX(), y * v.getY());
+
+        return new Vector(inv_length * x, inv_length * y);
     }
-    public double getting_an_angle(Vector v){return (v.getX() / Math.sqrt(v.getX() * v.getX() + v.getY() * v.getY()));}//Получение угла с-осью OX. Cos A.
+    public double getting_an_angle(Vector v1, Vector v2){
+        double cos_alpha=v1.scalarProductVector(v2)/(v1.lengthVector()* v2.lengthVector());
+        double alpha = Math.acos(cos_alpha);
+        double degrees = alpha*180/Math.PI;
+        return degrees;
+    }//Получение угла с-осью OX. Cos A.
 
     public double getX() {return x;}
     public void setX(double x) {this.x = x;}//set изменяет значения поля

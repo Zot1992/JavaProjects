@@ -41,16 +41,17 @@ public class VectorTest {
     public void normalization() {
         Vector v1 = new Vector(1, 0);//создание вектора и его координат
         Vector v2 = new Vector(1, 0);
-        Vector result = v1.normalization(v2);
+        Vector result = v1.normalization();
         Assert.assertEquals(1, result.getX(),0.001);
-        Assert.assertEquals(0, result.getY(),0.001);
+        Assert.assertEquals(1, result.getY(),0.001);
     }
 
     @org.junit.Test
     public void getting_an_angle() {
-        Vector v1 = new Vector(1, 0);//создание вектора и его координат
-        Vector v2 = new Vector(1, 0);
-        double result = v1.getting_an_angle(v2);
-        Assert.assertEquals(1, result,0.001);
+        Vector v1 = new Vector(1, 2);//создание вектора и его координат
+        Vector v2 = new Vector(10, 5);
+        Vector v3 = new Vector();
+        double result = v3.getting_an_angle(v1,v2);
+        Assert.assertEquals(36.86989764584403, result,0.001);
     }
 }
