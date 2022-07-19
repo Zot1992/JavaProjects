@@ -23,7 +23,7 @@ public class main {
         System.out.println(v1.multiply(v2));//скалярное произведение
         v3=v1.normalize();
         System.out.println(v3);// нормализация вектора
-        System.out.println(v3.getting_an_angle(v1,v2));//получение угла с осью OX. Cos A.
+        System.out.println(v3.angleTo(v1,v2));//получение угла с осью OX. Cos A.
     }
 }
 

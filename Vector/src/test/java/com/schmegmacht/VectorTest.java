@@ -46,27 +46,24 @@ public class VectorTest {
     }
 
     @org.junit.Test
-    public void getting_an_angle0() {
+    public void angle0Test() {
         Vector v1 = new Vector(1, 1);//создание вектора и его координат
         Vector v2 = new Vector(1, 1);
-        Vector v3 = new Vector();
-        double result = v3.getting_an_angle(v1,v2);
+        double result = v1.angleTo(v2);
         Assert.assertEquals(0, result,0.001);
     }
     @org.junit.Test
-    public void getting_an_angle45() {
+    public void angle45Test() {
         Vector v1 = new Vector(3, 1);//создание вектора и его координат
         Vector v2 = new Vector(50, 100);
-        Vector v3 = new Vector();
-        double result = v3.getting_an_angle(v1,v2);
+        double result = v1.angleTo(v2);
         Assert.assertEquals(45, result,0.001);
     }
     @org.junit.Test
-    public void getting_an_angle90() {
+    public void angle90Test() {
         Vector v1 = new Vector(1, 0);//создание вектора и его координат
         Vector v2 = new Vector(0, 1);
-        Vector v3 = new Vector();
-        double result = v3.getting_an_angle(v1,v2);
+        double result = v1.angleTo(v2);
         Assert.assertEquals(90, result,0.001);
     }
 }
