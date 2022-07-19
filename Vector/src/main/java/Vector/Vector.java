@@ -22,9 +22,9 @@ public class Vector {
 
     public Vector addVector(Vector v) {return new Vector(getX() + v.getX(), getY() + v.getY());}//сумма векторов
     public Vector minusVector(Vector v) {return new Vector(getX() - v.getX(), getY() - v.getY());}//разность векторов
-    public double lengthVector() {return Math.sqrt((x * x) + (y * y));}//Длина вектора. Math.sqrt-квадратный корень
-    public double scalarProductVector(Vector v) {return ((x * v.getX()) + (y * v.getY()));}//скалярное произведение
-    public Vector normalization() // нормализация вектора
+    public double lengthVector() {return Math.sqrt((this.getX() * this.getX()) + (this.getY() * this.getY()));}//Длина вектора. Math.sqrt-квадратный корень
+    public double multiply(Vector v) {return ((this.getX() * v.getX()) + (this.getY() * v.getY()));}//скалярное произведение
+    public Vector normalize() // нормализация вектора
     {
         double locLength = lengthVector();
         double inv_length = (1 / locLength);
@@ -32,7 +32,7 @@ public class Vector {
         return new Vector(inv_length * x, inv_length * y);
     }
     public double getting_an_angle(Vector v1, Vector v2){
-        double cos_alpha=v1.scalarProductVector(v2)/(v1.lengthVector()* v2.lengthVector());
+        double cos_alpha=v1.multiply(v2)/(v1.lengthVector()* v2.lengthVector());
         double alpha = Math.acos(cos_alpha);
         double degrees = alpha*180/Math.PI;
         return degrees;
