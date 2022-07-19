@@ -1,4 +1,5 @@
-import Vector.Vector;
+package com.schmegmacht;
+
 import org.junit.Assert;
 
 public class VectorTest {
@@ -47,11 +48,27 @@ public class VectorTest {
     }
 
     @org.junit.Test
-    public void getting_an_angle() {
-        Vector v1 = new Vector(1, 2);//создание вектора и его координат
-        Vector v2 = new Vector(10, 5);
+    public void getting_an_angle0() {
+        Vector v1 = new Vector(1, 1);//создание вектора и его координат
+        Vector v2 = new Vector(1, 1);
         Vector v3 = new Vector();
         double result = v3.getting_an_angle(v1,v2);
-        Assert.assertEquals(36.86989764584403, result,0.001);
+        Assert.assertEquals(0, result,0.001);
+    }
+    @org.junit.Test
+    public void getting_an_angle45() {
+        Vector v1 = new Vector(3, 1);//создание вектора и его координат
+        Vector v2 = new Vector(50, 100);
+        Vector v3 = new Vector();
+        double result = v3.getting_an_angle(v1,v2);
+        Assert.assertEquals(45, result,0.001);
+    }
+    @org.junit.Test
+    public void getting_an_angle90() {
+        Vector v1 = new Vector(1, 0);//создание вектора и его координат
+        Vector v2 = new Vector(0, 1);
+        Vector v3 = new Vector();
+        double result = v3.getting_an_angle(v1,v2);
+        Assert.assertEquals(90, result,0.001);
     }
 }
