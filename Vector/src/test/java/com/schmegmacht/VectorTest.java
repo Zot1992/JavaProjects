@@ -1,5 +1,5 @@
 package com.schmegmacht;
-
+//Тесты для проверки
 import org.junit.Assert;
 
 public class VectorTest {
