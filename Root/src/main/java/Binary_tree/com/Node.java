@@ -16,6 +16,7 @@ public class Node {
         this.rightChild = rightChild;
     }
 
+
     void add(int value){}
 
     boolean contains(int value){}
