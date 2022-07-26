@@ -17,16 +17,16 @@ public class BinaryTree {
             this.right = right;
         }
 
-        Node(int value) {
+        public Node(int value) { // Конструктор для листа. Лист это узел который не имеет потомков.
             this.value = value;
-            right = null;
-            left = null;
         }
     }
 
-    Node root; // Начальная ветка дерева
+    static Node root= new Node(20,
+    new Node(19),
+                       new Node(25)); // Начальная ветка дерева и тут же вписывает остальные ветки и потомков
 
-    private Node addRecursive(Node current, int value) {
+    private static Node addRecursive(Node current, int value) {
         if (current == null) { //когда текущий узел равен null, мы достигли конечного узла, и мы можем вставить новый узел в эту позицию
             return new Node(value);
         }
@@ -41,9 +41,9 @@ public class BinaryTree {
 
         return current;
     }
-    void add(int value) {
+    static void add(int value) {
         root = addRecursive(root, value);
-    }
+    } // функция по добавлению нового элемента в дерево
 
     boolean contains(int value) {
 
