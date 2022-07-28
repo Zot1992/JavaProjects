@@ -45,8 +45,29 @@ public class BinaryTree {
         root = addRecursive(root, value);
     } // функция по добавлению нового элемента в дерево
 
-    boolean contains(int value) {
+    private BinaryTree createBinaryTree() {
+        BinaryTree bt = new BinaryTree();
 
+        bt.add(6);
+        bt.add(4);
+
+        return bt;
+    }
+
+    private boolean containsRecursive(Node current, int value) {
+        if (current == null) {
+            return false;
+        }
+        if (value == current.value) { //Если элемент который мы ищем есть в дереве, то возвращается true
+            return true;
+        }
+        return value < current.value
+                ? containsRecursive(current.left, value)
+                : containsRecursive(current.right, value);
+    }
+
+    boolean contains(int value) { // функция по нахождению элемента
+        return containsRecursive(root, value);
     }
 
     void printAll() {

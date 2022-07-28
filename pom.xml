@@ -12,6 +12,7 @@
         <module>Graphics_1</module>
         <module>Vector</module>
         <module>Root</module>
+
     </modules>
     <packaging>pom</packaging>
 
