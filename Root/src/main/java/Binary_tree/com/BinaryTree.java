@@ -1,5 +1,6 @@
 package Binary_tree.com;
 
+
 public class BinaryTree {
 
     static class Node {  /*Для реализации мы будем использовать вспомогательный класс Node
@@ -22,7 +23,7 @@ public class BinaryTree {
         }
     }
 
-    static Node root;
+     Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
 
     private static Node addRecursive(Node current, int value) {
         if (current == null) { //когда текущий узел равен null, мы достигли конечного узла, и мы можем вставить новый узел в эту позицию
@@ -39,7 +40,7 @@ public class BinaryTree {
 
         return current;
     }
-    static void add(int value) {
+     void add(int value) {
         root = addRecursive(root, value);
     } // функция по добавлению нового элемента в дерево
 
@@ -48,6 +49,7 @@ public class BinaryTree {
 
         bt.add(6);
         bt.add(4);
+        bt.add(7);
 
         return bt;
     }
