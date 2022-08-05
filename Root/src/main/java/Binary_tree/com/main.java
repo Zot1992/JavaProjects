@@ -10,11 +10,13 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner tree=new Scanner(System.in);
-        int val;
+        int val,val2;
 
         val= tree.nextInt();
+        val2= tree.nextInt();
 
-        BinaryTree.add(val);
+        add(val);
+        contains(val2);
 
 
     }

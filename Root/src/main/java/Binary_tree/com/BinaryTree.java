@@ -25,7 +25,7 @@ public class BinaryTree {
 
      Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
 
-    private static Node addRecursive(Node current, int value) {
+    private  Node addRecursive(Node current, int value) {
         if (current == null) { //когда текущий узел равен null, мы достигли конечного узла, и мы можем вставить новый узел в эту позицию
             return new Node(value);
         }
