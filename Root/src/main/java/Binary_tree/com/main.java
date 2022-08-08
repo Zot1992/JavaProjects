@@ -9,15 +9,13 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        Scanner tree=new Scanner(System.in);
-        int val,val2;
+        Scanner tree=new Scanner(System.in);//для ввода значения
+        int val= tree.nextInt();
+        int val2= tree.nextInt();
+        BinaryTree bt=new BinaryTree();
 
-        val= tree.nextInt();
-        val2= tree.nextInt();
-
-        add(val);
-        contains(val2);
-
+        bt.add(val);
+        bt.contains(val2);
 
     }
 
