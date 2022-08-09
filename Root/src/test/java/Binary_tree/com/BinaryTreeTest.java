@@ -7,7 +7,7 @@ public class BinaryTreeTest {
 
     @org.junit.Test
     public void contains() {
-        BinaryTree bt = createBinaryTree();
+        BinaryTree bt = new BinaryTree();
 
         assertTrue(bt.contains(6));
         assertTrue(bt.contains(4));
