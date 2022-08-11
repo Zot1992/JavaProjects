@@ -39,6 +39,8 @@ public class Vector {
     public void setX(double x) {this.x = x;}//set изменяет значения поля
     public double getY() {return y;}
     public void setY(double y) {this.y = y;}
+
+
 }
 
 

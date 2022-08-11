@@ -6,9 +6,9 @@ public class BinaryTree {
     static class Node {  /*Для реализации мы будем использовать вспомогательный класс Node
         который будет хранить значения int и сохранять ссылку на каждый дочерний элемент: */
 
-         int value;//значение
-         Node left;//левый узел в дереве
-         Node right;//правый узел в дереве
+        int value;//значение
+        Node left;//левый узел в дереве
+        Node right;//правый узел в дереве
 
 
         public Node() {}//стандартный конструктор
@@ -23,14 +23,22 @@ public class BinaryTree {
             this.value = value;
         }//конструктор по добавлению нового узла
 
-        void printAll(){};
+        void printAll(){
+            if (left != null) {
+                left.printAll();
+            }
+            if (right != null) {
+                right.printAll();
+            }
+        }
+
+
     }
 
-     Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
-     Node left;
-     Node right;
+    Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
 
-    private  Node addRecursive(Node current, int value) { //функция по добавлению нового элемента в дерево
+
+    private Node addRecursive(Node current, int value) { //функция по добавлению нового элемента в дерево
         if (current == null) { //когда текущий узел равен null, мы достигли конечного узла, и мы можем вставить новый узел в эту позицию
             return new Node(value);
         }
@@ -45,7 +53,10 @@ public class BinaryTree {
 
         return current;
     }
-     void add(int value) {root = addRecursive(root, value);} // функция по добавлению нового элемента в дерево
+
+    void add(int value) {
+        root = addRecursive(root, value);
+    } // функция по добавлению нового элемента в дерево
 
 
     private boolean containsRecursive(Node current, int value) { //функция по поиску значения в дереве
@@ -64,11 +75,9 @@ public class BinaryTree {
         return containsRecursive(root, value);
     }
 
-    void printAll() { //функция по выводу всего дерева на экран
-        if (left!=null){left.printAll();}
-        if (right!=null){right.printAll();}
 
+    void printAll(){
+        root.printAll();
     }
-
 
 }
