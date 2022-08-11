@@ -6,9 +6,10 @@ public class BinaryTree {
     static class Node {  /*Для реализации мы будем использовать вспомогательный класс Node
         который будет хранить значения int и сохранять ссылку на каждый дочерний элемент: */
 
-        private int value;//значение
-        private Node left;//левый узел в дереве
-        private Node right;//правый узел в дереве
+         int value;//значение
+         Node left;//левый узел в дереве
+         Node right;//правый узел в дереве
+
 
         public Node() {}//стандартный конструктор
 
@@ -21,9 +22,13 @@ public class BinaryTree {
         public Node(int value) { // Конструктор для листа. Лист это узел который не имеет потомков.
             this.value = value;
         }//конструктор по добавлению нового узла
+
+        void printAll(){};
     }
 
      Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
+     Node left;
+     Node right;
 
     private  Node addRecursive(Node current, int value) { //функция по добавлению нового элемента в дерево
         if (current == null) { //когда текущий узел равен null, мы достигли конечного узла, и мы можем вставить новый узел в эту позицию
@@ -40,9 +45,7 @@ public class BinaryTree {
 
         return current;
     }
-     void add(int value) {
-        root = addRecursive(root, value);
-    } // функция по добавлению нового элемента в дерево
+     void add(int value) {root = addRecursive(root, value);} // функция по добавлению нового элемента в дерево
 
 
     private boolean containsRecursive(Node current, int value) { //функция по поиску значения в дереве
@@ -59,9 +62,11 @@ public class BinaryTree {
 
     boolean contains(int value) { // функция по нахождению элемента
         return containsRecursive(root, value);
-    }//функция по поиску значения в дереве
+    }
 
     void printAll() { //функция по выводу всего дерева на экран
+        if (left!=null){left.printAll();}
+        if (right!=null){right.printAll();}
 
     }
 

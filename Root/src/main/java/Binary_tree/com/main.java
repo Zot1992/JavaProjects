@@ -23,6 +23,8 @@ public class main {
 
         bt.contains(val4);
 
+        bt.printAll();
+
     }
 
 }
