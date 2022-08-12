@@ -10,15 +10,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
     private Coordinate viewPoint;
-    private Coordinate playerPoint;
-    private Coordinate mousePoint = new Coordinate();
-    private double len = 0.4d;
-    private double rentgenR = 0.1d;
     private double dx = 0.01d;
     private double dy = 0.01d;
-    private double R = len;
-    private double phi0 = Math.toRadians(40);
-    private int N = 20;
 
     private int W = 87;
     private int A = 65;
@@ -27,13 +20,11 @@ public class MainView extends View {
 
     public MainView() {
         viewPoint = new Coordinate(0.5, 0.5);
-        playerPoint = new Coordinate(-0.6, -0.3);
     }
 
     @Override
     public void onMouseMove(double x, double y) {
-        mousePoint.x = x;
-        mousePoint.y = y;
+
     }
 
     @Override
@@ -70,12 +61,6 @@ public class MainView extends View {
         glPointSize(10);
         glBegin(GL_POINTS);
         glVertex2d(viewPoint.x, viewPoint.y);
-        glEnd();
-
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glPointSize(10);
-        glBegin(GL_POINTS);
-        glVertex2d(playerPoint.x, playerPoint.y);
         glEnd();
     }
 }
