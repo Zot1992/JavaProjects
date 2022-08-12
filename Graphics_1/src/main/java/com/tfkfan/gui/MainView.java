@@ -1,12 +1,8 @@
 package com.tfkfan.gui;
 
-import com.vividsolutions.jts.geom.*;
-import com.vividsolutions.jts.math.Vector2D;
-
-import java.util.Arrays;
+import com.vividsolutions.jts.geom.Coordinate;
 
 import static org.lwjgl.opengl.GL11.*;
-
 
 public class MainView extends View {
     private Coordinate viewPoint;
@@ -20,15 +16,6 @@ public class MainView extends View {
 
     public MainView() {
         viewPoint = new Coordinate(0.5, 0.5);
-    }
-
-    @Override
-    public void onMouseMove(double x, double y) {
-
-    }
-
-    @Override
-    public void onMouseClick(double x, double y) {
     }
 
     @Override
