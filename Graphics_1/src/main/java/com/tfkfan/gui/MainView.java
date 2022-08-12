@@ -9,9 +9,6 @@ import static org.lwjgl.opengl.GL11.*;
 
 
 public class MainView extends View {
-    private final GeometryFactory factory = new GeometryFactory();
-
-    private Polygon first;
     private Coordinate viewPoint;
     private Coordinate playerPoint;
     private Coordinate mousePoint = new Coordinate();
@@ -29,13 +26,6 @@ public class MainView extends View {
     private int S = 83;
 
     public MainView() {
-        first = factory.createPolygon(new Coordinate[]{
-                new Coordinate(-0.5, -0.5),
-                new Coordinate(-0.5, 0.0),
-                new Coordinate(0.0, 0.0),
-                new Coordinate(0.0, -0.5),
-                new Coordinate(-0.5, -0.5)
-        });
         viewPoint = new Coordinate(0.5, 0.5);
         playerPoint = new Coordinate(-0.6, -0.3);
     }
@@ -69,11 +59,11 @@ public class MainView extends View {
 
     @Override
     protected void partialDisplay() {
-        glColor3f(1.0f, 0.0f, 0.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
         glBegin(GL_POLYGON);
-        Arrays.stream(first.getCoordinates()).forEach(coordinate -> {
-            glVertex2d(coordinate.x, coordinate.y);
-        });
+        glVertex2d(-0.5, -0.5);
+        glVertex2d(-0.5, 0.0);
+        glVertex2d(0.0, 0.0);
         glEnd();
 
         glColor3f(0.2f, 0.2f, 0.2f);
