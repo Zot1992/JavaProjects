@@ -40,6 +40,10 @@ public class Vector {
     public double getY() {return y;}
     public void setY(double y) {this.y = y;}
 
+    @Override
+    public String toString(){
+        return x+";"+y;
+    } //для каждого класса свой toString и работает однотипно для всех объектов в этом классе
 
 }
 

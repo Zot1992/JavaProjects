@@ -9,7 +9,7 @@ public class BinaryTree {
         int value;//значение
         Node left;//левый узел в дереве
         Node right;//правый узел в дереве
-
+        Node root;// Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
 
         public Node() {}//стандартный конструктор
 
@@ -23,16 +23,17 @@ public class BinaryTree {
             this.value = value;
         }//конструктор по добавлению нового узла
 
-        void printAll(){
-            if (left != null) {
+        void printAll(){ //Вывод значений дерева на экран
+            if(root == null) { //если начальная ветка пустая, то выходим
+                return;
+            }
+            if (left != null) { //пока не будет левая ветка пустая мы будем запускать рекурсию
                 left.printAll();
             }
-            if (right != null) {
+            if (right != null) {//пока не будет правая ветка пустая мы будем запускать рекурсию
                 right.printAll();
             }
         }
-
-
     }
 
     Node root;  // Начальная ветка дерева и тут же вписывает остальные ветки и потомков;
@@ -78,6 +79,6 @@ public class BinaryTree {
 
     void printAll(){
         root.printAll();
-    }
+    } //Вывод значений дерева на экран
 
 }
