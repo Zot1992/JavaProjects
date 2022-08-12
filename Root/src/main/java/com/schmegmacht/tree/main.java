@@ -1,4 +1,4 @@
-package Binary_tree.com;
+package com.schmegmacht.tree;
 /*Написать класс, реализующий бинарное дерево целых чисел.
         Необходимые методы:
         void add(int value)
@@ -9,22 +9,21 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        Scanner tree=new Scanner(System.in);//для ввода значения
+        Scanner consoleScan = new Scanner(System.in);//для ввода значения
 
-        int val= tree.nextInt();
-        int val2= tree.nextInt();
-        int val3= tree.nextInt();
-        int val4= tree.nextInt();
-        BinaryTree bt=new BinaryTree();
+        int val = consoleScan.nextInt();
+        int val2 = consoleScan.nextInt();
+        int val3 = consoleScan.nextInt();
+        int val4 = consoleScan.nextInt();
+        BinaryTree bt = new BinaryTree();
 
         bt.add(val);
         bt.add(val2);
         bt.add(val3);
 
-        bt.contains(val4);
+        System.out.println(bt.contains(val4));
 
         bt.printAll();
-
     }
 
 }

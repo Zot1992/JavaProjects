@@ -1,4 +1,4 @@
-package Binary_tree.com;
+package com.schmegmacht.tree;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +13,7 @@ public class BinaryTreeTest {
         assertTrue(bt.contains(6));
 
     }
+
     @org.junit.Test
     public void contains2() {
         BinaryTree bt = new BinaryTree();
