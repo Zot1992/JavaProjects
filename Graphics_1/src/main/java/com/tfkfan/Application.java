@@ -14,6 +14,6 @@ public class Application {
         Window window = new Window();
         window.setView(new MainView());
         window.start();
-        window.shutdown();
+        window.shutdown(); //Метод shutdown () позволяет выполнить ранее отправленные задачи перед завершением
     }
 }

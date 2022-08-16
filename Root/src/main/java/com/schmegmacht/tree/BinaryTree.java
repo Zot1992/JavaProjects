@@ -1,6 +1,5 @@
 package com.schmegmacht.tree;
 
-
 public class BinaryTree {
     private static class Node {
         /*Для реализации мы будем использовать вспомогательный класс Node
@@ -15,8 +14,8 @@ public class BinaryTree {
         }//конструктор по добавлению нового узла
 
         @Override
-        public String toString() {
-            return String.valueOf(value);
+        public String toString() { //метод возвращает значение строки
+            return String.valueOf(value);//valueOf(int i) — возвращает строковое представление int аргумента.
         }
     }
 
@@ -28,14 +27,14 @@ public class BinaryTree {
 
     public boolean contains(int value) { // функция по нахождению элемента
         return containsRecursive(root, value);
-    }
+    }//функция по поиску значения в дереве
 
     public void printAll() {
         printRecursive(root);
     } //Вывод значений дерева на экран
 
     private void printRecursive(Node current) {
-        if (current == null)
+        if (current == null) //если узел пустой, то просто выходим
             return;
         System.out.println(current);
         printRecursive(current.left);

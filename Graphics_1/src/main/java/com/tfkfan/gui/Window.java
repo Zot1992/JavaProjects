@@ -16,25 +16,28 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-    private long window;
-    private int width;
-    private int height;
-    private View view;
+    private long window;//Окно
+    private int width;//Ширины
+    private int height;//высота
+    private View view; //Вид
 
     public Window() {
         GLFWErrorCallback.createPrint(System.err).set();
 
-        if (!glfwInit())
-            throw new IllegalStateException("Unable to initialize GLFW");
+        if (!glfwInit())/*Функция glfwInit () используется для инициализации GLFW. Перед вызовом большинства других функций GLFW вам необходимо
+        инициализировать GLFW. В случае успеха glfwInit () вернет GLFW_TRUE, в противном случае вернет GLFW_FALSE
+        (GLFW_TRUE и GLFW_FALSE - это константы, определенные GLFW, определенные как 1 и 0).
+        Другими словами, если возвращается GLFW_FALSE, это означает, что инициализация не удалась.*/
+            throw new IllegalStateException("Unable to initialize GLFW"); // если инициализация не удалась, то вылезает ошибка
 
-        glfwDefaultWindowHints(); // optional, the current window hints are already the default
-        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
-        glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE); // context will use double buffer
+        glfwDefaultWindowHints(); // optional, the current window hints are already the default(необязательно, подсказки текущего окна уже установлены по умолчанию)
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation(окно останется скрытым после создания)
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable(размер окна будет изменяться)
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable(размер окна будет изменяться)
+        glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE); // context will use double buffer(контекст будет использовать двойной буфер)
 
-        width = 900;
-        height = 600;
+        width = 900;//ширина
+        height = 600;//высота
         window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL);
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
