@@ -8,21 +8,21 @@ public abstract class View {
         partialDisplay();
     }
 
-    protected abstract void partialDisplay();
+    protected abstract void partialDisplay(); //частичное отображение
 
-    public void onMouseClick(double x, double y){
-
-    }
-
-    public void onMouseMove(double x, double y){
+    public void onMouseClick(double x, double y){ //по щелчку мыши
 
     }
 
-    public void onKeyboardInput(int code){
+    public void onMouseMove(double x, double y){ //при движении мыши
+
+    }
+
+    public void onKeyboardInput(int code){//на входе с клавиатуры
 
     }
 
     protected void clearColor(){
         glClearColor(0.8f, 0.5f, 0.1f, 0.0f);
-    }
+    } //Установить цвет
 }

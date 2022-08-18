@@ -6,8 +6,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
     private Coordinate viewPoint;
-    private double dx = 0.01d;
-    private double dy = 0.01d;
+    private double dx = 0.01d;//перемещение по оси х(по горизонтали)
+    private double dy = 0.01d;//перемещение по оси y(по вертикали)
 
     private int W = 87;
     private int A = 65;
@@ -16,18 +16,18 @@ public class MainView extends View {
 
     public MainView() {
         viewPoint = new Coordinate(0.5, 0.5);
-    }
+    } //начальное положение подвижной точки
 
     @Override
-    public void onKeyboardInput(int code) {
-        if (code == W)
-            viewPoint.y += dy;
-        else if (code == S)
-            viewPoint.y -= dy;
-        else if (code == A)
-            viewPoint.x -= dx;
-        else if (code == D)
-            viewPoint.x += dx;
+    public void onKeyboardInput(int code) { //на входе с клавиатуры
+        if (code == W) //если мы с клавиатуры вводим W
+            viewPoint.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
+        else if (code == S)//если мы с клавиатуры вводим S
+            viewPoint.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
+        else if (code == A)//если мы с клавиатуры вводим A
+            viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
+        else if (code == D)//если мы с клавиатуры вводим D
+            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
     }
 
     @Override
@@ -36,18 +36,18 @@ public class MainView extends View {
     }
 
     @Override
-    protected void partialDisplay() {
-        glColor3f(0.0f, 1.0f, 0.0f);
+    protected void partialDisplay() { //частичное отображение
+        glColor3f(0.0f, 1.0f, 0.0f);//цвет неподвижной фигуры
         glBegin(GL_POLYGON);
-        glVertex2d(-0.5, -0.5);
-        glVertex2d(-0.5, 0.0);
-        glVertex2d(0.0, 0.0);
+        glVertex2d(-0.5, -0.5);//положение нижней точки фигуры
+        glVertex2d(-0.5, 0.0);//положение верхней точки фигуры
+        glVertex2d(0.0, 0.0);//положение верхней правой точки фигуры
         glEnd();
 
-        glColor3f(0.2f, 0.2f, 0.2f);
-        glPointSize(10);
+        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+        glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
-        glVertex2d(viewPoint.x, viewPoint.y);
+        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
         glEnd();
     }
 }
