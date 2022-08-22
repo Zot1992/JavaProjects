@@ -19,7 +19,7 @@ public class MainView extends View {
     } //начальное положение подвижной точки
 
     @Override
-    public void onKeyboardInput(int code) { //на входе с клавиатуры
+    public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
         if (code == W) //если мы с клавиатуры вводим W
             viewPoint.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
@@ -32,16 +32,17 @@ public class MainView extends View {
 
     @Override
     protected void clearColor() {
-        glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-    }
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    }//Цвет фона
 
     @Override
-    protected void partialDisplay() { //частичное отображение
-        glColor3f(0.0f, 1.0f, 0.0f);//цвет неподвижной фигуры
+    protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
+        glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
         glBegin(GL_POLYGON);
-        glVertex2d(-0.5, -0.5);//положение нижней точки фигуры
-        glVertex2d(-0.5, 0.0);//положение верхней точки фигуры
+        glVertex2d(-0.5, -0.5);//положение нижней левой точки фигуры
+        glVertex2d(-0.5, 0.0);//положение верхней левой точки фигуры
         glVertex2d(0.0, 0.0);//положение верхней правой точки фигуры
+        glVertex2d(0.0, -0.5);//положение нижней правой точки фигуры
         glEnd();
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки

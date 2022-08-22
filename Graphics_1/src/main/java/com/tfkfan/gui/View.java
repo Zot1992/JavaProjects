@@ -18,7 +18,7 @@ public abstract class View {
 
     }
 
-    public void onKeyboardInput(int code){//на входе с клавиатуры
+    public void onKeyboardInput(int code){//ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
 
     }
 

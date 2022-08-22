@@ -36,9 +36,9 @@ public class Window {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable(размер окна будет изменяться)
         glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE); // context will use double buffer(контекст будет использовать двойной буфер)
 
-        width = 900;//ширина
-        height = 600;//высота
-        window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL);
+        width = 900;//ширина окна
+        height = 600;//высота окна
+        window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL);//создание окна с ее высотой и шириной и названием
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -65,8 +65,8 @@ public class Window {
         glfwShowWindow(window);
     }
 
-    public void shutdown() {
-        glfwFreeCallbacks(window);
+    public void shutdown() {//неисправность
+        glfwFreeCallbacks(window);//Сбрасывает все обратные вызовы для указанного GLFW окна в NULL и освобождает все ранее установленные обратные вызовы.
         glfwDestroyWindow(window);
         glfwTerminate();
 
@@ -103,5 +103,5 @@ public class Window {
 
     public void setView(View view) {
         this.view = view;
-    }
+    }//установить вид
 }
