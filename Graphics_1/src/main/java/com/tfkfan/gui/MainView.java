@@ -14,6 +14,7 @@ public class MainView extends View {
     private double numRays=5;
     private double deltaAngleR = 2*Math.PI / numRays;
 
+
     private int W = 87;
     private int A = 65;
     private int D = 68;
