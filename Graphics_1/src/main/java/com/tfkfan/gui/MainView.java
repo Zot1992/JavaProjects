@@ -13,7 +13,12 @@ public class MainView extends View {
     private double dx = 0.01d;//перемещение по оси х(по горизонтали)
     private double dy = 0.01d;//перемещение по оси y(по вертикали)
     private double numRays=5;
-    private double deltaAngleR = 2*Math.PI / numRays;
+
+    Window w=new Window(900,600);
+
+    private double deltaAngleR = 2*Math.PI / numRays;//нахождение угла для звезды
+    private int Center= w.getWidth()/2;//нахождение центра экрана по ширине
+    private int Center2=w.getHeight()/2;//нахождение центра экрана по высоте
 
 
     private int W = 87;
@@ -61,20 +66,20 @@ public class MainView extends View {
         glVertex2d(-0.8, 0.1);
         glVertex2d(0.8, 0.1);
         glVertex2d(-0.6, -0.7);
-        glVertex2d(0.0, 0.8); */
+        glVertex2d(0.0, 0.8);*/
 
-        glVertex2d(-0.4, 0.5);//код квадрата
-        glVertex2d(-0.4, -0.5);
-        glVertex2d(0.4, 0.5);
-        glVertex2d(0.4, -0.5);
-        glVertex2d(-0.4, 0.5);
-        glVertex2d(0.4, 0.5);
-        glVertex2d(-0.4, -0.5);
-        glVertex2d(0.4, -0.5);
+        glVertex2d(-0.33, 0.5);//код квадрата
+        glVertex2d(-0.33, -0.5);
+        glVertex2d(0.33, 0.5);
+        glVertex2d(0.33, -0.5);
+        glVertex2d(-0.33, 0.5);
+        glVertex2d(0.33, 0.5);
+        glVertex2d(-0.33, -0.5);
+        glVertex2d(0.33, -0.5);
 
         //код для создания круга в квадрате
-        glVertex2d(-0.4, 0.5);//верхняя левая вершина квадрата
-        glVertex2d(0.4, -0.5);//нижняя правая вершина квадрата
+        glVertex2d(-0.33, 0.5);//верхняя левая вершина квадрата
+        glVertex2d(0.33, -0.5);//нижняя правая вершина квадрата
 
 
 

@@ -17,9 +17,19 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     private long window;//Окно
-    private int width;//Ширины
-    private int height;//высота
+    public int width;//Ширины
+    public int height;//высота
     private View view; //Вид
+
+
+    public Window(int width, int height){
+        this.width=width;
+        this.height=height;
+    }
+
+    public int getWidth(){return width;}
+    public int getHeight(){return height;}
+
 
     public Window() {
         GLFWErrorCallback.createPrint(System.err).set();
