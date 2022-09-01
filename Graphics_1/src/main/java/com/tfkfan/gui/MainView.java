@@ -50,10 +50,10 @@ public class MainView extends View {
     protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
         glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
 
-        double x,y;
+        double x,y,x2,y2;
         double pol=360;//количесво полигонов в фигуре
         double l= 0.5;//размер
-        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для круга
+        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для круга.2*Math.PI-что бы получить 360 градусов.
 
 
         //glBegin(GL_POLYGON);// чертит линии с заливкой
@@ -62,10 +62,13 @@ public class MainView extends View {
 
         //glBegin(GL_TRIANGLE_FAN);// объединяет все точки
 
-        for(int i=-1;i<pol;i++){ //цикл обходит каждый пиксель
+        for(int i=-1;i<pol;i++){ //цикл обходит каждый полигон, еще делаем второй ряд полигонов +1 чтобы круг был цельным
             x=Math.sin(deltaAngleR*i)*l;
             y=Math.cos(deltaAngleR*i)*l;
+            x2=Math.sin(deltaAngleR*(i+1))*l;
+            y2=Math.cos(deltaAngleR*(i+1))*l;
             glVertex2d(x,y);
+            glVertex2d(x2,y2);
         }
         /*glVertex2d(-0.5, -0.5);//положение нижней левой точки фигуры(v-ось x. v1-ось y)(декартовы координаты это координаты x,y с осями под прямым углом)
         //glVertex2d(-0.5, 0.0);//положение верхней левой точки фигуры
