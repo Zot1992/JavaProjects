@@ -7,19 +7,18 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
     private Coordinate viewPoint;
     private double dx = 0.01d;//перемещение по оси х(по горизонтали)
     private double dy = 0.01d;//перемещение по оси y(по вертикали)
-    private double numRays=5;
 
-    Window w=new Window(900,600);
+    private double numRays=5;
+    private double numRays2=360;
 
     private double deltaAngleR = 2*Math.PI / numRays;//нахождение угла для звезды
-    private int Center= w.getWidth()/2;//нахождение центра экрана по ширине
-    private int Center2=w.getHeight()/2;//нахождение центра экрана по высоте
-
+    private double deltaAngleR2 = 2*Math.PI / numRays2;//нахождение угла для круга
 
     private int W = 87;
     private int A = 65;
@@ -50,8 +49,24 @@ public class MainView extends View {
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
         glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
+
+        double x,y;
+        double pol=360;//количесво полигонов в фигуре
+        double l= 0.5;//размер
+        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для круга
+
+
         //glBegin(GL_POLYGON);// чертит линии с заливкой
         glBegin(GL_LINES);//начало отрисовки (чертит линии без заливки).
+
+
+        //glBegin(GL_TRIANGLE_FAN);// объединяет все точки
+
+        for(int i=-1;i<pol;i++){ //цикл обходит каждый пиксель
+            x=Math.sin(deltaAngleR*i)*l;
+            y=Math.cos(deltaAngleR*i)*l;
+            glVertex2d(x,y);
+        }
         /*glVertex2d(-0.5, -0.5);//положение нижней левой точки фигуры(v-ось x. v1-ось y)(декартовы координаты это координаты x,y с осями под прямым углом)
         //glVertex2d(-0.5, 0.0);//положение верхней левой точки фигуры
         //glVertex2d(0.0, 0.0);//положение верхней правой точки фигуры
@@ -68,7 +83,7 @@ public class MainView extends View {
         glVertex2d(-0.6, -0.7);
         glVertex2d(0.0, 0.8);*/
 
-        glVertex2d(-0.33, 0.5);//код квадрата
+        /*glVertex2d(-0.33, 0.5);//код квадрата
         glVertex2d(-0.33, -0.5);
         glVertex2d(0.33, 0.5);
         glVertex2d(0.33, -0.5);
@@ -79,7 +94,7 @@ public class MainView extends View {
 
         //код для создания круга в квадрате
         glVertex2d(-0.33, 0.5);//верхняя левая вершина квадрата
-        glVertex2d(0.33, -0.5);//нижняя правая вершина квадрата
+        glVertex2d(0.33, -0.5);//нижняя правая вершина квадрата*/
 
 
 

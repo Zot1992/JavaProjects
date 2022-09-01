@@ -22,15 +22,6 @@ public class Window {
     private View view; //Вид
 
 
-    public Window(int width, int height){
-        this.width=width;
-        this.height=height;
-    }
-
-    public int getWidth(){return width;}
-    public int getHeight(){return height;}
-
-
     public Window() {
         GLFWErrorCallback.createPrint(System.err).set();
 
@@ -47,7 +38,7 @@ public class Window {
         glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_TRUE); // context will use double buffer(контекст будет использовать двойной буфер)
 
         width = 900;//ширина окна
-        height = 600;//высота окна
+        height = 900;//высота окна
         window = glfwCreateWindow(width, height, "OpenGL", NULL, NULL);//создание окна с ее высотой и шириной и названием
         if (window == NULL)
             throw new RuntimeException("Failed to create the GLFW window");
