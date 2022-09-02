@@ -6,11 +6,11 @@ public class DrawHelper {
 
     public static void drawRectangle(double x1, double y1, double x2, double y2,
                                      double x3, double y3, double x4, double y4) {
-        glBegin(GL_TRIANGLE_FAN);
+        glBegin(GL_POLYGON);
         glVertex2d(x1, y1);//положение нижней левой точки фигуры(v-ось x. v1-ось y)(декартовы координаты это координаты x,y с осями под прямым углом)
         glVertex2d(x2, y2);//положение верхней левой точки фигуры
-        glVertex2d(0.0, 0.0);//положение верхней правой точки фигуры
-        glVertex2d(0.0, -0.5);//положение нижней правой точки фигуры
+        glVertex2d(x3, y3);//положение верхней правой точки фигуры
+        glVertex2d(x4, y4);//положение нижней правой точки фигуры
         glEnd();
     }
 
