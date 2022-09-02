@@ -50,10 +50,11 @@ public class MainView extends View {
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
-        glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
-
-        DrawHelper.drawCircle(0d,0d,0.3d,360);
+        glColor3f(0.0f, 0.0f, 1.0f);
         DrawHelper.drawRectangle(-0.5,-0.5, -0.5, 0.0, 0.0, 0.0,0.0, -0.5);
+
+        glColor3f(1.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
+        DrawHelper.drawCircle(0d,0d,0.3d,360);
 
         double x,y;
         int pol=5;//количество полигонов в фигуре
