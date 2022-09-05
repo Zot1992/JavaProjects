@@ -101,6 +101,7 @@ public class MainView extends View {
             list.add(x);
             list.add(y);
         }  //код на звезды
+
         for(int i=0;i<list.size();i++){
             glVertex2d(list.get(0),list.get(1));
             glVertex2d(list.get(2),list.get(3));
