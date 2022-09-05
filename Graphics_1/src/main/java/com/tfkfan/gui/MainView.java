@@ -79,35 +79,34 @@ public class MainView extends View {
         //glVertex2d(0.0, -0.5);//положение нижней правой точки фигуры */ //код прямоугольника
 
 
-
-        /*glVertex2d(0.0, 0.8); // код звезды (неправильный)
+        /*glBegin(GL_LINE_LOOP);
+        glVertex2d(0.0, 0.8); // код звезды (неправильный)
         glVertex2d(0.6, -0.7);
         glVertex2d(-0.8, 0.1);
         glVertex2d(0.8, 0.1);
         glVertex2d(-0.6, -0.7);
         glVertex2d(0.0, 0.8);*/
 
-        glBegin(GL_POLYGON);// чертит линии с заливкой
+        glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
 
         double x,y;
         int pol=5;//количество полигонов в фигуре
         double l= 0.5;//размер
-        //double [] arrX=new double[pol];
-        //double [] arrY=new double[pol];
         ArrayList<Double> list=new ArrayList<>();
         double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
-        for(int i=0;i<pol+1;i++){ //цикл обходит каждый полигон
+        for(int i=0;i<pol;i++){ //цикл обходит каждый полигон
             x=Math.sin(deltaAngleR*i)*l;
             y=Math.cos(deltaAngleR*i)*l;
             list.add(x);
             list.add(y);
-            //arrX[i]=x;
-            //arrY[i]=y;
-            //glVertex2d(x,y);
         }  //код на звезды
         for(int i=0;i<list.size();i++){
-
+            glVertex2d(list.get(0),list.get(1));
+            glVertex2d(list.get(2),list.get(3));
+            glVertex2d(list.get(4),list.get(5));
+            glVertex2d(list.get(6),list.get(7));
+            glVertex2d(list.get(8),list.get(9));
         }
 
         /*glVertex2f(0.0f, 0.0f); // Центр звезды
