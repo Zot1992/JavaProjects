@@ -1,9 +1,11 @@
 package com.tfkfan.gui;
 
 public class Arr_points {
-    private int pol;
-    private double [] arrX;
-    private double [] arrY;
+    public int pol;
+    public double [] arrX=new double[pol];
+    public double [] arrY=new double[pol];
+
+    public Arr_points(){}
 
     public Arr_points(double [] arrX,double [] arrY,int pol){
         this.arrX=arrX;
@@ -11,7 +13,7 @@ public class Arr_points {
         this.pol=pol;
     }
 
-    public double[] getArrX() {
+    /*public double[] getArrX() {
         return arrX;
     }
 
@@ -21,5 +23,7 @@ public class Arr_points {
 
     public int getPol() {
         return pol;
-    }
+    }*/
+
+
 }
