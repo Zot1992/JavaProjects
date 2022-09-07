@@ -1,29 +1,23 @@
 package com.tfkfan.gui;
 
 public class Arr_points {
-    public int pol;
-    public double [] arrX=new double[pol];
-    public double [] arrY=new double[pol];
+
+    public double X=0;
+    public double Y=0;
 
     public Arr_points(){}
 
-    public Arr_points(double [] arrX,double [] arrY,int pol){
-        this.arrX=arrX;
-        this.arrY=arrY;
-        this.pol=pol;
+    public Arr_points(double X,double Y){
+        this.X=X;
+        this.Y=Y;
+
     }
 
-    /*public double[] getArrX() {
-        return arrX;
+    /*public double getX() {
+        return X;
     }
 
-    public double[] getArrY() {
-        return arrY;
-    }
-
-    public int getPol() {
-        return pol;
-    }*/
-
-
+    public double getY() {
+        return Y;
+    } */
 }

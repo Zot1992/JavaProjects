@@ -94,30 +94,29 @@ public class MainView extends View {
         double l= 0.5;//размер
         /*double [] arrX=new double[pol];
         double [] arrY=new double[pol];*/
-        ArrayList<Double> list=new ArrayList<>();
-
+        Arr_points[]points=new Arr_points[pol];
+        points[0]=new Arr_points();
+        Arr_points point=new Arr_points();
         double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
         /*Arr_points arr_points=new Arr_points();
         arr_points.pol=pol;*/
 
-        for(int i=0;i<pol;i++){ //цикл обходит каждый полигон
+        for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
             x=Math.sin(deltaAngleR*i)*l;
             y=Math.cos(deltaAngleR*i)*l;
+            points[i]=new Arr_points(x,y);
+
+            //point.X=x;
+            //point.Y=y;
+
             /*arrX[i]=x;
             arrY[i]=y;*/
-            //arr_points.arrX[i]=x;
-            //arr_points.arrY[i]=y;
-
-            list.add(x);
-            list.add(y);
         }  //код на звезды
 
-        for(int i=0;i<list.size();i++){
+        for(int i=0;i<points.length;i++){
             int shift = (i * 2) % pol;   //Точки выводим со смещением на 2
-            //glVertex2d(arr_points.arrX[shift],arr_points.arrY[shift]);
-            glVertex2d(list.get(i),list.get(++i));
-
+            glVertex2d(point.X,point.Y);
         }
 
         /*glVertex2f(0.0f, 0.0f); // Центр звезды
