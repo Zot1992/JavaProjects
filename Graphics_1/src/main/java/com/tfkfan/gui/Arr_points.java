@@ -2,8 +2,8 @@ package com.tfkfan.gui;
 
 public class Arr_points {
 
-    public double X=0;
-    public double Y=0;
+    private double X=0;
+    private double Y=0;
 
     public Arr_points(){}
 
@@ -13,11 +13,12 @@ public class Arr_points {
 
     }
 
-    /*public double getX() {
+    public double getX() {
         return X;
     }
 
     public double getY() {
         return Y;
-    } */
+    }
+
 }

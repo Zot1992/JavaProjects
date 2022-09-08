@@ -6,8 +6,6 @@ package com.tfkfan.gui;
 import com.vividsolutions.jts.geom.Coordinate;
 
 
-import java.util.ArrayList;
-
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glVertex2d;
 
@@ -16,11 +14,6 @@ public class MainView extends View {
     private double dx = 0.01d;//перемещение по оси х(по горизонтали)
     private double dy = 0.01d;//перемещение по оси y(по вертикали)
 
-    private double numRays=5;
-
-
-    private double deltaAngleR = 2*Math.PI / numRays;//нахождение угла для звезды
-
 
     private int W = 87;
     private int A = 65;
@@ -28,7 +21,7 @@ public class MainView extends View {
     private int S = 83;
 
     public MainView() {
-        viewPoint = new Coordinate(0.5, 0.5);//начальное положение подвижной точки
+        viewPoint = new Coordinate(-0.1, 0.5);//начальное положение подвижной точки
     }
 
     @Override
@@ -52,31 +45,8 @@ public class MainView extends View {
     protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
         glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
 
-        /*double x,y,x2,y2;
-        double pol=360;//количество полигонов в фигуре
-        double l= 0.5;//размер
-        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для круга.2*Math.PI-что бы получить 360 градусов.
-
-
-        glBegin(GL_POLYGON);// чертит линии с заливкой
-
-        for(int i=-1;i<pol;i++){ //цикл обходит каждый полигон, еще делаем второй ряд полигонов +1 чтобы круг был цельным
-            x=Math.sin(deltaAngleR*i)*l;
-            y=Math.cos(deltaAngleR*i)*l;
-            x2=Math.sin(deltaAngleR*(i+1))*l;
-            y2=Math.cos(deltaAngleR*(i+1))*l;
-            glVertex2d(x,y);
-            glVertex2d(x2,y2);
-        } */ //код на круг
-
-        //glBegin(GL_LINES);//начало отрисовки (чертит линии без заливки).
-
-
-        //glBegin(GL_TRIANGLE_FAN);// объединяет все точки
-        /*glVertex2d(-0.5, -0.5);//положение нижней левой точки фигуры(v-ось x. v1-ось y)(декартовы координаты это координаты x,y с осями под прямым углом)
-        //glVertex2d(-0.5, 0.0);//положение верхней левой точки фигуры
-        //glVertex2d(0.0, 0.0);//положение верхней правой точки фигуры
-        //glVertex2d(0.0, -0.5);//положение нижней правой точки фигуры */ //код прямоугольника
+        //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
+        //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
 
 
         /*glBegin(GL_LINE_LOOP);
@@ -91,82 +61,24 @@ public class MainView extends View {
 
         double x,y;
         int pol=5;//количество полигонов в фигуре
-        double l= 0.5;//размер
-        /*double [] arrX=new double[pol];
-        double [] arrY=new double[pol];*/
-        Arr_points[]points=new Arr_points[pol];
-        points[0]=new Arr_points();
-        Arr_points point=new Arr_points();
-        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+        double l= 0.8;//размер
 
-        /*Arr_points arr_points=new Arr_points();
-        arr_points.pol=pol;*/
+        Arr_points[]points=new Arr_points[pol];
+
+        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
         for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
             x=Math.sin(deltaAngleR*i)*l;
             y=Math.cos(deltaAngleR*i)*l;
             points[i]=new Arr_points(x,y);
-
-            //point.X=x;
-            //point.Y=y;
-
-            /*arrX[i]=x;
-            arrY[i]=y;*/
         }  //код на звезды
 
         for(int i=0;i<points.length;i++){
             int shift = (i * 2) % pol;   //Точки выводим со смещением на 2
-            glVertex2d(point.X,point.Y);
+            glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
         }
 
-        /*glVertex2f(0.0f, 0.0f); // Центр звезды
-        glVertex2f(-0.18f, 0.26f);
-        glVertex2f(0.18f, 0.26f);
 
-        glVertex2f(0.0f, 0.0f);
-        glVertex2f(0.18f, 0.26f);
-        glVertex2f(0.30f, -0.10f);
-
-        glVertex2f(0.0f, 0.0f);
-        glVertex2f(0.30f, -0.10f);
-        glVertex2f(0.0f, -0.32f);
-
-        glVertex2f(0.0f, 0.0f);
-        glVertex2f(0.0f, -0.32f);
-        glVertex2f(-0.30f, -0.10f);
-
-        glVertex2f(0.0f, 0.0f);
-        glVertex2f(-0.30f, -0.10f);
-        glVertex2f(-0.18f, 0.26f);
-
-        glEnd();//конец отрисовки */
-
-        //glBegin(GL_TRIANGLES);
-
-       /* glVertex2f(-0.18f, 0.26f);//внешние треугольники звезды
-        glVertex2f(0.0f, 0.80f);
-        glVertex2f(0.18f, 0.26f);
-
-
-        glVertex2f(0.18f, 0.26f);
-        glVertex2f(0.80f, 0.26f);
-        glVertex2f(0.30f, -0.10f);
-
-
-        glVertex2f(0.30f, -0.10f);
-        glVertex2f(0.50f, -0.68f);
-        glVertex2f(0.0f, -0.32f);
-
-
-        glVertex2f(0.0f, -0.32f);
-        glVertex2f(-0.50f, -0.68f);
-        glVertex2f(-0.30f, -0.10f);
-
-
-        glVertex2f(-0.30f, -0.10f);
-        glVertex2f(-0.80f, 0.26f);
-        glVertex2f(-0.18f, 0.26f);
-        glEnd();  */
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки

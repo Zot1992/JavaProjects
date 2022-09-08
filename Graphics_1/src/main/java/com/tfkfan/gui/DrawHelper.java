@@ -5,7 +5,7 @@ import static org.lwjgl.opengl.GL11.*;
 public class DrawHelper {
 
     public static void drawRectangle(double x1, double y1, double x2, double y2,
-                                     double x3, double y3, double x4, double y4) {
+                                     double x3, double y3, double x4, double y4) { //код прямоугольника
         glBegin(GL_POLYGON);
         glVertex2d(x1, y1);//положение нижней левой точки фигуры(v-ось x. v1-ось y)(декартовы координаты это координаты x,y с осями под прямым углом)
         glVertex2d(x2, y2);//положение верхней левой точки фигуры
@@ -14,7 +14,7 @@ public class DrawHelper {
         glEnd();
     }
 
-    public static void drawCircle(double centerX, double centerY, double radius, int partition) {
+    public static void drawCircle(double centerX, double centerY, double radius, int partition) { //код круга
         double deltaAngle = 2 * Math.PI / partition;//нахождение угла для круга.2*Math.PI-что бы получить 360 градусов.
 
         glBegin(GL_LINE_STRIP);// чертит линии с заливкой
