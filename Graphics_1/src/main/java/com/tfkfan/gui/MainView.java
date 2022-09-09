@@ -63,22 +63,26 @@ public class MainView extends View {
         int pol=5;//количество полигонов в фигуре
         double l= 0.8;//размер
 
-        Arr_points[]points=new Arr_points[pol];
+        Point[]points=new Point[pol];
 
         double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
         for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
             x=Math.sin(deltaAngleR*i)*l;
             y=Math.cos(deltaAngleR*i)*l;
-            points[i]=new Arr_points(x,y);
+            points[i]=new Point(x,y);
         }  //код на звезды
 
-        for(int i=0;i<points.length;i++){
-            int shift = (i * 2) % pol;   //Точки выводим со смещением на 2
-            glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
-        }
-
-
+        //for(int i=0;i<points.length;i++){
+        //    int shift = (i * 2) % pol;   //Точки выводим со смещением на 2
+        //    glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
+        //}
+        glVertex2d(points[3].getX(),points[3].getY());
+        glVertex2d(points[0].getX(),points[0].getY());
+        glVertex2d(points[2].getX(),points[2].getY());
+        glVertex2d(points[4].getX(),points[4].getY());
+        glVertex2d(points[1].getX(),points[1].getY());
+        glEnd();
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
