@@ -21,7 +21,7 @@ public class MainView extends View {
     private int S = 83;
 
     public MainView() {
-        viewPoint = new Coordinate(-0.1, 0.5);//начальное положение подвижной точки
+        viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
     }
 
     @Override
@@ -47,17 +47,11 @@ public class MainView extends View {
 
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
+        DrawHelper.drawStar(0.8,15);
 
 
-        /*glBegin(GL_LINE_LOOP);
-        glVertex2d(0.0, 0.8); // код звезды (неправильный)
-        glVertex2d(0.6, -0.7);
-        glVertex2d(-0.8, 0.1);
-        glVertex2d(0.8, 0.1);
-        glVertex2d(-0.6, -0.7);
-        glVertex2d(0.0, 0.8);*/
 
-        glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
+       /* glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
 
         double x,y;
         int pol=5;//количество полигонов в фигуре
@@ -78,7 +72,7 @@ public class MainView extends View {
             glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
         }
 
-
+        glEnd();*/
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
