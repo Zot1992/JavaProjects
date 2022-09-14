@@ -29,14 +29,14 @@ public class DrawHelper {
     }
     public static void drawStar(double size,int vertices){ //код на звезды
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
-        Arr_points[]points=new Arr_points[vertices];
+        Point[]points=new Point[vertices];
         double x,y;
         double deltaAngleR = 2*Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
         for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
             x=Math.sin(deltaAngleR*i)*size;
             y=Math.cos(deltaAngleR*i)*size;
-            points[i]=new Arr_points(x,y);
+            points[i]=new Point(x,y);
         }
 
         for(int i=0;i<points.length;i++){
@@ -44,6 +44,6 @@ public class DrawHelper {
             glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
         }
 
-        glEnd();
+        glEnd();// конец отрисовки. Работает в паре с  glBegin
     }
 }

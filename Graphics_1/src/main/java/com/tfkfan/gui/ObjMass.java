@@ -1,5 +1,5 @@
 package com.tfkfan.gui;
 
-public class ObjMass {
-    Arr_points[]points=new Arr_points[1];
+public class ObjMass {//класс на массив обьектов
+    Point[]points=new Point[1];
 }
