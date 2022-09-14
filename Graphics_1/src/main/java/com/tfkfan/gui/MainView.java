@@ -1,5 +1,5 @@
 /*Написать графическую программу, выполняющую:
-        3) рисующую красную пятиконечную звезду */
+        4) анимирующую движение звезды по оси OX */
 
 package com.tfkfan.gui;
 
@@ -10,7 +10,7 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
-    private Coordinate viewPoint;
+   /* private Coordinate viewPoint;
     private double dx = 0.01d;//перемещение по оси х(по горизонтали)
     private double dy = 0.01d;//перемещение по оси y(по вертикали)
 
@@ -34,12 +34,24 @@ public class MainView extends View {
             viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
         else if (code == D)//если мы с клавиатуры вводим D
             viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
+    } */
+
+   private Coordinate viewPoint;
+    private double dx=0.05d;// передвижение звезды по оси х
+
+    viewPoint.x -= dx;
+    viewPoint.x += dx;
+
+    public MainView() {
+        viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
     }
+
 
     @Override
     protected void clearColor() {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     }//Цвет фона
+
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
@@ -53,10 +65,10 @@ public class MainView extends View {
 
 
 
-        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+        /*glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
         glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
-        glEnd();
+        glEnd(); */
     }
 }
