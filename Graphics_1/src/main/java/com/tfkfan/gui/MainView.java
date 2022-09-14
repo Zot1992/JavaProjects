@@ -47,32 +47,11 @@ public class MainView extends View {
 
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
-        DrawHelper.drawStar(0.8,15);
+        //DrawHelper.drawStar(0.8,5);
 
 
 
-       /* glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
 
-        double x,y;
-        int pol=5;//количество полигонов в фигуре
-        double l= 0.8;//размер
-
-        Arr_points[]points=new Arr_points[pol];
-
-        double deltaAngleR = 2*Math.PI / pol;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
-
-        for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
-            x=Math.sin(deltaAngleR*i)*l;
-            y=Math.cos(deltaAngleR*i)*l;
-            points[i]=new Arr_points(x,y);
-        }  //код на звезды
-
-        for(int i=0;i<points.length;i++){
-            int shift = (i * 2) % pol;   //Точки выводим со смещением на 2
-            glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
-        }
-
-        glEnd();*/
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
