@@ -39,14 +39,14 @@ public class MainView extends View {
    private Coordinate viewPoint;
     private double dx=0.05d;// передвижение звезды по оси х
 
-    viewPoint.x -= dx;
-    viewPoint.x += dx;
-
     public MainView() {
         viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
     }
-
-
+    @Override
+    public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
+        viewPoint.x -= dx;
+        viewPoint.x += dx;
+    }
     @Override
     protected void clearColor() {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -59,7 +59,7 @@ public class MainView extends View {
 
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
-        //DrawHelper.drawStar(0.8,5);
+        DrawHelper.drawStar(0.8,5);
 
 
 
