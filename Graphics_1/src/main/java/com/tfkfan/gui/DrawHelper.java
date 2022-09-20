@@ -20,8 +20,8 @@ public class DrawHelper {
         glBegin(GL_LINE_STRIP);// чертит линии с заливкой
 
         for (int i = -1; i < partition; i++) { //цикл обходит каждый полигон, еще делаем второй ряд полигонов +1 чтобы круг был цельным
-            double x = Math.sin(deltaAngle * i) * radius + centerX;
-            double y = Math.cos(deltaAngle * i) * radius + centerY;
+            double x = Math.cos(deltaAngle * i) * radius + centerX;
+            double y = Math.sin(deltaAngle * i) * radius + centerY;
             glVertex2d(x, y);
         }
 
@@ -34,8 +34,8 @@ public class DrawHelper {
         double deltaAngleR = 2*Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
         for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
-            x=Math.sin(deltaAngleR*i)*size;
-            y=Math.cos(deltaAngleR*i)*size;
+            x=Math.cos(deltaAngleR*i)*size;
+            y=Math.sin(deltaAngleR*i)*size;
             points[i]=new Point(x,y);
         }
 
@@ -44,6 +44,6 @@ public class DrawHelper {
             glVertex2d(points[shift].getX(),points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
         }
 
-        glEnd();// конец отрисовки. Работает в паре с  glBegin
+        glEnd();// конец отрисовки. Работает в паре с glBegin
     }
 }

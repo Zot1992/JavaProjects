@@ -10,18 +10,22 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
-   /* private Coordinate viewPoint;
+    private Coordinate viewPoint;
     private double dx = 0.01d;//перемещение по оси х(по горизонтали)
     private double dy = 0.01d;//перемещение по оси y(по вертикали)
 
 
-    private int W = 87;
+    private int W = 87;//позиция символа в таблице аски
     private int A = 65;
     private int D = 68;
     private int S = 83;
 
     public MainView() {
         viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
+    }
+
+    public class ObjMass2 {//класс на массив объектов
+        Coordinate[]points2=new Coordinate[1];
     }
 
     @Override
@@ -34,30 +38,9 @@ public class MainView extends View {
             viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
         else if (code == D)//если мы с клавиатуры вводим D
             viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-    } */
-
-    private Coordinate viewPoint,viewPoint2,viewPoint3;
-    //private double dx=0.05d;// передвижение звезды по оси х
-    private double dx=0.05d;
-
-    Object[] viewPoints=new Object[3];//массив обьектов координат подвижных точек
-
-
-    private int A = 65;
-    private int D = 68;
-
-
-    public MainView() {
-        viewPoint = new Coordinate(-0.25, 0);
-        viewPoint2 =new Coordinate( 0.25, 0);
-        viewPoint3 =new Coordinate(-0.76, 0.25);
-
     }
-    @Override
-    public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
-        if (code == A){viewPoint.x -= dx;}
-        else if (code == D){viewPoint.x += dx;}
-    }
+
+
     @Override
     protected void clearColor() {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -71,32 +54,39 @@ public class MainView extends View {
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
         //DrawHelper.drawStar(0.8,5);
-        int vertices=5;
-        double size=0.8;
+
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         //DrawHelper.drawStar(0.8,5);
+
+
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
-        Point[]points=new Point[vertices];
+
+        int vertex=5;
+        double size=0.8;
+        double end=1.0;//конечное положение звезды
+
+        Coordinate[]points2=new Coordinate[vertex];
         double x,y;
-        double deltaAngleR = 2*Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+        double deltaAngleR = 2*Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
-        for(int i=0;i<points.length;i++){ //цикл обходит каждый полигон
-            x=Math.sin(deltaAngleR*i)*size;
-            y=Math.cos(deltaAngleR*i)*size;
-            points[i]=new Point(x,y);
+        for(int i=0;i<points2.length;i++){ //цикл обходит каждый полигон
+            x=Math.cos(deltaAngleR*i)*size;
+            y=Math.sin(deltaAngleR*i)*size;
+            points2[i]=new Coordinate(x,y);
         }
 
-        for(int i=0;i<points.length;i++){
-            int shift = (i * 2) % vertices;   //Точки выводим со смещением на 2
-            glVertex2d(points[shift].getX(), points[shift].getY());//object[i].x только так можно вызвать из массива объектов нужный метод
+        for(int i=0;i<points2.length;i++){
+            int shift = (i * 2) % vertex;//Точки выводим со смещением на 2
+            glVertex2d(points2[shift].x,points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
         }
-        glVertex2d(viewPoint.x, viewPoint.y);
+        /*for (double i=-1.0;i<end;i++){
 
-
+        }*/
 
         glEnd();
-        //glVertex2d(viewPoint.x, viewPoint.y);
-        //glEnd();
+
+
+
 
 
         /*glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
