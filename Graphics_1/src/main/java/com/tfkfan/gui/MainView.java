@@ -28,6 +28,8 @@ public class MainView extends View {
         Coordinate[]points2=new Coordinate[1];
     }
 
+
+
     @Override
     public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
         if (code == W) //если мы с клавиатуры вводим W
@@ -63,9 +65,14 @@ public class MainView extends View {
 
         int vertex=5;
         double size=0.8;
+        double current=0.0;
+        double begin=-1.0;
         double end=1.0;//конечное положение звезды
+        double speed = 0.01d;
+
 
         Coordinate[]points2=new Coordinate[vertex];
+
         double x,y;
         double deltaAngleR = 2*Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
@@ -79,9 +86,10 @@ public class MainView extends View {
             int shift = (i * 2) % vertex;//Точки выводим со смещением на 2
             glVertex2d(points2[shift].x,points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
         }
-        /*for (double i=-1.0;i<end;i++){
-
-        }*/
+        for (double i=0;i<points2.length;i++){
+              if(current!=end){speed +=speed;}
+              else if(current!=begin){speed -=speed;}
+        }
 
         glEnd();
 
