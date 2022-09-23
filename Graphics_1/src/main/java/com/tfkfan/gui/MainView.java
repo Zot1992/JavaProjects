@@ -15,8 +15,8 @@ public class MainView extends View {
     private Coordinate viewPoint3;
     private Coordinate viewPoint4;
     private Coordinate viewPoint5;
-    private double dx = 0.01d;//перемещение по оси х(по горизонтали)
-    private double dy = 0.01d;//перемещение по оси y(по вертикали)
+    private double dx = 0.001d;//перемещение по оси х(по горизонтали)
+    private double dy = 0.001d;//перемещение по оси y(по вертикали)
 
 
     private int W = 87;//позиция символа в таблице аски
@@ -24,10 +24,6 @@ public class MainView extends View {
     private int D = 68;
     private int S = 83;
 
-    private int F = 70;
-    private int T = 84;
-    private int G = 71;
-    private int H = 72;
 
     public MainView() {
         viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
@@ -38,9 +34,8 @@ public class MainView extends View {
     }
 
     public class ObjMass2 {//класс на массив объектов
-        Coordinate[]points2=new Coordinate[1];
+        Coordinate[] points2 = new Coordinate[5];
     }
-
 
 
     @Override
@@ -55,7 +50,7 @@ public class MainView extends View {
             viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
 
-         if (code == W) //если мы с клавиатуры вводим W
+        if (code == W) //если мы с клавиатуры вводим W
             viewPoint2.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint2.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
@@ -64,7 +59,7 @@ public class MainView extends View {
         else if (code == D)//если мы с клавиатуры вводим D
             viewPoint2.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
-         if (code == W) //если мы с клавиатуры вводим W
+        if (code == W) //если мы с клавиатуры вводим W
             viewPoint3.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint3.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
@@ -73,7 +68,7 @@ public class MainView extends View {
         else if (code == D)//если мы с клавиатуры вводим D
             viewPoint3.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
-         if(code == W) //если мы с клавиатуры вводим W
+        if (code == W) //если мы с клавиатуры вводим W
             viewPoint4.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint4.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
@@ -82,7 +77,7 @@ public class MainView extends View {
         else if (code == D)//если мы с клавиатуры вводим D
             viewPoint4.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
-         if(code == W) //если мы с клавиатуры вводим W
+        if (code == W) //если мы с клавиатуры вводим W
             viewPoint5.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint5.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
@@ -118,53 +113,57 @@ public class MainView extends View {
 
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
 
-        int vertex=5;
-        double size=0.5;
-        double current=0.0;
-        double begin=-1.0;
-        double end=1.0;//конечное положение звезды
+        int vertex = 5;
+        double size = 0.5;
+        double current = 0.0;
+        double begin = -1.0;
+        double end = 1.0;//конечное положение звезды
         double speed = 0.05d;
 
 
-        Coordinate[]points2=new Coordinate[vertex];
+        Coordinate[] points2 = new Coordinate[vertex];
 
-        double x,y;
-        double deltaAngleR = 2*Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+        double x, y;
+        double deltaAngleR = 2 * Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
-        for(int i=0;i<points2.length;i++){ //цикл обходит каждый полигон
-            x=Math.cos(deltaAngleR*i)*size;
-            y=Math.sin(deltaAngleR*i)*size;
-            points2[i]=new Coordinate(x,y);
+        for (int i = 0; i < points2.length; i++) { //цикл обходит каждый полигон
+            x = Math.cos(deltaAngleR * i) * size;
+            y = Math.sin(deltaAngleR * i) * size;
+            points2[i] = new Coordinate(x, y);
         }
 
-        for(int i=0;i<points2.length;i++){
+        for (int i = 0; i < points2.length; i++) {
             int shift = (i * 2) % vertex;//Точки выводим со смещением на 2
-            glVertex2d(points2[shift].x,points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
+            glVertex2d(points2[shift].x, points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
+
         }
-        for (int i=0;i<points2.length;i++){
-            for (double j=0.0;j<end;j+=0.1) {
+        /*for (int i = 0; i < points2.length; i++) {
+            for (double j = 0.0; j < end; j += 0.5) {
                 if (current != end) {
-                    speed += speed;
+                    onKeyboardInput(D);
+                    //speed += speed;
                 } else if (current != begin) {
-                    speed -= speed;
+                    onKeyboardInput(A);
+                    //speed -= speed;
                 }
             }
-        }
-
+        } */
         glEnd();
 
 
-
-
-
-        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-        glPointSize(10);//размер подвижной точки
-        glBegin(GL_LINE_LOOP);
-        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
+        for (int i = 0; i < points2.length; i++) {
+            glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+            glPointSize(10);//размер подвижной точки
+            glBegin(GL_LINE_LOOP);
+        /*glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
         glVertex2d(viewPoint2.x, viewPoint2.y);
         glVertex2d(viewPoint3.x, viewPoint3.y);
         glVertex2d(viewPoint4.x, viewPoint4.y);
-        glVertex2d(viewPoint5.x, viewPoint5.y);
-        glEnd();
+        glVertex2d(viewPoint5.x, viewPoint5.y);*/
+            int shift = (i * 2) % vertex;
+            glVertex2d(points2[shift].x, points2[shift].y);
+
+            glEnd();
+        }
     }
 }
