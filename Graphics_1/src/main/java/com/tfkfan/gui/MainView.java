@@ -11,12 +11,9 @@ import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
     private Coordinate viewPoint;
-    private Coordinate viewPoint2;
-    private Coordinate viewPoint3;
-    private Coordinate viewPoint4;
-    private Coordinate viewPoint5;
-    private double dx = 0.001d;//перемещение по оси х(по горизонтали)
-    private double dy = 0.001d;//перемещение по оси y(по вертикали)
+
+    private double dx = 0.005d;//перемещение по оси х(по горизонтали)
+    private double dy = 0.005d;//перемещение по оси y(по вертикали)
 
 
     private int W = 87;//позиция символа в таблице аски
@@ -27,15 +24,11 @@ public class MainView extends View {
 
     public MainView() {
         viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
-        viewPoint2 = new Coordinate(0.5, 0);
-        viewPoint3 = new Coordinate(-0.5, 0);
-        viewPoint4 = new Coordinate(0, 0.5);
-        viewPoint5 = new Coordinate(0, -0.5);
     }
 
-    public class ObjMass2 {//класс на массив объектов
-        Coordinate[] points2 = new Coordinate[5];
-    }
+    Coordinate[] points2 = new Coordinate[5];
+
+
 
 
     @Override
@@ -50,43 +43,16 @@ public class MainView extends View {
             viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
 
-        if (code == W) //если мы с клавиатуры вводим W
-            viewPoint2.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
-        else if (code == S)//если мы с клавиатуры вводим S
-            viewPoint2.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
-        else if (code == A)//если мы с клавиатуры вводим A
-            viewPoint2.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
-        else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint2.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-
-        if (code == W) //если мы с клавиатуры вводим W
-            viewPoint3.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
-        else if (code == S)//если мы с клавиатуры вводим S
-            viewPoint3.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
-        else if (code == A)//если мы с клавиатуры вводим A
-            viewPoint3.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
-        else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint3.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-
-        if (code == W) //если мы с клавиатуры вводим W
-            viewPoint4.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
-        else if (code == S)//если мы с клавиатуры вводим S
-            viewPoint4.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
-        else if (code == A)//если мы с клавиатуры вводим A
-            viewPoint4.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
-        else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint4.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-
-        if (code == W) //если мы с клавиатуры вводим W
-            viewPoint5.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
-        else if (code == S)//если мы с клавиатуры вводим S
-            viewPoint5.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
-        else if (code == A)//если мы с клавиатуры вводим A
-            viewPoint5.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
-        else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint5.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-
-
+        for (int i = 0; i < points2.length; i++){
+            if (code == W) //если мы с клавиатуры вводим W
+                points2[i].y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
+            else if (code == S)//если мы с клавиатуры вводим S
+                points2[i].y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
+            else if (code == A)//если мы с клавиатуры вводим A
+                points2[i].x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
+            else if (code == D)//если мы с клавиатуры вводим D
+                points2[i].x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
+        }
     }
 
 
@@ -121,7 +87,7 @@ public class MainView extends View {
         double speed = 0.05d;
 
 
-        Coordinate[] points2 = new Coordinate[vertex];
+        //Coordinate[] points2 = new Coordinate[vertex];
 
         double x, y;
         double deltaAngleR = 2 * Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
@@ -151,19 +117,12 @@ public class MainView extends View {
         glEnd();
 
 
-        for (int i = 0; i < points2.length; i++) {
-            glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-            glPointSize(10);//размер подвижной точки
-            glBegin(GL_LINE_LOOP);
-        /*glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
-        glVertex2d(viewPoint2.x, viewPoint2.y);
-        glVertex2d(viewPoint3.x, viewPoint3.y);
-        glVertex2d(viewPoint4.x, viewPoint4.y);
-        glVertex2d(viewPoint5.x, viewPoint5.y);*/
-            int shift = (i * 2) % vertex;
-            glVertex2d(points2[shift].x, points2[shift].y);
+        /*glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+        glPointSize(10);//размер подвижной точки
+        glBegin(GL_POINTS);
+        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
+        glEnd(); */
 
-            glEnd();
-        }
     }
 }
+
