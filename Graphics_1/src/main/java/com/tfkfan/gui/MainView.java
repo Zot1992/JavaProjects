@@ -33,14 +33,14 @@ public class MainView extends View {
 
     @Override
     public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
-        if (code == W) //если мы с клавиатуры вводим W
+        /*if (code == W) //если мы с клавиатуры вводим W
             viewPoint.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
         else if (code == A)//если мы с клавиатуры вводим A
             viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
         else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
+            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x */
 
 
         for (int i = 0; i < points2.length; i++){
@@ -117,11 +117,13 @@ public class MainView extends View {
         glEnd();
 
 
-        /*glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
-        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
-        glEnd(); */
+        //glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
+        for (int i = 0; i < points2.length; i++){
+        glVertex2d(points2[i].x, points2[i].y);}
+        glEnd();
 
     }
 }
