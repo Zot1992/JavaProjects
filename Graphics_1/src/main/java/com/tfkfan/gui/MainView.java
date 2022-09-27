@@ -10,7 +10,9 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
+
     private Coordinate viewPoint;
+    private Coordinate[] points2;
 
     private double dx = 0.005d;//перемещение по оси х(по горизонтали)
     private double dy = 0.005d;//перемещение по оси y(по вертикали)
@@ -24,26 +26,23 @@ public class MainView extends View {
 
     public MainView() {
         viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
+        points2 = new Coordinate[5];
     }
-
-    Coordinate[] points2 = new Coordinate[5];
-
-
 
 
     @Override
     public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
-        /*if (code == W) //если мы с клавиатуры вводим W
+        if (code == W) //если мы с клавиатуры вводим W
             viewPoint.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
         else if (code == A)//если мы с клавиатуры вводим A
             viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
         else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x */
+            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
 
 
-        for (int i = 0; i < points2.length; i++){
+        for (int i = 0; i < points2.length; i++) {
             if (code == W) //если мы с клавиатуры вводим W
                 points2[i].y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
             else if (code == S)//если мы с клавиатуры вводим S
@@ -86,9 +85,6 @@ public class MainView extends View {
         double end = 1.0;//конечное положение звезды
         double speed = 0.05d;
 
-
-        //Coordinate[] points2 = new Coordinate[vertex];
-
         double x, y;
         double deltaAngleR = 2 * Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
@@ -98,7 +94,9 @@ public class MainView extends View {
             points2[i] = new Coordinate(x, y);
         }
 
-        for (int i = 0; i < points2.length; i++) {
+
+
+        /*for (int i = 0; i < points2.length; i++) {
             int shift = (i * 2) % vertex;//Точки выводим со смещением на 2
             glVertex2d(points2[shift].x, points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
 
@@ -120,9 +118,12 @@ public class MainView extends View {
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
-        //glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
-        for (int i = 0; i < points2.length; i++){
-        glVertex2d(points2[i].x, points2[i].y);}
+        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
+
+        for (int i = 0; i < points2.length; i++) {
+            glVertex2d(points2[i].x, points2[i].y);
+        }
+
         glEnd();
 
     }
