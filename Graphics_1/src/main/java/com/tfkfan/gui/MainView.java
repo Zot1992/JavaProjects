@@ -11,7 +11,7 @@ import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
 
-    private Coordinate viewPoint;
+    //private Coordinate viewPoint;
     private Coordinate[] points2;
 
     private double dx = 0.005d;//перемещение по оси х(по горизонтали)
@@ -25,21 +25,21 @@ public class MainView extends View {
 
 
     public MainView() {
-        viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
+        //viewPoint = new Coordinate(0, 0);//начальное положение подвижной точки
         points2 = new Coordinate[5];
     }
 
 
     @Override
     public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
-        if (code == W) //если мы с клавиатуры вводим W
+        /*if (code == W) //если мы с клавиатуры вводим W
             viewPoint.y += dy;//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
         else if (code == S)//если мы с клавиатуры вводим S
             viewPoint.y -= dy;//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
         else if (code == A)//если мы с клавиатуры вводим A
             viewPoint.x -= dx;//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
         else if (code == D)//если мы с клавиатуры вводим D
-            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
+            viewPoint.x += dx;//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x */
 
 
         for (int i = 0; i < points2.length; i++) {
@@ -74,16 +74,36 @@ public class MainView extends View {
 
         //glLoadIdentity();//делает один цикл и тормозит остальные функции opengl чтобы они не вызывались бесконечно
         //glRotatef(20,0.0f,0.0f,0.0f);//функция  opengl которая делает поворот объекта
-        //glTranslated(0.001,0.0,0.0);//функция opengl которое создает движение сетки(она сдвигает систему координат на экране)
+        //glTranslated(speed,0.0,0.0);//функция opengl которое создает движение сетки(она сдвигает систему координат на экране)
+
+        double begin = -0.008d;
+        double end = 0.008d;//конечное положение звезды
+        double speed = 0.001d;
+        boolean a=false;
+        boolean b=true;
+
+        for (int i = 0; i < points2.length; i++) {
+            if (speed > end) {
+                a=true;
+            } else if (speed < begin) {
+                b=false;
+            }
+            if (a==false){speed += speed;}
+            else if(b==true){speed -= speed;}
+        }
+        glTranslated(speed,0.0,0.0);
+
 
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
 
         int vertex = 5;
-        double size = 0.5;
-        double current = 0.0;
-        double begin = -1.0;
-        double end = 1.0;//конечное положение звезды
-        double speed = 0.05d;
+        double size = 0.5d;
+        double current = 0.0d;
+        /*double begin = -1.0d;
+        double end = 1.0d;//конечное положение звезды
+        double speed = 0.01d;
+        boolean a=false;
+        boolean b=true;*/
 
         double x, y;
         double deltaAngleR = 2 * Math.PI / vertex;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
@@ -94,23 +114,19 @@ public class MainView extends View {
             points2[i] = new Coordinate(x, y);
         }
 
-
-
-        /*for (int i = 0; i < points2.length; i++) {
+        for (int i = 0; i < points2.length; i++) {
             int shift = (i * 2) % vertex;//Точки выводим со смещением на 2
             glVertex2d(points2[shift].x, points2[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
-
         }
+
         /*for (int i = 0; i < points2.length; i++) {
-            for (double j = 0.0; j < end; j += 0.5) {
-                if (current != end) {
-                    onKeyboardInput(D);
-                    //speed += speed;
-                } else if (current != begin) {
-                    onKeyboardInput(A);
-                    //speed -= speed;
-                }
+            if (speed > end) {
+                a=true;
+            } else if (speed < begin) {
+                b=false;
             }
+            if (a==false){speed += speed;}
+            else if(b==true){speed -= speed;}
         } */
         glEnd();
 
@@ -118,7 +134,7 @@ public class MainView extends View {
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
-        glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
+        //glVertex2d(viewPoint.x, viewPoint.y);//динамичные координаты подвижной точки
 
         for (int i = 0; i < points2.length; i++) {
             glVertex2d(points2[i].x, points2[i].y);
