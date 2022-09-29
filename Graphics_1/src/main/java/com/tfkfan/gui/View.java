@@ -23,6 +23,6 @@ public abstract class View {
     }
 
     protected void clearColor(){
-        glClearColor(0.8f, 0.5f, 0.1f, 0.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     } //Установить цвет
 }
