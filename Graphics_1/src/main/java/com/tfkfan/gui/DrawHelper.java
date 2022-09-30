@@ -30,11 +30,9 @@ public class DrawHelper {
         glEnd();
     }
 
-    public static void drawStar(double size, int vertices) { //код на звезды
-        drawStar(makeStar(size, vertices));
-    }
+    public static void drawStar(double size, int vertices) {drawStar(makeStar(size, vertices));}//объединение всей конструкции кода звезды для ее норм вызова
 
-    public static Coordinate[] makeStar(double size, int vertices) { //код на звезды
+    public static Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
         Coordinate[] points = new Coordinate[vertices];
         double x, y;
         double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
@@ -47,7 +45,7 @@ public class DrawHelper {
         return points;
     }
 
-    public static void drawStar(Coordinate[] points) { //код на звезды
+    public static void drawStar(Coordinate[] points) { //код на звезды(смещение точек и отрисовка их на экране)
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
         int vertices = points.length;
         for (int i = 0; i < points.length; i++) {

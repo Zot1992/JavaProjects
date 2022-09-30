@@ -31,15 +31,32 @@ public class MainView extends View {
             moveStar(Constants.dx, 0);//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
     }
 
-    protected void moveStar(double ddx, double ddy) {
+    protected void moveStar(double ddx, double ddy) {// функция для движения звезды
+
+        double begin=0.005;
+        double end=0.25d;
+        boolean beginn=true;
+        boolean endd=false;
+
         for (Coordinate starPoint : starPoints) {
+            if (Constants.dx==begin){beginn=true;endd=false;}
+            else if(Constants.dx==end){beginn=false;endd=true;}
+
+            //else if (Constants.dx){endd=false;}
+            //else if(Constants.dx){endd=true;}
+
+            if (beginn==true){starPoint.x += ddx;}
+            else if (endd==false){starPoint.x -= ddx;}
+        }
+
+        /*for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             starPoint.y += ddy;
             starPoint.x += ddx;
-        }
+        }*/
     }
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
-    protected void partialDisplay() { //Отображение подвижной и неподвижной фигуры
+    protected void partialDisplay() { //функция по отрисовке графики
         //glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
