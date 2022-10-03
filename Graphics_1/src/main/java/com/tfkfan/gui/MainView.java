@@ -32,28 +32,22 @@ public class MainView extends View {
     }
 
     protected void moveStar(double ddx, double ddy) {// функция для движения звезды
-
-        double begin=0.005;
-        double end=0.25d;
-        boolean beginn=true;
-        boolean endd=false;
-
-        for (Coordinate starPoint : starPoints) {
-            if (Constants.dx==begin){beginn=true;endd=false;}
-            else if(Constants.dx==end){beginn=false;endd=true;}
-
-            //else if (Constants.dx){endd=false;}
-            //else if(Constants.dx){endd=true;}
-
-            if (beginn==true){starPoint.x += ddx;}
-            else if (endd==false){starPoint.x -= ddx;}
-        }
-
-        /*for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
+        for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             starPoint.y += ddy;
             starPoint.x += ddx;
-        }*/
+        }
     }
+
+
+    /*protected void moveStar(double speed, double begin, double end){
+        for (Coordinate starPoint : starPoints) {
+
+            if (speed==begin){starPoint.x += speed;}
+            else if(speed==end){starPoint.x -= speed;}
+
+        }
+    } */
+
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //функция по отрисовке графики
@@ -69,7 +63,24 @@ public class MainView extends View {
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
 
-        for (Coordinate coordinate : starPoints) glVertex2d(coordinate.x, coordinate.y);
+
+        double begin=0.005;
+        double end=0.025d;
+        double speed=0.005;
+        double current=0.005;
+
+
+        //moveStar(speed,begin,end);
+
+        for (Coordinate starPoint : starPoints) {
+
+            if (current==begin){starPoint.x += speed;current +=speed;}
+            else if(current==end){starPoint.x -= speed;current +=speed;}
+
+        }
+
+
+        //for (Coordinate coordinate : starPoints) glVertex2d(coordinate.x, coordinate.y);
 
         glEnd();
     }
