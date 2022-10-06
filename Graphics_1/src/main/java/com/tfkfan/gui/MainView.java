@@ -14,6 +14,10 @@ public class MainView extends View {
     private Coordinate[] starPoints;
     int vertices = 5;
     double size = 0.5d;
+    double begin = -0.025d;
+    double end = 0.025d;
+    double current = 0;
+    double speed = 0.005;
 
     public MainView() {
         starPoints = DrawHelper.makeStar(size, vertices);
@@ -39,16 +43,6 @@ public class MainView extends View {
     }
 
 
-    /*protected void moveStar(double speed, double begin, double end){
-        for (Coordinate starPoint : starPoints) {
-
-            if (speed==begin){starPoint.x += speed;}
-            else if(speed==end){starPoint.x -= speed;}
-
-        }
-    } */
-
-
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //функция по отрисовке графики
         //glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
@@ -64,20 +58,35 @@ public class MainView extends View {
         glBegin(GL_POINTS);
 
 
-        double begin=0.005;
-        double end=0.025d;
-        double speed=0.005;
-        double current=0.005;
+        //if (Constants.dx<begin){moveStar(Constants.dx,0);current+=speed;}
+        //else if(Constants.dx==end){moveStar(-Constants.dx,0);}
 
-
-        //moveStar(speed,begin,end);
-
-        for (Coordinate starPoint : starPoints) {
-
-            if (current==begin){starPoint.x += speed;current +=speed;}
-            else if(current==end){starPoint.x -= speed;current +=speed;}
-
+        if (current<150){
+            moveStar(Constants.dx, 0);
+            for (int i=0;i<1;i++) {
+                current++;
+            }
         }
+        else if(current<300){
+            moveStar(-Constants.dx, 0);
+            for (int i=0;i<1;i++) {
+                current++;
+            }
+        }
+         else if(current==300){current=0;}
+
+
+
+        //moveStar(-Constants.dx,0);
+
+
+
+        /*for (Coordinate starPoint : starPoints) {
+
+
+            //if (starPoint.x<begin){moveStar(Constants.dx,0);}
+            //else if(starPoint.x==end){moveStar(-Constants.dx,0);}
+        }*/
 
 
         //for (Coordinate coordinate : starPoints) glVertex2d(coordinate.x, coordinate.y);
