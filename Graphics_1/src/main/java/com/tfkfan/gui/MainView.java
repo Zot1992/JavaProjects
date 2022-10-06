@@ -6,16 +6,14 @@ package com.tfkfan.gui;
 import com.tfkfan.shared.Constants;
 import com.vividsolutions.jts.geom.Coordinate;
 
-
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL11.glVertex2d;
 
 public class MainView extends View {
     private Coordinate[] starPoints;
     int vertices = 5;
     double size = 0.5d;
-    double begin = -0.025d;
-    double end = 0.025d;
+    double begin = -0.5;
+    double end = 0.5;
     double current = 0;
     double speed = 0.005;
 
@@ -57,39 +55,10 @@ public class MainView extends View {
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
 
-
-        //if (Constants.dx<begin){moveStar(Constants.dx,0);current+=speed;}
-        //else if(Constants.dx==end){moveStar(-Constants.dx,0);}
-
-        if (current<150){
-            moveStar(Constants.dx, 0);
-            for (int i=0;i<1;i++) {
-                current++;
-            }
-        }
-        else if(current<300){
-            moveStar(-Constants.dx, 0);
-            for (int i=0;i<1;i++) {
-                current++;
-            }
-        }
-         else if(current==300){current=0;}
-
-
-
-        //moveStar(-Constants.dx,0);
-
-
-
-        /*for (Coordinate starPoint : starPoints) {
-
-
-            //if (starPoint.x<begin){moveStar(Constants.dx,0);}
-            //else if(starPoint.x==end){moveStar(-Constants.dx,0);}
-        }*/
-
-
-        //for (Coordinate coordinate : starPoints) glVertex2d(coordinate.x, coordinate.y);
+        if(current >= end|| current <= begin)
+            speed = -speed;
+        moveStar(speed,0);
+        current+=speed;
 
         glEnd();
     }
