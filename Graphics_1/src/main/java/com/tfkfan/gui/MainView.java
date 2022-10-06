@@ -14,8 +14,9 @@ public class MainView extends View {
     double size = 0.5d;
     double begin = -0.5;
     double end = 0.5;
-    double current = 0;
+    Coordinate center = new Coordinate();
     double speed = 0.005;
+    double alfa = 0.1;
 
     public MainView() {
         starPoints = DrawHelper.makeStar(size, vertices);
@@ -38,6 +39,18 @@ public class MainView extends View {
             starPoint.y += ddy;
             starPoint.x += ddx;
         }
+        center.x +=ddx;
+        center.y +=ddy;
+    }
+
+    protected void rotateStar(double alfa){
+        double cos = Math.cos(alfa);
+        double sin = Math.sin(alfa);
+        for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
+            double ox = point.x,oy = point.y;
+            point.x = ((ox - center.x)*cos - (oy - center.y)*sin + center.x);
+            point.y = ((ox - center.x)*sin + (oy - center.y)*cos + center.y);
+        }
     }
 
 
@@ -55,11 +68,10 @@ public class MainView extends View {
         glPointSize(10);//размер подвижной точки
         glBegin(GL_POINTS);
 
-        if(current >= end|| current <= begin)
+        if(center.x >= end|| center.x <= begin)
             speed = -speed;
         moveStar(speed,0);
-        current+=speed;
-
+        rotateStar(alfa);
         glEnd();
     }
 }
