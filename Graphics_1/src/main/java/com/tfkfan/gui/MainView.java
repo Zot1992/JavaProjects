@@ -64,15 +64,10 @@ public class MainView extends View {
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
         DrawHelper.drawStar(starPoints);
 
-        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-        glPointSize(10);//размер подвижной точки
-        glBegin(GL_POINTS);
-
         if(center.x >= end|| center.x <= begin)
             speed = -speed;
         moveStar(speed,0);
         rotateStar(alfa);
-        glEnd();
     }
 }
 
