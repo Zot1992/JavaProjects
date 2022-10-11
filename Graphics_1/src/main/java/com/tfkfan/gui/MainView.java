@@ -16,10 +16,10 @@ public class MainView extends View {
     double end = 0.5;
     Coordinate center = new Coordinate();
     double speed = 0.005;
-    double alfa = 0.1;
+    double alfa = 0.05;
 
     public MainView() {
-        starPoints = DrawHelper.makeStar(size, vertices);
+        starPoints = Star.makeStar(size, vertices);
     }
 
     @Override
@@ -43,12 +43,13 @@ public class MainView extends View {
         center.y +=ddy;
     }
 
-    protected void rotateStar(double alfa){
+    protected void rotateStar(double alfa){//функция для вращения звезды
         double cos = Math.cos(alfa);
         double sin = Math.sin(alfa);
         for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             double ox = point.x,oy = point.y;
-            point.x = ((ox - center.x)*cos - (oy - center.y)*sin + center.x);
+            point.x = ((ox - center.x)*cos - (oy - center.y)*sin + center.x);//Формула матрицы поворота в двумерном пространстве.
+            // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
             point.y = ((ox - center.x)*sin + (oy - center.y)*cos + center.y);
         }
     }
@@ -62,12 +63,12 @@ public class MainView extends View {
         //DrawHelper.drawStar(0.8,5);
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-        DrawHelper.drawStar(starPoints);
+        Star.drawStar(starPoints);//вызов функции отрисовки звезды
 
-        if(center.x >= end|| center.x <= begin)
-            speed = -speed;
-        moveStar(speed,0);
-        rotateStar(alfa);
+        if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака
+            speed = -speed;//если - присевается 2 раза, то он преобразуется в +
+        moveStar(speed,0);//вызов функции движения звезды
+        rotateStar(alfa);//вызов функции вращения звезды
     }
 }
 

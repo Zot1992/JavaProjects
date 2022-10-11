@@ -30,7 +30,7 @@ public class DrawHelper {
         glEnd();
     }
 
-    public static void drawStar(double size, int vertices) {drawStar(makeStar(size, vertices));}//объединение всей конструкции кода звезды для ее норм вызова
+    /*public static void drawStar(double size, int vertices) {drawStar(makeStar(size, vertices));}//объединение всей конструкции кода звезды для ее норм вызова
 
     public static Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
         Coordinate[] points = new Coordinate[vertices];
@@ -54,5 +54,5 @@ public class DrawHelper {
         }
 
         glEnd();// конец отрисовки. Работает в паре с glBegin
-    }
+    } */
 }
