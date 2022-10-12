@@ -7,6 +7,8 @@ import com.tfkfan.figure.circle.Circle;
 import com.tfkfan.figure.circle.LinedCircle;
 import com.vividsolutions.jts.geom.Coordinate;
 
+import java.util.Random;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
@@ -32,6 +34,7 @@ public class MainView extends View {
         if (count >= 100) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
+            circle.setRadius(new Random().nextDouble());
         }
         circle.draw();
        /*

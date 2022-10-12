@@ -4,14 +4,14 @@ import com.vividsolutions.jts.geom.Coordinate;
 
 public abstract class AbstractCircle implements Circle {
     protected final Coordinate center;
-    protected final double radius;
+    protected double radius;
     protected int partition;
 
     protected double deltaAngle;
 
     public AbstractCircle(Coordinate center, double radius, int partition) {
         this.center = center;
-        this.radius = radius;
+        this.setRadius(radius);
         this.setPartition(partition);
     }
 
@@ -25,6 +25,11 @@ public abstract class AbstractCircle implements Circle {
     public void setPartition(int partition) {
         this.partition = partition;
         this.deltaAngle = 2 * Math.PI / partition;
+    }
+
+    @Override
+    public void setRadius(double radius) {
+        this.radius = radius;
     }
 
     @Override

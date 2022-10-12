@@ -8,4 +8,6 @@ public interface Circle extends Figure {
     int partition();
 
     Coordinate center();
+
+    void setRadius(double radius);
 }
