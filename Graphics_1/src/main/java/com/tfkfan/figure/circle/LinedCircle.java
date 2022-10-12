@@ -5,7 +5,7 @@ import com.vividsolutions.jts.geom.Coordinate;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glEnd;
 
-public class LinedCircle extends AbstractCircle implements Circle {
+public class LinedCircle extends AbstractCircle{
 
     public LinedCircle(Coordinate center, double radius, int partition) {
         super(center,radius,partition);
