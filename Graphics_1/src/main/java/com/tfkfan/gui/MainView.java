@@ -9,50 +9,12 @@ import com.vividsolutions.jts.geom.Coordinate;
 import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
-    private Coordinate[] starPoints;
-    int vertices = 5;
-    double size = 0.5d;
-    double begin = -0.5;
-    double end = 0.5;
-    Coordinate center = new Coordinate();
-    double speed = 0.005;
-    double alfa = 0.05;
+
 
     public MainView() {
-        starPoints = Star.makeStar(size, vertices);
     }
 
-    @Override
-    public void onKeyboardInput(int code) { //ОБРАБОТЧИК СОБЫТИЯ ВВОДА С КЛАВИАТУРЫ
-        if (code == Constants.W) //если мы с клавиатуры вводим W
-            moveStar(0, Constants.dy);//то точки координаты увеличиваются на заданное значение dy с каждым нажатием по оси y
-        if (code == Constants.S)//если мы с клавиатуры вводим S
-            moveStar(0, -Constants.dy);//то точки координаты уменьшаются на заданное значение dy с каждым нажатием по оси y
-        if (code == Constants.A)//если мы с клавиатуры вводим A
-            moveStar(-Constants.dx, 0);//то точки координаты уменьшаются на заданное значение dx с каждым нажатием по оси x
-        if (code == Constants.D)//если мы с клавиатуры вводим D
-            moveStar(Constants.dx, 0);//то точки координаты увеличиваются на заданное значение dx с каждым нажатием по оси x
-    }
 
-    protected void moveStar(double ddx, double ddy) {// функция для движения звезды
-        for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
-            starPoint.y += ddy;
-            starPoint.x += ddx;
-        }
-        center.x +=ddx;
-        center.y +=ddy;
-    }
-
-    protected void rotateStar(double alfa){//функция для вращения звезды
-        double cos = Math.cos(alfa);
-        double sin = Math.sin(alfa);
-        for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
-            double ox = point.x,oy = point.y;
-            point.x = ((ox - center.x)*cos - (oy - center.y)*sin + center.x);//Формула матрицы поворота в двумерном пространстве.
-            // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
-            point.y = ((ox - center.x)*sin + (oy - center.y)*cos + center.y);
-        }
-    }
 
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
@@ -63,12 +25,12 @@ public class MainView extends View {
         //DrawHelper.drawStar(0.8,5);
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-        Star.drawStar(starPoints);//вызов функции отрисовки звезды
+       /*
 
         if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака
             speed = -speed;//если - присевается 2 раза, то он преобразуется в +
         moveStar(speed,0);//вызов функции движения звезды
-        rotateStar(alfa);//вызов функции вращения звезды
+        rotateStar(alfa);//вызов функции вращения звезды*/
     }
 }
 
