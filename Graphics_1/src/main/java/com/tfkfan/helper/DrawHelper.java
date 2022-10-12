@@ -16,17 +16,4 @@ public class DrawHelper {
         glEnd();
     }
 
-    public static void drawCircle(double centerX, double centerY, double radius, int partition) { //код круга
-        double deltaAngle = 2 * Math.PI / partition;//нахождение угла для круга.2*Math.PI-что бы получить 360 градусов.
-
-        glBegin(GL_LINE_STRIP);// чертит линии с заливкой
-
-        for (int i = -1; i < partition; i++) { //цикл обходит каждый полигон, еще делаем второй ряд полигонов +1 чтобы круг был цельным
-            double x = Math.cos(deltaAngle * i) * radius + centerX;
-            double y = Math.sin(deltaAngle * i) * radius + centerY;
-            glVertex2d(x, y);
-        }
-
-        glEnd();
-    }
 }

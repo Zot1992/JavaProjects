@@ -1,4 +1,4 @@
-package com.tfkfan.star;
+package com.tfkfan.figure.star;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import static org.lwjgl.opengl.GL11.*;
