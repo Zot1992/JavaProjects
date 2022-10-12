@@ -9,15 +9,21 @@ public abstract class AbstractStar implements Star{
     protected double end;
     protected double speed;
     protected double alfa;
+    protected double deltaAngle;
     protected Coordinate[] starPoints;
     protected final Coordinate center;
 
-    public AbstractStar(Coordinate center) {
+    public AbstractStar(Coordinate center,int vertices) {
         this.center = center;
+        this.setVertices(vertices);
     }
 
 
-
+    @Override
+    public void setVertices(int vertices){
+        this.vertices=vertices;
+        this.deltaAngle=2 * Math.PI / vertices;
+    }
 
     @Override
     public void move(double dx, double dy) {
@@ -27,6 +33,10 @@ public abstract class AbstractStar implements Star{
         }
         center.x +=dx;
         center.y +=dy;
+    }
+    @Override
+    public Coordinate center() {
+        return center;
     }
 }
 

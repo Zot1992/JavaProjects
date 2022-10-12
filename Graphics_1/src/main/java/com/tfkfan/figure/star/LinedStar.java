@@ -26,6 +26,9 @@ public class LinedStar extends AbstractStar{
         this.speed=speed;
         this.alfa=alfa;
     }
+
+    public  void drawStar(){drawStar(makeStar(size,vertices));}
+
     public  Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
         Coordinate[] points = new Coordinate[vertices];
         double x, y;
