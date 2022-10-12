@@ -5,19 +5,11 @@ import com.vividsolutions.jts.geom.Coordinate;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glEnd;
 
-public class LinedCircle implements Circle {
-    private final Coordinate center;
-    private final double radius;
-    private int partition;
-
-    private double deltaAngle;
+public class LinedCircle extends AbstractCircle implements Circle {
 
     public LinedCircle(Coordinate center, double radius, int partition) {
-        this.center = center;
-        this.radius = radius;
-        this.setPartition(partition);
+        super(center,radius,partition);
     }
-
 
     @Override
     public void draw() {
@@ -28,28 +20,5 @@ public class LinedCircle implements Circle {
                     Math.sin(deltaAngle * i) * radius + center.y);
 
         glEnd();
-
-    }
-
-    @Override
-    public void move(double dx, double dy) {
-        center.x += dx;
-        center.y += dy;
-    }
-
-    @Override
-    public void setPartition(int partition) {
-        this.partition = partition;
-        this.deltaAngle = 2 * Math.PI / partition;
-    }
-
-    @Override
-    public int partition() {
-        return partition;
-    }
-
-    @Override
-    public Coordinate center() {
-        return center;
     }
 }
