@@ -18,7 +18,7 @@ public class LinedCircle extends AbstractCircle {
     public void draw() {
         glBegin(GL_LINE_STRIP);// чертит линии с заливкой
 
-        for (int i = -1; i < partition; i++) //цикл обходит каждый полигон, еще делаем второй ряд полигонов +1 чтобы круг был цельным
+        for (int i = -1; i < partition; i++) //цикл обходит каждый полигон
             glVertex2d(Math.cos(deltaAngle * i) * radius + center.x,
                     Math.sin(deltaAngle * i) * radius + center.y);
 

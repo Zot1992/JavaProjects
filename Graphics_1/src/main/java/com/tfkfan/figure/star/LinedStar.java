@@ -2,10 +2,10 @@ package com.tfkfan.figure.star;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.glBegin;
 
 
-
-public class LinedStar implements Star{
+public class LinedStar extends AbstractStar{
 
     private Coordinate[] starPoints;
     public int vertices = 5;
@@ -51,7 +51,9 @@ public class LinedStar implements Star{
 
     @Override //позволяет изменить параметры метода
     public void draw() {
+        glBegin(GL_LINE_LOOP);
 
+        glEnd();
     }
 
     protected void rotateStar(double alfa){//функция для вращения звезды
@@ -65,14 +67,6 @@ public class LinedStar implements Star{
         }
     }
 
-    @Override
-    public void move(double dx, double dy) {
-        for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
-            starPoint.y += dy;
-            starPoint.x += dx;
-        }
-        center.x +=dx;
-        center.y +=dy;
-    }
+
 }
 
