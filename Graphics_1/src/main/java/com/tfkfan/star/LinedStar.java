@@ -26,9 +26,6 @@ public class LinedStar implements Star{
         this.speed=speed;
         this.alfa=alfa;
     }
-
-    public  void drawStar(double size, int vertices) {drawStar(makeStar(size, vertices));}//объединение всей конструкции кода звезды для ее норм вызова
-
     public  Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
         Coordinate[] points = new Coordinate[vertices];
         double x, y;
@@ -54,7 +51,7 @@ public class LinedStar implements Star{
 
     @Override //позволяет изменить параметры метода
     public void draw() {
-        drawStar(size,vertices);
+
     }
 
     protected void rotateStar(double alfa){//функция для вращения звезды
