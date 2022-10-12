@@ -13,7 +13,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
 
-    private final Circle circle = new LinedCircle(new Coordinate(), 0.3, 2);
+    private final Circle circle = new LinedCircle(0.3, 2);
     int count = 0;
 
     public MainView() {

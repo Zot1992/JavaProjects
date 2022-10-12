@@ -9,6 +9,12 @@ public abstract class AbstractCircle implements Circle {
 
     protected double deltaAngle;
 
+    public AbstractCircle(double radius, int partition) {
+        this.center = new Coordinate();
+        this.setRadius(radius);
+        this.setPartition(partition);
+    }
+
     public AbstractCircle(Coordinate center, double radius, int partition) {
         this.center = center;
         this.setRadius(radius);
