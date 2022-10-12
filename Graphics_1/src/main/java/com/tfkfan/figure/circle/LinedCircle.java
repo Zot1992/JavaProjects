@@ -6,11 +6,11 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glEnd;
 
 public class LinedCircle implements Circle {
-    final Coordinate center;
-    final double radius;
-    int partition;
+    private final Coordinate center;
+    private final double radius;
+    private int partition;
 
-     double deltaAngle;
+    private double deltaAngle;
 
     public LinedCircle(Coordinate center, double radius, int partition) {
         this.center = center;
