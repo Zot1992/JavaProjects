@@ -3,18 +3,19 @@
 
 package com.tfkfan.gui;
 
-import com.tfkfan.shared.Constants;
+import com.tfkfan.figure.circle.Circle;
+import com.tfkfan.figure.circle.LinedCircle;
 import com.vividsolutions.jts.geom.Coordinate;
 
 import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
 
+    private final Circle circle = new LinedCircle(new Coordinate(), 0.3, 2);
+    int count = 0;
 
     public MainView() {
     }
-
-
 
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
@@ -25,6 +26,14 @@ public class MainView extends View {
         //DrawHelper.drawStar(0.8,5);
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
+
+
+        count++;
+        if (count >= 100) {
+            count = 0;
+            circle.setPartition(circle.partition() + 1);
+        }
+        circle.draw();
        /*
 
         if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака

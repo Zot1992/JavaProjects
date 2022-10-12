@@ -8,15 +8,14 @@ import static org.lwjgl.opengl.GL11.glEnd;
 public class LinedCircle implements Circle {
     final Coordinate center;
     final double radius;
-    final int partition;
+    int partition;
 
-    final double deltaAngle;
+     double deltaAngle;
 
     public LinedCircle(Coordinate center, double radius, int partition) {
         this.center = center;
         this.radius = radius;
-        this.partition = partition;
-        this.deltaAngle = 2 * Math.PI / partition;//нахождение угла для круга.2*Math.PI-что бы получить 360 градусов.
+        this.setPartition(partition);
     }
 
 
@@ -34,6 +33,23 @@ public class LinedCircle implements Circle {
 
     @Override
     public void move(double dx, double dy) {
+        center.x += dx;
+        center.y += dy;
+    }
 
+    @Override
+    public void setPartition(int partition) {
+        this.partition = partition;
+        this.deltaAngle = 2 * Math.PI / partition;
+    }
+
+    @Override
+    public int partition() {
+        return partition;
+    }
+
+    @Override
+    public Coordinate center() {
+        return center;
     }
 }
