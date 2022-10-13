@@ -25,10 +25,6 @@ public class LinedStar extends AbstractStar {
         super(starPoints, size, vertices);
     }
 
-    public void drawStar() {
-        drawStar(makeStar(size, vertices));
-    }
-
     public Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
         Coordinate[] points = new Coordinate[vertices];
         double x, y;
