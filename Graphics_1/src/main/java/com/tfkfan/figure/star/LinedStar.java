@@ -16,16 +16,19 @@ public class LinedStar extends AbstractStar{
     public double speed = 0.005;
     public double alfa = 0.05;
 
-    public LinedStar(){}
-
-    public LinedStar(int vertices,double size,double begin,double end,double speed,double alfa){
-        this.vertices=vertices;
-        this.size=size;
-        this.begin=begin;
-        this.end=end;
-        this.speed=speed;
-        this.alfa=alfa;
+    public LinedStar(double size, int vertices){
+        super(size,vertices);
     }
+
+    public LinedStar(Coordinate [] starPoints,int vertices){
+        super(starPoints,vertices);
+    }
+
+    public LinedStar(Coordinate center,double alfa){
+        super(center,alfa);
+    }
+
+
 
     public  void drawStar(){drawStar(makeStar(size,vertices));}
 
@@ -69,7 +72,5 @@ public class LinedStar extends AbstractStar{
             point.y = ((ox - center.x)*sin + (oy - center.y)*cos + center.y);
         }
     }
-
-
 }
 
