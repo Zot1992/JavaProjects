@@ -8,15 +8,6 @@ import static org.lwjgl.opengl.GL11.glBegin;
 
 public class LinedStar extends AbstractStar {
 
-    private Coordinate[] starPoints;
-    public int vertices = 5;
-    public double size = 0.5d;
-    public double begin = -0.5;
-    public double end = 0.5;
-    Coordinate center = new Coordinate();
-    public double speed = 0.005;
-    public double alfa = 0.05;
-
     public LinedStar(double size, int vertices) {
         super(size, vertices);
     }
@@ -25,18 +16,30 @@ public class LinedStar extends AbstractStar {
         super(starPoints, size, vertices);
     }
 
-    public Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
-        Coordinate[] points = new Coordinate[vertices];
-        double x, y;
-        double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+    public class Star{
+        double size;
+        int vertices;
+        Coordinate[] points;
 
-        for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
-            x = Math.cos(deltaAngleR * i) * size;
-            y = Math.sin(deltaAngleR * i) * size;
-            points[i] = new Coordinate(x, y);
+        public Star(double size, int vertices){
+            this.size=size;
+            this.vertices=vertices;
+            this.points = new Coordinate[vertices];
         }
-        return points;
+        public Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
+            //Coordinate[] points = new Coordinate[vertices];
+            double x, y;
+            double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+
+            for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
+                x = Math.cos(deltaAngleR * i) * size;
+                y = Math.sin(deltaAngleR * i) * size;
+                points[i] = new Coordinate(x, y);
+            }
+            return points;
+        }
     }
+
 
     public void drawStar(Coordinate[] points) { //код на звезды(смещение точек и отрисовка их на экране)
         glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
@@ -67,4 +70,12 @@ public class LinedStar extends AbstractStar {
         }
     }
 }
+   /* private Coordinate[] starPoints;
+    public int vertices = 5;
+    public double size = 0.5d;
+    public double begin = -0.5;
+    public double end = 0.5;
+    Coordinate center = new Coordinate();
+    public double speed = 0.005;
+    public double alfa = 0.05;*/
 
