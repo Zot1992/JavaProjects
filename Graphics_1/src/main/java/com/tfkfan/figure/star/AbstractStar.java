@@ -3,11 +3,15 @@ package com.tfkfan.figure.star;
 import com.vividsolutions.jts.geom.Coordinate;
 
 public abstract class AbstractStar implements Star {
+    /* Абстрактный класс может быть только родительским. В абстрактном классе можно писать только абстрактные методы. В классах наследниках реализуются эти
+    абстрактные методы*/
     protected int vertices;
     protected double size;
     protected double deltaAngle;
     protected Coordinate[] starPoints;
     protected Coordinate center;
+
+
 
     public AbstractStar(double size, int vertices) {
         this.starPoints = new Coordinate[vertices];
@@ -15,11 +19,20 @@ public abstract class AbstractStar implements Star {
         this.setSize(size);
     }
 
-    public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
+
+    /*public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
         this.starPoints = starPoints;
         this.setVertices(vertices);
         this.setSize(size);
+    }*/
+
+    public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
+        this.starPoints = makeStar(size,vertices);
+        this.setVertices(vertices);
+        this.setSize(size);
     }
+
+    public abstract Coordinate[] makeStar(double size, int vertices);// В абстрактном методе нет реализации. Реализуются они в классе наследнике
 
     @Override
     public void setVertices(int vertices) {

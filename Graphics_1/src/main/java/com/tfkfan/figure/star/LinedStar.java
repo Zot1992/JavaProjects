@@ -16,7 +16,21 @@ public class LinedStar extends AbstractStar {
         super(starPoints, size, vertices);
     }
 
-    public class Star{
+    @Override
+    public Coordinate[] makeStar(double size, int vertices) {
+        Coordinate[] points = new Coordinate[vertices];
+        double x, y;
+        double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+
+        for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
+            x = Math.cos(deltaAngleR * i) * size;
+            y = Math.sin(deltaAngleR * i) * size;
+            points[i] = new Coordinate(x, y);
+        }
+        return points;
+    }
+
+    /*public class Star{ // конструктор
         double size;
         int vertices;
         Coordinate[] points;
@@ -24,10 +38,10 @@ public class LinedStar extends AbstractStar {
         public Star(double size, int vertices){
             this.size=size;
             this.vertices=vertices;
-            this.points = new Coordinate[vertices];
+            this.points = makeStar(size,vertices);
         }
         public Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
-            //Coordinate[] points = new Coordinate[vertices];
+            Coordinate[] points = new Coordinate[vertices];
             double x, y;
             double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
 
@@ -38,7 +52,7 @@ public class LinedStar extends AbstractStar {
             }
             return points;
         }
-    }
+    }*/
 
 
     public void drawStar(Coordinate[] points) { //код на звезды(смещение точек и отрисовка их на экране)
@@ -55,7 +69,7 @@ public class LinedStar extends AbstractStar {
     @Override //позволяет изменить параметры метода
     public void draw() {
         glBegin(GL_LINE_LOOP);
-
+        drawStar(starPoints);
         glEnd();
     }
 

@@ -46,3 +46,14 @@ public class MainView extends View {
     }
 }
 
+/* private Coordinate[] starPoints; параметры звезды
+    public int vertices = 5;
+    public double size = 0.5d;
+    public double begin = -0.5;
+    public double end = 0.5;
+    Coordinate center = new Coordinate();
+    public double speed = 0.005;
+    public double alfa = 0.05;*/
+
+
+
