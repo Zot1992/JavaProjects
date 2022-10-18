@@ -5,6 +5,9 @@ package com.tfkfan.gui;
 
 import com.tfkfan.figure.circle.Circle;
 import com.tfkfan.figure.circle.LinedCircle;
+import com.tfkfan.figure.star.FilledStar;
+import com.tfkfan.figure.star.LinedStar;
+import com.tfkfan.figure.star.Star;
 import com.vividsolutions.jts.geom.Coordinate;
 
 import java.util.Random;
@@ -14,6 +17,8 @@ import static org.lwjgl.opengl.GL11.*;
 public class MainView extends View {
 
     private final Circle circle = new LinedCircle(0.3, 2);
+    private final Star lstar=new LinedStar(0.5,5);
+    private final Star fstar=new FilledStar(0.5,5);
     int count = 0;
 
     public MainView() {
@@ -30,13 +35,17 @@ public class MainView extends View {
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
 
 
-        count++;
+
+
+
+        /*count++;
         if (count >= 100) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
             circle.setRadius(new Random().nextDouble());
         }
-        circle.draw();
+        circle.draw(); */
+
        /*
 
         if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака

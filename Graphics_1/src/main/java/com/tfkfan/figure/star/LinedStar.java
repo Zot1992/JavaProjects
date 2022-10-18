@@ -16,72 +16,15 @@ public class LinedStar extends AbstractStar {
         super(starPoints, size, vertices);
     }
 
-    @Override
-    public Coordinate[] makeStar(double size, int vertices) {
-        Coordinate[] points = new Coordinate[vertices];
-        double x, y;
-        double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
-
-        for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
-            x = Math.cos(deltaAngleR * i) * size;
-            y = Math.sin(deltaAngleR * i) * size;
-            points[i] = new Coordinate(x, y);
-        }
-        return points;
-    }
-
-    /*public class Star{ // конструктор
-        double size;
-        int vertices;
-        Coordinate[] points;
-
-        public Star(double size, int vertices){
-            this.size=size;
-            this.vertices=vertices;
-            this.points = makeStar(size,vertices);
-        }
-        public Coordinate[] makeStar(double size, int vertices) { //код на звезды(позиции точек)
-            Coordinate[] points = new Coordinate[vertices];
-            double x, y;
-            double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
-
-            for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
-                x = Math.cos(deltaAngleR * i) * size;
-                y = Math.sin(deltaAngleR * i) * size;
-                points[i] = new Coordinate(x, y);
-            }
-            return points;
-        }
-    }*/
-
-
-    public void drawStar(Coordinate[] points) { //код на звезды(смещение точек и отрисовка их на экране)
-        glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
-        int vertices = points.length;
-        for (int i = 0; i < points.length; i++) {
-            int shift = (i * 2) % vertices;   //Точки выводим со смещением на 2
-            glVertex2d(points[shift].x, points[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
-        }
-
-        glEnd();// конец отрисовки. Работает в паре с glBegin
-    }
-
     @Override //позволяет изменить параметры метода
-    public void draw() {
-        glBegin(GL_LINE_LOOP);
-        drawStar(starPoints);
-        glEnd();
-    }
-
-    protected void rotateStar(double alfa) {//функция для вращения звезды
-        double cos = Math.cos(alfa);
-        double sin = Math.sin(alfa);
-        for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
-            double ox = point.x, oy = point.y;
-            point.x = ((ox - center.x) * cos - (oy - center.y) * sin + center.x);//Формула матрицы поворота в двумерном пространстве.
-            // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
-            point.y = ((ox - center.x) * sin + (oy - center.y) * cos + center.y);
+    public void draw() {  //код на звезды(смещение точек и отрисовка их на экране)
+        glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
+        int vertices = starPoints.length;
+        for (int i = 0; i < starPoints.length; i++) {
+            int shift = (i * 2) % vertices;   //Точки выводим со смещением на 2
+            glVertex2d(starPoints[shift].x,starPoints[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
         }
+        glEnd();
     }
 }
    /* private Coordinate[] starPoints;

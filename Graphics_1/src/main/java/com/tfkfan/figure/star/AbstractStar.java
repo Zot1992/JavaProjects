@@ -11,20 +11,12 @@ public abstract class AbstractStar implements Star {
     protected Coordinate[] starPoints;
     protected Coordinate center;
 
-
-
     public AbstractStar(double size, int vertices) {
         this.starPoints = new Coordinate[vertices];
+        this.center = new Coordinate();
         this.setVertices(vertices);
         this.setSize(size);
     }
-
-
-    /*public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
-        this.starPoints = starPoints;
-        this.setVertices(vertices);
-        this.setSize(size);
-    }*/
 
     public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
         this.starPoints = makeStar(size,vertices);
@@ -32,7 +24,37 @@ public abstract class AbstractStar implements Star {
         this.setSize(size);
     }
 
-    public abstract Coordinate[] makeStar(double size, int vertices);// В абстрактном методе нет реализации. Реализуются они в классе наследнике
+    /*public AbstractStar(Coordinate center,double alfa,double size, int vertices){
+        this.center=center;
+        rotateStar(alfa);
+        this.setVertices(vertices);
+        this.setSize(size);
+    }*/
+
+
+    public Coordinate[] makeStar(double size, int vertices) {
+        Coordinate[] points = new Coordinate[vertices];
+        double x, y;
+        double deltaAngleR = 2 * Math.PI / vertices;//нахождение угла для звезды.2*Math.PI-что бы получить 360 градусов.
+
+        for (int i = 0; i < points.length; i++) { //цикл обходит каждый полигон
+            x = Math.cos(deltaAngleR * i) * size;
+            y = Math.sin(deltaAngleR * i) * size;
+            points[i] = new Coordinate(x, y);
+        }
+        return points;
+    }
+
+    public void rotateStar(double alfa) {//функция для вращения звезды
+        double cos = Math.cos(alfa);
+        double sin = Math.sin(alfa);
+        for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
+            double ox = point.x, oy = point.y;
+            point.x = ((ox - center.x) * cos - (oy - center.y) * sin + center.x);//Формула матрицы поворота в двумерном пространстве.
+            // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
+            point.y = ((ox - center.x) * sin + (oy - center.y) * cos + center.y);
+        }
+    }
 
     @Override
     public void setVertices(int vertices) {
