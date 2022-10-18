@@ -13,7 +13,7 @@ public abstract class AbstractStar implements Star {
 
     public AbstractStar(double size, int vertices) {
         this.starPoints = new Coordinate[vertices];
-        this.center = new Coordinate();
+        //this.center = new Coordinate();
         this.setVertices(vertices);
         this.setSize(size);
     }

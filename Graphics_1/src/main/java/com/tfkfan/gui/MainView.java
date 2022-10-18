@@ -34,8 +34,10 @@ public class MainView extends View {
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
 
-
-
+        lstar.draw();
+        //fstar.draw();
+        //lstar.move(0.005,0);
+        //circle.draw();
 
 
         /*count++;

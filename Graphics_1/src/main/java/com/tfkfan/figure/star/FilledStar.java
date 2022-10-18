@@ -17,7 +17,7 @@ public class FilledStar extends AbstractStar{
 
     @Override
     public void draw() {
-        glBegin(GL_POLYGON);
+        glBegin(GL_LINE_STRIP);
         int vertices = starPoints.length;
         for (int i = 0; i < starPoints.length; i++) {
             int shift = (i * 2) % vertices;   //Точки выводим со смещением на 2
