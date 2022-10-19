@@ -20,9 +20,12 @@ public class MainView extends View {
     private final Star lstar=new LinedStar(0.5,5);
     private final Star fstar=new FilledStar(0.5,5);
     int count = 0;
+    double current=0;
+    double begin = -0.5;
+    double end = 0.5;
+    double speed=0.005;
 
-    public MainView() {
-    }
+    public MainView() {}
 
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
@@ -34,9 +37,15 @@ public class MainView extends View {
 
         glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
 
-        lstar.draw();
+        lstar.draw();//вызов функции на отрисовку звезды линиями
         //fstar.draw();
-        //lstar.move(0.005,0);
+
+        if(current<=begin||current>=end){ //код на смену хода движения звезды
+            speed=-speed;
+        }
+        current+=speed;
+        lstar.move(speed,0,0.025);//вызов функции движения звезды
+
         //circle.draw();
 
 

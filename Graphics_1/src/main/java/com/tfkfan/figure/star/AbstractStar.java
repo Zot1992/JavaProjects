@@ -11,26 +11,21 @@ public abstract class AbstractStar implements Star {
     protected Coordinate[] starPoints;
     protected Coordinate center;
 
-    public AbstractStar(double size, int vertices) {
+    public AbstractStar(double size,int vertices) {
         this.starPoints = new Coordinate[vertices];
-        //this.center = new Coordinate();
-        this.setVertices(vertices);
-        this.setSize(size);
-    }
-
-    public AbstractStar(Coordinate[] starPoints, double size, int vertices) {
         this.starPoints = makeStar(size,vertices);
+        this.center = new Coordinate();
         this.setVertices(vertices);
         this.setSize(size);
     }
 
-    /*public AbstractStar(Coordinate center,double alfa,double size, int vertices){
-        this.center=center;
-        rotateStar(alfa);
+    public AbstractStar(Coordinate[] starPoints,Coordinate center, double size, int vertices) {
+        this.starPoints = starPoints;
+        this.starPoints = makeStar(size,vertices);
+        this.center = center;
         this.setVertices(vertices);
         this.setSize(size);
-    }*/
-
+    }
 
     public Coordinate[] makeStar(double size, int vertices) {
         Coordinate[] points = new Coordinate[vertices];
@@ -88,13 +83,14 @@ public abstract class AbstractStar implements Star {
     }
 
     @Override
-    public void move(double dx, double dy) {
+    public void move(double dx, double dy,double alfa) {
         for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             starPoint.y += dy;
             starPoint.x += dx;
         }
         center.x += dx;
         center.y += dy;
+        rotateStar(alfa);
     }
 }
 

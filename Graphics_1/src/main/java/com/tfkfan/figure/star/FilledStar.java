@@ -8,16 +8,16 @@ import static org.lwjgl.opengl.GL11.glEnd;
 public class FilledStar extends AbstractStar{
 
     public FilledStar(double size, int vertices) {
-        super(size, vertices);
+        super(size,vertices);
     }
 
-    public FilledStar(Coordinate[] starPoints, double size, int vertices) {
-        super(starPoints, size, vertices);
+    public FilledStar(Coordinate[] starPoints,Coordinate center, double size, int vertices) {
+        super(starPoints,center,size,vertices);
     }
 
     @Override
     public void draw() {
-        glBegin(GL_LINE_STRIP);
+        glBegin(GL_POLYGON);
         int vertices = starPoints.length;
         for (int i = 0; i < starPoints.length; i++) {
             int shift = (i * 2) % vertices;   //Точки выводим со смещением на 2

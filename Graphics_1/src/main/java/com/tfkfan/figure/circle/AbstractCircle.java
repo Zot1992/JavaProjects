@@ -22,7 +22,7 @@ public abstract class AbstractCircle implements Circle {
     }
 
     @Override
-    public void move(double dx, double dy) {
+    public void move(double dx, double dy,double alfa) {
         center.x += dx;
         center.y += dy;
     }

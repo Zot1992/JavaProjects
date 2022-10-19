@@ -12,8 +12,8 @@ public class LinedStar extends AbstractStar {
         super(size, vertices);
     }
 
-    public LinedStar(Coordinate[] starPoints, double size, int vertices) {
-        super(starPoints, size, vertices);
+    public LinedStar(Coordinate[] starPoints,Coordinate center, double size, int vertices) {
+        super(starPoints,center, size, vertices);
     }
 
     @Override //позволяет изменить параметры метода
