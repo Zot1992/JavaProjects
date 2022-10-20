@@ -12,8 +12,8 @@ public class LinedStar extends AbstractStar {
         super(size, vertices);
     }
 
-    public LinedStar(Coordinate[] starPoints,Coordinate center, double size, int vertices) {
-        super(starPoints,center, size, vertices);
+    public LinedStar(Coordinate center, double size, int vertices) {
+        super(center, size, vertices);
     }
 
     @Override //позволяет изменить параметры метода
@@ -27,12 +27,5 @@ public class LinedStar extends AbstractStar {
         glEnd();
     }
 }
-   /* private Coordinate[] starPoints;
-    public int vertices = 5;
-    public double size = 0.5d;
-    public double begin = -0.5;
-    public double end = 0.5;
-    Coordinate center = new Coordinate();
-    public double speed = 0.005;
-    public double alfa = 0.05;*/
+
 

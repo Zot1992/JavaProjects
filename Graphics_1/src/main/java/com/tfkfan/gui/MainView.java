@@ -44,8 +44,8 @@ public class MainView extends View {
             speed=-speed;
         }
         current+=speed;
-        lstar.move(speed,0,0.025);//вызов функции движения звезды
-
+        lstar.move(speed,0);//вызов функции движения звезды
+        lstar.rotate(0.025);
         //circle.draw();
 
 

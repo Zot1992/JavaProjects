@@ -11,5 +11,4 @@ public interface Star extends Figure { //полностью абстрактны
     int vertices();
 
     Coordinate center();
-    Coordinate[] starPoints();
 }

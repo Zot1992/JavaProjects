@@ -22,9 +22,19 @@ public abstract class AbstractCircle implements Circle {
     }
 
     @Override
-    public void move(double dx, double dy,double alfa) {
+    public void move(double dx, double dy) {
         center.x += dx;
         center.y += dy;
+    }
+
+    @Override
+    public void rotate(double alfa) {
+        /*double cos = Math.cos(alfa);
+        double sin = Math.sin(alfa);
+        double ox = point.x, oy = point.y;
+        point.x = ((ox - center.x) * cos - (oy - center.y) * sin + center.x);//Формула матрицы поворота в двумерном пространстве.
+        // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
+        point.y = ((ox - center.x) * sin + (oy - center.y) * cos + center.y);*/
     }
 
     @Override

@@ -11,8 +11,8 @@ public class FilledStar extends AbstractStar{
         super(size,vertices);
     }
 
-    public FilledStar(Coordinate[] starPoints,Coordinate center, double size, int vertices) {
-        super(starPoints,center,size,vertices);
+    public FilledStar(Coordinate center, double size, int vertices) {
+        super(center,size,vertices);
     }
 
     @Override

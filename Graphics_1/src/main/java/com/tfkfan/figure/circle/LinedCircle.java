@@ -24,4 +24,6 @@ public class LinedCircle extends AbstractCircle {
 
         glEnd();
     }
+
+
 }
