@@ -2,6 +2,7 @@ package com.tfkfan.figure.circle;
 
 import com.tfkfan.figure.AbstractFigure;
 import com.vividsolutions.jts.geom.Coordinate;
+
 public abstract class AbstractCircle extends AbstractFigure implements Circle {
     protected double radius;
     protected int partition;
@@ -30,8 +31,7 @@ public abstract class AbstractCircle extends AbstractFigure implements Circle {
 
     @Override
     public void move(double dx, double dy) {
-        center.x += dx;
-        center.y += dy;
+        super.move(dx, dy);
         for (Coordinate point : points) {
             point.x += dx;
             point.y += dy;

@@ -47,6 +47,7 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
     public void setSize(double size) {
         this.size = size;
     }
+
     @Override
     public int vertices() {
         return vertices;
@@ -59,12 +60,11 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
 
     @Override
     public void move(double dx, double dy) {
+        super.move(dx, dy);
         for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             starPoint.y += dy;
             starPoint.x += dx;
         }
-        center.x += dx;
-        center.y += dy;
     }
 
     @Override

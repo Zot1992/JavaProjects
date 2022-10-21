@@ -16,4 +16,10 @@ public abstract class AbstractFigure implements Figure{
     public Coordinate center() {
         return center;
     }
+
+    @Override
+    public void move(double dx, double dy) {
+        center.x += dx;
+        center.y += dy;
+    }
 }
