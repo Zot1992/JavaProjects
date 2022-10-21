@@ -23,37 +23,25 @@ public class FilledStar extends AbstractStar {
         int vertices = starPoints.length;
         Vector2D v1, v2;
         glBegin(GL_TRIANGLES);
-        for (int i = 0; i < vertices - 1; i++) { //цикл обходит каждый полигон
-            v1 = new Vector2D(starPoints[i].x - center.x, starPoints[i].y - center.y);
-            v2 = new Vector2D(starPoints[i + 1].x - center.x, starPoints[i + 1].y - center.y);
+        for (int i = 0; i < vertices; i++) { //цикл обходит каждый полигон
+            Coordinate current = starPoints[i];
+            Coordinate next = i==(vertices-1) ? starPoints[0] : starPoints[i+1];
+
+            v1 = new Vector2D(current.x - center.x, current.y - center.y);
+            v2 = new Vector2D(next.x - center.x, next.y - center.y);
             a = v1.angleTo(v2);
             x = center.x + Math.cos((a / 2.0 +v1.angle() )) * s;
             y = center.y + Math.sin((a / 2.0 +v1.angle())) * s;
 
-            glVertex2d(starPoints[i].x, starPoints[i].y);
+            glVertex2d(current.x, current.y);
             glVertex2d(x, y);
             glVertex2d(center.x, center.y);
 
-            glVertex2d(starPoints[i + 1].x, starPoints[i + 1].y);
+            glVertex2d(next.x, next.y);
             glVertex2d(x, y);
             glVertex2d(center.x, center.y);
 
         }
-        v1 = new Vector2D(starPoints[vertices - 1].x - center.x, starPoints[vertices - 1].y - center.y);
-        v2 = new Vector2D(starPoints[0].x - center.x, starPoints[0].y - center.y);
-        a = v1.angleTo(v2);
-
-        x = center.x + Math.cos(a / 2 + v1.angle()) * s;
-        y = center.y + Math.sin(a / 2 + v1.angle()) * s;
-
-        glVertex2d(starPoints[0].x, starPoints[0].y);
-        glVertex2d(x, y);
-        glVertex2d(center.x, center.y);
-
-        glVertex2d(starPoints[vertices - 1].x, starPoints[vertices - 1].y);
-        glVertex2d(x, y);
-        glVertex2d(center.x, center.y);
-
         glEnd();
     }
 }
