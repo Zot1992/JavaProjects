@@ -39,11 +39,6 @@ public abstract class AbstractCircle extends AbstractFigure implements Circle {
     }
 
     @Override
-    public final void rotate(double alfa) {
-        rotate(center, alfa);
-    }
-
-    @Override
     public void rotate(Coordinate axis, double alfa) {
         double cos = Math.cos(alfa);
         double sin = Math.sin(alfa);

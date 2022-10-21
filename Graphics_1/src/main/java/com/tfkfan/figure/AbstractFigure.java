@@ -22,4 +22,9 @@ public abstract class AbstractFigure implements Figure{
         center.x += dx;
         center.y += dy;
     }
+
+    @Override
+    public void rotate(double alfa) {
+        rotate(center, alfa);
+    }
 }

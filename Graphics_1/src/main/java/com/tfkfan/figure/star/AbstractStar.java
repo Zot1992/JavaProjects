@@ -67,12 +67,6 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
         }
     }
 
-    //Функция вращения звезды вокруг ее центра
-    @Override
-    public void rotate(double alfa) {
-        rotate(center, alfa);
-    }
-
     //функция вращения звезды вокруг произвольной точки
     @Override
     public void rotate(Coordinate axis, double alfa) {
