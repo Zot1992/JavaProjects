@@ -17,15 +17,16 @@ import static org.lwjgl.opengl.GL11.*;
 public class MainView extends View {
 
     private final Circle circle = new LinedCircle(0.3, 2);
-    private final Star lstar=new LinedStar(0.5,5);
-    private final Star fstar=new FilledStar(0.5,5);
+    private final Star lstar = new LinedStar(0.5, 5);
+    private final Star fstar = new FilledStar(0.5, 5);
     int count = 0;
-    double current=0;
+    double current = 0;
     double begin = -0.5;
     double end = 0.5;
-    double speed=0.005;
+    double speed = 0.005;
 
-    public MainView() {}
+    public MainView() {
+    }
 
 
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
@@ -35,18 +36,18 @@ public class MainView extends View {
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
         //DrawHelper.drawStar(0.8,5);
 
-        glColor3f(0.2f, 0.2f, 0.2f);//цвет подвижной точки
-
+        glColor3f(0.2f, 0.2f, 0.2f);
         lstar.draw();//вызов функции на отрисовку звезды линиями
-        //fstar.draw();
+        glColor3f(1.0f, 0.0f, 0.0f);
+        fstar.draw();
 
-        if(current<=begin||current>=end){ //код на смену хода движения звезды
-            speed=-speed;
+        if (current <= begin || current >= end) { //код на смену хода движения звезды
+            speed = -speed;
         }
-        current+=speed;
-        lstar.move(speed,0);//вызов функции движения звезды
+        current += speed;
+        lstar.move(speed, 0);//вызов функции движения звезды
         lstar.rotate(0.025);
-        //circle.draw();
+        fstar.move(0, speed);
 
 
         /*count++;
