@@ -51,7 +51,7 @@ public class MainView extends View {
         fstar.rotate(0.025);*/
 
         count++;
-        if (count >= 100) {
+        if (count >= 1000) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
             if(circle.partition()>5)
@@ -59,7 +59,7 @@ public class MainView extends View {
             circle.setRadius(new Random().nextDouble());
         }
         circle.draw();
-        circle.rotate(0.025);
+        circle.rotate(new Coordinate(0.5,0.5),0.05);
 
        /*
 
