@@ -27,10 +27,9 @@ public class FilledStar extends AbstractStar {
 
             Vector2D v1 = new Vector2D(current.x - center.x, current.y - center.y);
             Vector2D v2 = new Vector2D(next.x - center.x, next.y - center.y);
-            double a1 = v1.angleTo(v2);
-            double a2 = v1.angle();
-            double x = center.x + Math.cos((a1 / 2.0 + a2)) * s;
-            double y = center.y + Math.sin((a1 / 2.0 + a2)) * s;
+            double a = v1.angleTo(v2)/2.0 + v1.angle();
+            double x = center.x + Math.cos(a) * s;
+            double y = center.y + Math.sin(a) * s;
 
             glVertex2d(current.x, current.y);
             glVertex2d(x, y);
