@@ -48,7 +48,7 @@ public class MainView extends View {
         lstar.move(speed, 0);//вызов функции движения звезды
         lstar.rotate(0.025);
         fstar.move(0, speed);
-
+        fstar.rotate(0.025);
 
         /*count++;
         if (count >= 100) {
