@@ -9,6 +9,4 @@ public interface Star extends Figure { //полностью абстрактны
 
     double size();
     int vertices();
-
-    Coordinate center();
 }

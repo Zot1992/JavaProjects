@@ -1,0 +1,19 @@
+package com.tfkfan.figure;
+
+import com.vividsolutions.jts.geom.Coordinate;
+
+public abstract class AbstractFigure implements Figure{
+    protected final Coordinate center;
+
+    protected AbstractFigure(){
+        center = new Coordinate();
+    }
+    protected AbstractFigure(Coordinate center) {
+        this.center = center;
+    }
+
+    @Override
+    public Coordinate center() {
+        return center;
+    }
+}

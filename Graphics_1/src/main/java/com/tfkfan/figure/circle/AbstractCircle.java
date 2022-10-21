@@ -1,11 +1,8 @@
 package com.tfkfan.figure.circle;
 
+import com.tfkfan.figure.AbstractFigure;
 import com.vividsolutions.jts.geom.Coordinate;
-
-import static org.lwjgl.opengl.GL11.glVertex2d;
-
-public abstract class AbstractCircle implements Circle {
-    protected final Coordinate center;
+public abstract class AbstractCircle extends AbstractFigure implements Circle {
     protected double radius;
     protected int partition;
 
@@ -13,13 +10,13 @@ public abstract class AbstractCircle implements Circle {
     protected double deltaAngle;
 
     public AbstractCircle(double radius, int partition) {
-        this.center = new Coordinate();
+        super();
         this.setRadius(radius);
         this.setPartition(partition);
     }
 
     public AbstractCircle(Coordinate center, double radius, int partition) {
-        this.center = center;
+        super(center);
         this.setRadius(radius);
         this.setPartition(partition);
     }
@@ -70,10 +67,5 @@ public abstract class AbstractCircle implements Circle {
     @Override
     public int partition() {
         return partition;
-    }
-
-    @Override
-    public Coordinate center() {
-        return center;
     }
 }
