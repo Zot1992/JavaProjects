@@ -35,28 +35,29 @@ public class MainView extends View {
         //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
         //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
         //DrawHelper.drawStar(0.8,5);
-
         glColor3f(0.2f, 0.2f, 0.2f);
+     /*   glColor3f(0.2f, 0.2f, 0.2f);
         lstar.draw();//вызов функции на отрисовку звезды линиями
         glColor3f(1.0f, 0.0f, 0.0f);
-        fstar.draw();
+        fstar.draw();*/
 
-        if (current <= begin || current >= end) { //код на смену хода движения звезды
+      /*  if (current <= begin || current >= end) { //код на смену хода движения звезды
             speed = -speed;
         }
         current += speed;
         lstar.move(speed, 0);//вызов функции движения звезды
         lstar.rotate(0.025);
         fstar.move(0, speed);
-        fstar.rotate(0.025);
+        fstar.rotate(0.025);*/
 
-        /*count++;
+        count++;
         if (count >= 100) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
             circle.setRadius(new Random().nextDouble());
         }
-        circle.draw(); */
+        circle.draw();
+        circle.rotate(0.025);
 
        /*
 
