@@ -19,19 +19,18 @@ public class FilledStar extends AbstractStar {
     @Override
     public void draw() {
         double s = size / (3.0);
-        double x, y, a;
         int vertices = starPoints.length;
-        Vector2D v1, v2;
         glBegin(GL_TRIANGLES);
         for (int i = 0; i < vertices; i++) { //цикл обходит каждый полигон
             Coordinate current = starPoints[i];
-            Coordinate next = i==(vertices-1) ? starPoints[0] : starPoints[i+1];
+            Coordinate next = i == (vertices - 1) ? starPoints[0] : starPoints[i + 1];
 
-            v1 = new Vector2D(current.x - center.x, current.y - center.y);
-            v2 = new Vector2D(next.x - center.x, next.y - center.y);
-            a = v1.angleTo(v2);
-            x = center.x + Math.cos((a / 2.0 +v1.angle() )) * s;
-            y = center.y + Math.sin((a / 2.0 +v1.angle())) * s;
+            Vector2D v1 = new Vector2D(current.x - center.x, current.y - center.y);
+            Vector2D v2 = new Vector2D(next.x - center.x, next.y - center.y);
+            double a1 = v1.angleTo(v2);
+            double a2 = v1.angle();
+            double x = center.x + Math.cos((a1 / 2.0 + a2)) * s;
+            double y = center.y + Math.sin((a1 / 2.0 + a2)) * s;
 
             glVertex2d(current.x, current.y);
             glVertex2d(x, y);
@@ -40,7 +39,6 @@ public class FilledStar extends AbstractStar {
             glVertex2d(next.x, next.y);
             glVertex2d(x, y);
             glVertex2d(center.x, center.y);
-
         }
         glEnd();
     }
