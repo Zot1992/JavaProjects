@@ -67,15 +67,22 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
         }
     }
 
+    //Функция вращения звезды вокруг ее центра
     @Override
-    public void rotate(double alfa) { //функция для вращения звезды
+    public void rotate(double alfa) {
+        rotate(center, alfa);
+    }
+
+    //функция вращения звезды вокруг произвольной точки
+    @Override
+    public void rotate(Coordinate axis, double alfa) {
         double cos = Math.cos(alfa);
         double sin = Math.sin(alfa);
         for (Coordinate point : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             double ox = point.x, oy = point.y;
-            point.x = ((ox - center.x) * cos - (oy - center.y) * sin + center.x);//Формула матрицы поворота в двумерном пространстве.
+            point.x = ((ox - axis.x) * cos - (oy - axis.y) * sin + axis.x);//Формула матрицы поворота в двумерном пространстве.
             // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку
-            point.y = ((ox - center.x) * sin + (oy - center.y) * cos + center.y);
+            point.y = ((ox - axis.x) * sin + (oy - axis.y) * cos + axis.y);
         }
     }
 }
