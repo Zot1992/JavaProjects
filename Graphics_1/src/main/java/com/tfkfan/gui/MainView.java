@@ -54,6 +54,8 @@ public class MainView extends View {
         if (count >= 100) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
+            if(circle.partition()>5)
+                circle.setPartition(1);
             circle.setRadius(new Random().nextDouble());
         }
         circle.draw();
