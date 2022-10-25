@@ -2,7 +2,7 @@ package com.tfkfan.figure;
 
 import com.vividsolutions.jts.geom.Coordinate;
 
-public abstract class AbstractFigure implements Figure{
+public abstract class AbstractFigure implements Figure{ //абстрактный класс с общими методами для всех фигур
     protected final Coordinate center;
 
     protected AbstractFigure(){

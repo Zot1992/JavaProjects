@@ -19,7 +19,7 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
     }
 
     public AbstractStar(Coordinate center, double size, int vertices) {
-        super(center);
+        super(center);//создаем центр с дефолтным значением
         this.setVertices(vertices);
         this.setSize(size);
         this.starPoints = initStarPoints(this.size, this.vertices);
@@ -59,8 +59,8 @@ public abstract class AbstractStar extends AbstractFigure implements Star {
     }
 
     @Override
-    public void move(double dx, double dy) {
-        super.move(dx, dy);
+    public void move(double dx, double dy) { //функция на движение
+        super.move(dx, dy);//берем дефолтные значения и создаем переменные
         for (Coordinate starPoint : starPoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             starPoint.y += dy;
             starPoint.x += dx;

@@ -15,5 +15,4 @@ public class DrawHelper {
         glVertex2d(x4, y4);//положение нижней правой точки фигуры
         glEnd();
     }
-
 }

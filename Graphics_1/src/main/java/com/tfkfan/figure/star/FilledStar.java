@@ -17,7 +17,7 @@ public class FilledStar extends AbstractStar {
     }
 
     @Override
-    public void draw() {
+    public void draw() { //функция по отрисовке залитой звезды
         double s = size / (3.0);
         int vertices = starPoints.length;
         glBegin(GL_TRIANGLES);

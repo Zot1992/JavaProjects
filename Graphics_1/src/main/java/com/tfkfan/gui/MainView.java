@@ -16,9 +16,9 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
 
-    private final Circle circle = new LinedCircle(0.3, 2);
-    private final Star lstar = new LinedStar(0.5, 5);
-    private final Star fstar = new FilledStar(0.5, 5);
+    private final Circle circle = new LinedCircle(0.3, 360);//создание обьекта круг
+    private final Star lstar = new LinedStar(0.5, 4);//создание обьекта прозначная звезда
+    private final Star fstar = new FilledStar(0.5, 5);//создание обьекта залитая звезда
     int count = 0;
     double current = 0;
     double begin = -0.5;
@@ -32,25 +32,27 @@ public class MainView extends View {
     @Override //указывает, что далее мы собираемся переопределять метод базового класса.
     protected void partialDisplay() { //функция по отрисовке графики
         //glColor3f(2.0f, 0.0f, 0.0f);//цвет неподвижной фигуры
-        //DrawHelper.drawRectangle(-0.5, -0.5,-0.5, 0.0,0.0, 0.0,0.0, -0.5);//вызов метода квадрата
-        //DrawHelper.drawCircle(0,0,0.5,360);//вызов метода круга
-        //DrawHelper.drawStar(0.8,5);
-        glColor3f(0.2f, 0.2f, 0.2f);
-     /*   glColor3f(0.2f, 0.2f, 0.2f);
-        lstar.draw();//вызов функции на отрисовку звезды линиями
-        glColor3f(1.0f, 0.0f, 0.0f);
-        fstar.draw();*/
 
-      /*  if (current <= begin || current >= end) { //код на смену хода движения звезды
+        //glColor3f(0.2f, 0.2f, 0.2f);
+       glColor3f(0.2f, 0.2f, 0.2f);
+        //lstar.draw();//вызов функции на отрисовку звезды линиями
+        glColor3f(1.0f, 0.0f, 0.0f);
+        //fstar.draw();
+        lstar.draw();
+        //glColor3f(1.0f, 0.0f, 0.0f);
+        if (current <= begin || current >= end) { //код на смену хода движения звезды
             speed = -speed;
         }
         current += speed;
-        lstar.move(speed, 0);//вызов функции движения звезды
-        lstar.rotate(0.025);
-        fstar.move(0, speed);
-        fstar.rotate(0.025);*/
+        //lstar.move(speed, 0);//вызов функции движения звезды
+        //lstar.rotate(0.025);
+        //fstar.move(0, speed);
+        //fstar.rotate(0.025);
 
-        count++;
+        //circle.draw();
+        //circle.rotate(new Coordinate(0.25,0.25),0.05);
+
+        /*count++;
         if (count >= 1000) {
             count = 0;
             circle.setPartition(circle.partition() + 1);
@@ -59,16 +61,20 @@ public class MainView extends View {
             circle.setRadius(new Random().nextDouble());
         }
         circle.draw();
-        circle.rotate(new Coordinate(0.5,0.5),0.05);
+        circle.rotate(new Coordinate(0.25,0.25),0.05);
 
        /*
 
-        if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака
+
+
+        /*if(center.x >= end || center.x <= begin)//если мы доходим до конца или до начала, то происходит смена знака
             speed = -speed;//если - присевается 2 раза, то он преобразуется в +
         moveStar(speed,0);//вызов функции движения звезды
         rotateStar(alfa);//вызов функции вращения звезды*/
     }
 }
+
+
 
 /* private Coordinate[] starPoints; параметры звезды
     public int vertices = 5;

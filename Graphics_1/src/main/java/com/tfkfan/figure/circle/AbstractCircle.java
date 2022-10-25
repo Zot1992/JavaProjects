@@ -17,13 +17,13 @@ public abstract class AbstractCircle extends AbstractFigure implements Circle {
     }
 
     public AbstractCircle(Coordinate center, double radius, int partition) {
-        super(center);
+        super(center);//создаем центр с дефолтным значением
         this.setRadius(radius);
         this.setPartition(partition);
     }
 
     private void initPoints() {
-        points = new Coordinate[partition + 1];
+        points = new Coordinate[partition + 1];//пишем +1 что бы сделать фигуру не курсивом, а сплошной линией
         for (int i = -1; i < partition; i++) //цикл обходит каждый полигон
             points[i + 1] = new Coordinate(Math.cos(deltaAngle * i) * radius + center.x,
                     Math.sin(deltaAngle * i) * radius + center.y);
