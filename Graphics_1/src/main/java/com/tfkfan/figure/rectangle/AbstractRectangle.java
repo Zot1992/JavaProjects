@@ -16,6 +16,7 @@ public abstract class AbstractRectangle extends AbstractFigure implements Rectan
         this.RectanglePoints = initRectanglePoints(this.size, this.vertices);
     }
 
+
     public AbstractRectangle(Coordinate center, double size, int vertices) {
         super(center);//создаем центр с дефолтным значением
         this.setVertices(vertices);
