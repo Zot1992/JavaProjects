@@ -3,83 +3,57 @@ package com.tfkfan.figure.rectangle;
 import com.tfkfan.figure.AbstractFigure;
 import com.vividsolutions.jts.geom.Coordinate;
 
-public abstract class AbstractRectangle extends AbstractFigure implements Rectangle{
-    protected  static final int vertices = 4;
+public abstract class AbstractRectangle extends AbstractFigure implements Rectangle {
     protected double width;
-    protected double length;
-    protected Coordinate[] RectanglePoints;
-    protected double deltaAngle;
+    protected double height;
+    protected Coordinate[] rectanglePoints = new Coordinate[4];
 
-    public AbstractRectangle(double width,double length) {
+    public AbstractRectangle(double width, double height) {
         super();//обращаемся к пустому родительскому классу
         this.setWidth(width);
-        this.setLength(length);
-        this.RectanglePoints = initRectanglePoints(this.width,this.length);
+        this.setHeight(height);
+        initRectanglePoints(this.width, this.height);
     }
 
-    public AbstractRectangle(Coordinate center, double width,double length) {
+    public AbstractRectangle(Coordinate center, double width, double height) {
         super(center);//создаем центр из родительского класса
         this.setWidth(width);
-        this.setLength(length);
-        this.RectanglePoints = initRectanglePoints(this.width,this.length);
+        this.setHeight(height);
+        initRectanglePoints(this.width, this.height);
     }
 
-    private Coordinate[] initRectanglePoints(double width,double length) {
-        Coordinate[] points = new Coordinate[AbstractRectangle.vertices];
-        Coordinate center=new Coordinate(0,0);
-        double x, y;
-
-        for (int i = 0; i < points.length; i++) {
-            if (i==0){
-                x=center.x-width/2;
-                y=center.y+length/2;
-                points[i] = new Coordinate(x, y);
-            }
-            else if (i==1){
-                x=center.x-width/2;
-                y=center.y-length/2;
-                points[i] = new Coordinate(x, y);
-            }
-            else if (i==2){
-                x=center.x+width/2;
-                y=center.y-length/2;
-                points[i] = new Coordinate(x, y);
-            }
-            else if (i==3){
-                x=center.x+width/2;
-                y=center.y+length/2;
-                points[i] = new Coordinate(x, y);
-            }
-
-        }
-        return points;
+    private void initRectanglePoints(double width, double length) {
+        rectanglePoints[0] = new Coordinate(center.x - width / 2, center.y + length / 2);
+        rectanglePoints[1] = new Coordinate(center.x - width / 2, center.y - length / 2);
+        rectanglePoints[2] = new Coordinate(center.x + width / 2, center.y - length / 2);
+        rectanglePoints[3] = new Coordinate(center.x + width / 2, center.y + length / 2);
     }
 
     @Override
-    public void setWidth(double  width) {
-        this. width =  width;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
     @Override
-    public double  width() {
-        return  width;
+    public double width() {
+        return width;
     }
 
     @Override
-    public void setLength(double  length) {
-        this. length =  length;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     @Override
-    public double  length() {
-        return  length;
+    public double height() {
+        return height;
     }
 
 
     @Override
     public void move(double dx, double dy) { //функция на движение
         super.move(dx, dy);//берем дефолтные значения и создаем переменные
-        for (Coordinate RectanglePoint : RectanglePoints) { // тоже самое что for(int i=0;i<points;i++)
+        for (Coordinate RectanglePoint : rectanglePoints) { // тоже самое что for(int i=0;i<points;i++)
             RectanglePoint.y += dy;
             RectanglePoint.x += dx;
         }
@@ -89,7 +63,7 @@ public abstract class AbstractRectangle extends AbstractFigure implements Rectan
     public void rotate(Coordinate axis, double alfa) {
         double cos = Math.cos(alfa);
         double sin = Math.sin(alfa);
-        for (Coordinate RectanglePoint : RectanglePoints) { // тоже самое что for(int i=0;i<starPoints;i++)
+        for (Coordinate RectanglePoint : rectanglePoints) { // тоже самое что for(int i=0;i<starPoints;i++)
             double ox = RectanglePoint.x, oy = RectanglePoint.y;
             RectanglePoint.x = ((ox - axis.x) * cos - (oy - axis.y) * sin + axis.x);//Формула матрицы поворота в двумерном пространстве.
             // Поворот выполняется путём умножения матрицы поворота на вектор-столбец, описывающий вращаемую точку

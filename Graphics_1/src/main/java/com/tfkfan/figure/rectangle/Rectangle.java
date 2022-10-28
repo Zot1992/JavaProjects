@@ -4,8 +4,8 @@ import com.tfkfan.figure.Figure;
 
 public interface Rectangle extends Figure {
     void setWidth(double width);
-    void setLength(double length);
+    void setHeight(double height);
 
     double width();
-    double length();
+    double height();
 }

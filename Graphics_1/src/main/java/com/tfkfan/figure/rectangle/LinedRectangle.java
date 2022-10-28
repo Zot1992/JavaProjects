@@ -7,24 +7,23 @@ import static org.lwjgl.opengl.GL11.glEnd;
 
 public class LinedRectangle extends AbstractRectangle{
 
-    public LinedRectangle (double width,double length) {
-        super(width,length);
+    public LinedRectangle (double width,double height) {
+        super(width,height);
     }
 
-    public LinedRectangle (Coordinate center, double width,double length) {
-        super(center, width,length);
+    public LinedRectangle (Coordinate center, double width,double height) {
+        super(center, width,height);
     }
 
 
     @Override
     public void draw() {
-        glBegin(GL_LINE_LOOP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
-        int vertices = RectanglePoints.length;
-        for (int i = 0; i < RectanglePoints.length; i++) {
-            int shift = i  % vertices;   //Точки выводим со смещением на 2
-
-            glVertex2d(RectanglePoints[shift].x,RectanglePoints[shift].y);//object[i].x только так можно вызвать из массива объектов нужный метод
-        }
+        glBegin(GL_LINE_STRIP);//Рисуется ломаная, причем ее последняя точка соединяется с первой.
+        glVertex2d(rectanglePoints[0].x, rectanglePoints[0].y);
+        glVertex2d(rectanglePoints[1].x, rectanglePoints[1].y);
+        glVertex2d(rectanglePoints[2].x, rectanglePoints[2].y);
+        glVertex2d(rectanglePoints[3].x, rectanglePoints[3].y);
+        glVertex2d(rectanglePoints[0].x, rectanglePoints[0].y);
         glEnd();
     }
 }
