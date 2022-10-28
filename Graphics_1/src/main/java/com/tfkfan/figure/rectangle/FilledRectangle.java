@@ -7,17 +7,17 @@ import static org.lwjgl.opengl.GL11.*;
 public class FilledRectangle extends AbstractRectangle {
 
 
-    public FilledRectangle(double size, int vertices) {
-        super(size, vertices);
+    public FilledRectangle(double width,double length) {
+        super(width,length);
     }
 
-    public FilledRectangle(Coordinate center, double size, int vertices) {
-        super(center, size, vertices);
+    public FilledRectangle(Coordinate center, double width,double length) {
+        super(center, width,length);
     }
 
     @Override
     public void draw() {
-        glBegin(GL_POLYGON);//Р
+        glBegin(GL_POLYGON);
         int vertices = RectanglePoints.length;
         for (int i = 0; i < RectanglePoints.length; i++) {
             int shift = i  % vertices;

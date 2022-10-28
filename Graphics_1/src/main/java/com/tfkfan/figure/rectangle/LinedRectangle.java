@@ -7,12 +7,12 @@ import static org.lwjgl.opengl.GL11.glEnd;
 
 public class LinedRectangle extends AbstractRectangle{
 
-    public LinedRectangle (double size, int vertices) {
-        super(size, vertices);
+    public LinedRectangle (double width,double length) {
+        super(width,length);
     }
 
-    public LinedRectangle (Coordinate center, double size, int vertices) {
-        super(center, size, vertices);
+    public LinedRectangle (Coordinate center, double width,double length) {
+        super(center, width,length);
     }
 
 

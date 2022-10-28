@@ -3,9 +3,9 @@ package com.tfkfan.figure.rectangle;
 import com.tfkfan.figure.Figure;
 
 public interface Rectangle extends Figure {
-    void setVertices(int vertices);
-    void setSize(double size);
+    void setWidth(double width);
+    void setLength(double length);
 
-    double size();
-    int vertices();
+    double width();
+    double length();
 }

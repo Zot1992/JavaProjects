@@ -5,6 +5,9 @@ package com.tfkfan.gui;
 
 import com.tfkfan.figure.circle.Circle;
 import com.tfkfan.figure.circle.LinedCircle;
+import com.tfkfan.figure.rectangle.FilledRectangle;
+import com.tfkfan.figure.rectangle.LinedRectangle;
+import com.tfkfan.figure.rectangle.Rectangle;
 import com.tfkfan.figure.star.FilledStar;
 import com.tfkfan.figure.star.LinedStar;
 import com.tfkfan.figure.star.Star;
@@ -16,9 +19,11 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class MainView extends View {
 
-    private final Circle circle = new LinedCircle(0.3, 360);//создание обьекта круг
+    private final Circle circle = new LinedCircle(0.3, 4);//создание обьекта круг
     private final Star lstar = new LinedStar(0.5, 4);//создание обьекта прозначная звезда
     private final Star fstar = new FilledStar(0.5, 5);//создание обьекта залитая звезда
+    private final Rectangle lrectangle=new LinedRectangle(0.7,0.5);
+    private final Rectangle frectangle=new FilledRectangle(0.7,0.5);
     int count = 0;
     double current = 0;
     double begin = -0.5;
@@ -38,12 +43,15 @@ public class MainView extends View {
         //lstar.draw();//вызов функции на отрисовку звезды линиями
         glColor3f(1.0f, 0.0f, 0.0f);
         //fstar.draw();
-        lstar.draw();
+        //lstar.draw();
+        //lrectangle.draw();
+        frectangle.draw();
         //glColor3f(1.0f, 0.0f, 0.0f);
         if (current <= begin || current >= end) { //код на смену хода движения звезды
             speed = -speed;
         }
         current += speed;
+
         //lstar.move(speed, 0);//вызов функции движения звезды
         //lstar.rotate(0.025);
         //fstar.move(0, speed);
